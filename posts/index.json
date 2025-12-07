@@ -1,0 +1,34 @@
+[
+    {
+        "id": "ana-first-class-tokyo-nyc",
+        "title": "ANA First Class: Tokyo to New York",
+        "date": "2025-12-01",
+        "category": "flight",
+        "file": "posts/flights/ana-first-class-tokyo-nyc.md",
+        "excerpt": "An exceptional journey in ANA's legendary First Class on the 777-300ER, featuring exquisite Japanese hospitality and one of the best onboard dining experiences in the sky."
+    },
+    {
+        "id": "singapore-airlines-suites-frankfurt",
+        "title": "Singapore Airlines Suites: A380 to Frankfurt",
+        "date": "2025-11-15",
+        "category": "flight",
+        "file": "posts/flights/singapore-airlines-suites-frankfurt.md",
+        "excerpt": "Experience the ultimate in luxury air travel aboard Singapore Airlines' iconic A380 Suites, complete with a full flat bed, personal suite, and world-class service."
+    },
+    {
+        "id": "japan-winter-adventure",
+        "title": "Winter in Japan: From Tokyo to Hokkaido",
+        "date": "2025-11-28",
+        "category": "trip",
+        "file": "posts/trips/japan-winter-adventure.md",
+        "excerpt": "A two-week journey through Japan's winter wonderland, exploring Tokyo's vibrant neighborhoods, Kyoto's ancient temples, and Hokkaido's incredible ski resorts and hot springs."
+    },
+    {
+        "id": "iceland-northern-lights",
+        "title": "Chasing Northern Lights in Iceland",
+        "date": "2025-10-20",
+        "category": "trip",
+        "file": "posts/trips/iceland-northern-lights.md",
+        "excerpt": "A magical week in Iceland hunting for the aurora borealis, exploring ice caves, relaxing in geothermal pools, and discovering the country's dramatic landscapes."
+    }
+]

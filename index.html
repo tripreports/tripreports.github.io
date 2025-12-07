@@ -4,34 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Reports</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-        }
-        .status {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Trip Reports</h1>
-    <p>Welcome to Trip Reports - your site is live!</p>
-    <div class="status">✓ GitHub Pages is working correctly</div>
+    <header>
+        <div class="container">
+            <h1>Trip Reports</h1>
+            <p class="tagline">Adventures in premium travel</p>
+        </div>
+    </header>
+
+    <nav class="filter-nav">
+        <div class="container">
+            <button class="filter-btn active" data-filter="all">All Posts</button>
+            <button class="filter-btn" data-filter="flight">Flight Reports</button>
+            <button class="filter-btn" data-filter="trip">Trip Reports</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="post-view" style="display: none;">
+            <button id="back-btn" class="back-btn">← Back to all posts</button>
+            <article id="post-content"></article>
+        </div>
+
+        <div id="feed-view">
+            <div id="posts-grid" class="posts-grid">
+                <div class="loading">Loading posts...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Trip Reports. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
