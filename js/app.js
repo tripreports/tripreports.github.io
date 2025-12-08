@@ -11,11 +11,129 @@ const postView = document.getElementById('post-view');
 const postContent = document.getElementById('post-content');
 const backBtn = document.getElementById('back-btn');
 
+// Set random tail as favicon
+function setRandomFavicon() {
+    const tailImages = [
+        '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
+        'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
+        'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
+        'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
+        'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
+        'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
+        'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
+        'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
+        'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
+        'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
+        'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
+        'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
+        'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
+        'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
+        'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
+        'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
+        'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
+        'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
+        'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
+        'YW', 'Z2', 'ZH', 'ZI'
+    ];
+
+    const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+    const favicon = document.getElementById('favicon');
+    if (favicon) {
+        favicon.href = `images/tails/${randomTail}.png`;
+    }
+}
+
 // Initialize app
 async function init() {
+    setRandomFavicon();
     await loadPosts();
+    loadAirlineTails();
     setupEventListeners();
     checkURLHash();
+}
+
+// Load and display airline tail images with infinite scroll
+function loadAirlineTails() {
+    // List of all airline tail images we actually have
+    const tailImages = [
+        '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
+        'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
+        'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
+        'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
+        'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
+        'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
+        'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
+        'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
+        'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
+        'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
+        'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
+        'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
+        'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
+        'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
+        'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
+        'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
+        'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
+        'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
+        'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
+        'YW', 'Z2', 'ZH', 'ZI'
+    ].filter(code => code !== 'unknown'); // Exclude unknown.png
+
+    // Shuffle array for random order
+    const shuffled = tailImages.sort(() => Math.random() - 0.5);
+
+    // Create exactly 2 copies for seamless loop
+    const allTails = [...shuffled, ...shuffled];
+
+    // Create image elements
+    const slider = document.getElementById('tail-slider');
+    if (!slider) return;
+
+    allTails.forEach(code => {
+        const img = document.createElement('img');
+        img.src = `images/tails/${code}.png`;
+        img.alt = `${code} airline tail`;
+        img.title = code; // Show code on hover
+        img.onerror = function() {
+            // If image fails to load, try .jpg
+            this.onerror = null;
+            this.src = `images/tails/${code}.jpg`;
+        };
+        slider.appendChild(img);
+    });
+
+    // Start infinite scroll animation after images load
+    const scrollSpeed = 0.5; // pixels per frame
+    let singleSetWidth = 0;
+    let scrollPosition = 0;
+
+    // Wait for first image to load to calculate width
+    const firstImg = slider.querySelector('img');
+    if (firstImg) {
+        firstImg.onload = function() {
+            // Calculate the width of one complete set (half of all images)
+            const imageCount = slider.children.length;
+            const singleImageWidth = firstImg.offsetWidth + parseFloat(getComputedStyle(slider).gap);
+            singleSetWidth = (imageCount / 2) * singleImageWidth;
+
+            // Start from the left (negative position) for left-to-right scroll
+            scrollPosition = -singleSetWidth;
+
+            // Start the animation (scrolling left to right)
+            function animate() {
+                scrollPosition += scrollSpeed;
+
+                // When we've scrolled all the way to 0, reset to start position
+                if (scrollPosition >= 0) {
+                    scrollPosition = -singleSetWidth;
+                }
+
+                slider.style.transform = `translateX(${scrollPosition}px)`;
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        };
+    }
 }
 
 // Load posts from index.json
@@ -97,16 +215,59 @@ function createPostCard(post) {
         day: 'numeric'
     });
 
-    const emoji = post.category === 'flight' ? '✈️' : '🌍';
+    // For flight reports, use cover image; for trip reports, use emoji
+    let thumbnail;
+    if (post.category === 'flight') {
+        thumbnail = `<img src="images/flights/${post.id}/cover.jpg" alt="${post.title}" class="cover-image">`;
+    } else {
+        thumbnail = '🌍';
+    }
+
+    // Parse flight details from excerpt if it's a flight report
+    let flightDetails = '';
+    if (post.category === 'flight' && post.excerpt) {
+        const details = {};
+        const lines = post.excerpt.split('\n');
+
+        lines.forEach(line => {
+            const match = line.match(/\*\*([^:]+):\*\*(.+)/);
+            if (match) {
+                details[match[1]] = match[2].trim();
+            }
+        });
+
+        if (Object.keys(details).length > 0) {
+            // Extract airline code from flight number (first 2 characters)
+            let airlineCode = '';
+            let tailImage = '';
+            if (details['Flight Number']) {
+                airlineCode = details['Flight Number'].trim().substring(0, 2).toUpperCase();
+                tailImage = `<img src="images/tails/${airlineCode}.png" alt="${airlineCode}" class="tail-thumbnail" onerror="this.src='images/tails/${airlineCode}.jpg'; this.onerror=null;">`;
+            }
+
+            flightDetails = `
+                <div class="flight-details">
+                    <div class="flight-info">
+                        ${details.Airline ? `<div class="detail-item"><strong>Airline:</strong> ${details.Airline}</div>` : ''}
+                        ${details['Flight Number'] ? `<div class="detail-item"><strong>Flight:</strong> ${details['Flight Number']}</div>` : ''}
+                        ${details.Aircraft ? `<div class="detail-item"><strong>Aircraft:</strong> ${details.Aircraft}</div>` : ''}
+                        ${details['From/To'] ? `<div class="detail-item"><strong>Route:</strong> ${details['From/To']}</div>` : ''}
+                        ${details['Distance Flown'] ? `<div class="detail-item"><strong>Distance:</strong> ${details['Distance Flown']}</div>` : ''}
+                    </div>
+                    ${tailImage ? `<div class="flight-tail">${tailImage}</div>` : ''}
+                </div>
+            `;
+        }
+    }
 
     return `
         <div class="post-card" data-post-id="${post.id}" data-category="${post.category}">
-            <div class="post-thumbnail">${emoji}</div>
+            <div class="post-thumbnail">${thumbnail}</div>
             <div class="post-card-body">
                 <span class="post-category ${post.category}">${post.category} report</span>
                 <h2>${post.title}</h2>
                 <div class="post-date">${date}</div>
-                <p class="post-excerpt">${post.excerpt}</p>
+                ${flightDetails}
                 <span class="read-more">Read more →</span>
             </div>
         </div>

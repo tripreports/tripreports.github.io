@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Planespotting - Trip Reports</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" id="favicon">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
+            height: 100vh;
+        }
+
+        .plane-container {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+        }
+
+        .plane {
+            width: 150px;
+            height: auto;
+            display: block;
+        }
+
+        .plane-tail {
+            position: absolute;
+            object-fit: contain;
+            z-index: 1;
+        }
+
+        .plane-tail.right {
+            top: 18px;
+            left: 6px;
+            width: 42px;
+            height: 33px;
+        }
+
+        .plane-tail.left {
+            top: 18px;
+            right: 6px;
+            width: 42px;
+            height: 33px;
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="filter-nav">
+        <div class="container">
+            <h1 class="site-title"><a href="index.html" style="color: white; text-decoration: none;">Trip Reports</a></h1>
+            <div class="filter-buttons">
+                <a href="index.html" class="filter-btn">Home</a>
+                <a href="planespotting.html" class="filter-btn active">Go Planespotting</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Set random tail as favicon
+        const tailImages = [
+            '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
+            'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
+            'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
+            'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
+            'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
+            'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
+            'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
+            'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
+            'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
+            'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
+            'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
+            'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
+            'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
+            'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
+            'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
+            'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
+            'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
+            'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
+            'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
+            'YW', 'Z2', 'ZH', 'ZI'
+        ];
+
+        const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+        document.getElementById('favicon').href = `images/tails/${randomTail}.png`;
+
+        // Plane animation
+        function createPlane() {
+            // Create container
+            const container = document.createElement('div');
+            container.className = 'plane-container';
+
+            // Create plane image
+            const plane = document.createElement('img');
+            plane.className = 'plane';
+
+            // Create tail image
+            const tail = document.createElement('img');
+            tail.className = 'plane-tail';
+
+            // Random tail selection
+            const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+            tail.src = `images/tails/${randomTail}.png`;
+            tail.onerror = function() {
+                this.onerror = null;
+                this.src = `images/tails/${randomTail}.jpg`;
+            };
+
+            // 20% chance of being upside down
+            const upsideDown = Math.random() < 0.2;
+
+            // Random direction: left to right or right to left
+            const goingRight = Math.random() < 0.5;
+
+            let startX, startY, endX, endY;
+
+            if (goingRight) {
+                // Left to right - use plane_right.png
+                plane.src = 'images/icons/plane_right.png';
+                tail.classList.add('right');
+                startX = -150;
+                endX = window.innerWidth + 150;
+            } else {
+                // Right to left - use plane_left.png
+                plane.src = 'images/icons/plane_left.png';
+                tail.classList.add('left');
+                startX = window.innerWidth + 150;
+                endX = -150;
+            }
+
+            // Random Y positions with angle constraint (±30 degrees from horizontal)
+            // tan(30°) ≈ 0.577, so vertical change should be <= 0.577 * horizontal change
+            const horizontalDistance = Math.abs(endX - startX);
+            const maxVerticalChange = horizontalDistance * 0.577; // tan(30°)
+
+            // Pick a random starting Y
+            startY = Math.random() * window.innerHeight;
+
+            // Constrain ending Y to maintain angle within ±30 degrees
+            const minEndY = startY - maxVerticalChange;
+            const maxEndY = startY + maxVerticalChange;
+
+            // Clamp to screen bounds
+            const clampedMinY = Math.max(0, minEndY);
+            const clampedMaxY = Math.min(window.innerHeight, maxEndY);
+
+            endY = clampedMinY + Math.random() * (clampedMaxY - clampedMinY);
+
+            container.style.left = startX + 'px';
+            container.style.top = startY + 'px';
+
+            // Calculate rotation angle (only vertical tilt, horizontal direction is in the image)
+            let verticalAngle = Math.atan2(endY - startY, Math.abs(endX - startX)) * 180 / Math.PI;
+
+            // For right-to-left planes, negate the angle since they're facing opposite
+            if (!goingRight) {
+                verticalAngle = -verticalAngle;
+            }
+
+            // Random scale between 0.7 and 1.3
+            const scale = 0.7 + Math.random() * 0.7;
+
+            container.style.transform = `rotate(${verticalAngle}deg) scale(${scale})` + (upsideDown ? ' scaleY(-1)' : '');
+
+            // Assemble and add to page
+            container.appendChild(plane);
+            container.appendChild(tail);
+            document.body.appendChild(container);
+
+            // Animate plane
+            const duration = 5000 + Math.random() * 5000; // 5-10 seconds
+            const startTime = Date.now();
+
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = elapsed / duration;
+
+                if (progress >= 1) {
+                    container.remove();
+                    return;
+                }
+
+                const currentX = startX + (endX - startX) * progress;
+                const currentY = startY + (endY - startY) * progress;
+
+                container.style.left = currentX + 'px';
+                container.style.top = currentY + 'px';
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Create planes at random intervals
+        function scheduleNextPlane() {
+            const delay = 1000 + Math.random() * 3000; // 1-4 seconds
+            setTimeout(() => {
+                createPlane();
+                scheduleNextPlane();
+            }, delay);
+        }
+
+        scheduleNextPlane();
+        createPlane(); // Create first plane immediately
+    </script>
+</body>
+</html>

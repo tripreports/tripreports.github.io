@@ -1,0 +1,128 @@
+# Oman 6 Day 2WD Self-Drive Trip Report
+
+**Date:** 2024-03-23
+
+---
+
+**Itinerary:**
+
+**Day 1:**Explore Muscat
+**Day 2:**Muscat to Sur
+**Day 3:**Sur to Nizwa
+**Day 4:**Explore Nizwa
+**Day 5:**Nizwa to Jebel Shams
+**Day 6:**Jebel Shams to Muscat
+**Bonus****Day 7/8:**Resort in Muscat
+
+A few thing to note: I didn't have a super long time in Oman, unfortunately, so I wasn't able to see everything (especially given I only had a 2WD car). Despite having to cut these, I really enjoyed my trip and felt like I saw a good amount of the country. A few things that I skipped that might be of interest:
+
+- **Ad Dimaniyat Islands**- can be done with an extra day in Muscat.
+- **Ras Al Jinz turtle reserve**- I skipped this because it wasn't the right season, along with the fact that, from my understanding, it is not properly managed and not a good environment for the turtles.
+- **Wahiba Sands**- I have previously seen/stayed in deserts, so when I needed to cut a day or two from my itinerary, this seemed like a good option. I talked with other travelers, who enjoyed visiting it, so it might be worth a stop.
+- **Jebel Akhdar**- a mountain range which is harder to access than Jebel Shams, and requires a 4WD (restricted by police checkpoint), but is just as beautiful as Jebel Shams according to locals.
+
+Another noteworthy detail is that I visited during Ramadan. There were definitely tradeoffs to this, and visiting during other months will give a slightly different experience. Somethings that I noticed:
+
+- **Food/Drink:**The most obvious - during daylight hours, it is illegal to drink, eat, and smoke in public. The locals are fasting, and it is disrespectful to not follow this guidance - I stocked up with snacks when I arrived in Muscat, and always ate/drank out of sight of anyone. I did, however, notice that some hotels served breakfast after the sun was up, especially in touristy areas
+- **Price:**I was able to make this trip quite affordable. Hotels were cheap, and my rental car was a great deal (150 USD for 8 days). I never compared prices to non-Ramadan prices, but I would assume they were a little lower
+- **Crowds:**I found that, for most of the attractions, I either had them to myself, or there were very few tourists. Again, not sure if this was because of Ramadan, or just the fact that I was there off-season
+
+## Visa
+
+The process to attain the visa was easy - I was able to use the E-Visa site, and received mine within about 3 days of applying. The application was easy, and I didn't have any issues with it.
+
+## My Rental Car/Driving in Oman
+
+Since I was traveling by myself, I didn't need anything fancy or big. I rented a Suzuki Dzire from Budget, which was a 2WD. I had no issues with the rental, and everything worked perfectly. It is worth noting that gas was incredibly cheap here. Additionally, my understanding is that I had to clean the car before returning it, which was new to me. However, right before dropping it off, I went to an Al Maha station in Muscat, where I was able to get the car cleaned and vacuumed very well.![The Dzire, on the way up to Jebel Shams](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-20_03-03-51_098.jpeg?w=1024)
+*The Dzire, on the way up to Jebel Shams*
+
+Unlike some rentals, mine had a mileage limit, which was 1600km. I ended up using all but 10km of those, so it might be worth mapping it out. For me, I would have just ended up paying a small amount per 100km I was over, but its worth checking the policy.
+
+I used Google Maps for the entire trip (with a 10GB eSIM) and it worked well for the most part. The only time it didn't work was in Nizwa - where it sent me down what I realized too late was a pedestrian street. Almost lost a mirror on that detour.
+
+Driving in Oman is easy - most of the roads are huge and I found them to be completely empty (except during sundown, when people were in a hurry to get home and break the fast). Speed is monitored by automated speed cameras - they're tall poles with white and black stripes. Easy to see, so as long as you're paying attention, you can avoid tickets.
+
+## Day 1 - Muscat
+
+Having arrived pretty late the day before, I was a little slow getting going, and had some work to catch up on. However, I didn't want to miss out on the Sultan Qaboos Mosque, which was the highlight of the day, but is only open to non-Muslim visitors from 8am-11am on all days except Fridays. This was still in effect for Ramadan. The mosque is huge, and is beautifully built and maintained. I spent about an hour and a half walking around, but could have easily spent more time exploring. Given it is a mosque, for at least some parts of it, you must remove your shoes. Cubbies are all over, and given how clean everything was, even outside, this is no issue.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6265.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6268.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6272.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6300.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6301.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6316.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6320.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6336.jpg?w=1024)
+After visiting the mosque, I went to a grocery store to pickup all the food I would need for the next few days, as I expected to be pretty much on my own for it. There are plenty of hypermarkets around Muscat, and I found everything I needed. In the evening, I visited the Royal Opera House, which, when it is all lit up, is a great way to admire the marble architecture.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6362.jpg?w=1024)
+I also revisited the Sultan Qaboos mosque to see it lit up, which was beautiful but closed.
+
+## Day 2 - Muscat to Sur
+
+I had a little extra time in Muscat, so I decided to visit the Mohammed Al Ameen Mosque, having read that it had the same visitor hours as the Sultan Qaboos Mosque. I was allowed to walk around outside, but was told that I could not visit inside. This was 8:30am on March 16th - a Saturday.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6376.jpg?w=1024)
+After that, I wanted to get a view over Muscat, and headed up to the "[Muscat View](https://maps.app.goo.gl/oZub6XBq2g8m1afMA)" on Google Maps. It's a little tricky to get to, but once you're going down the hill, immediately after you pass the pin, there will be a small pull out where you can stop and get a great view.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6380.jpg?w=1024)
+After that, I headed back to my hotel to pack up my stuff, and get ready to head south. My next stop was the Bimmah Sinkhole, about a hour and a half drive from Muscat. There is a small park surrounding the sinkhole, and a free parking lot right outside the park. I got there as a tour bus was leaving, and only had to wait about 15 minutes for everyone else to leave, and I had it to myself.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/8t4a6411.jpg?w=1024)
+There are public bathrooms where I got changed, and went for a swim, which was super refreshing. Before heading to the next stop, I decided to head over quickly to see the sea (about a minute away from the sinkhole). There were a few camels roaming around, which made for a cool picture![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6415.jpg?w=1024)
+I got on the road to my next stop, Wadi Shab, which is just about 30 minutes away. I initially entered the wrong pin, and went on a little detour. However, I got a nice overlook of Tiwi, so no complaints![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6424.jpg?w=1024)
+I'm pretty sure[this is where](https://maps.app.goo.gl/Vxne9snNk2bbzV1k8)I went to get that view. After the small detour, I found my way to the "Wadi Shab Parking" pin. Parking is free, but you do have to pay 1 Rial for a round trip boat ride across the small pond at the base of Wadi Shab. These boats run from 8am to 5pm.![Pond at the base - picture is from parking lot, and across the way is the trailhead](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6433.jpg?w=1024)
+*Pond at the base - picture is from parking lot, and across the way is the trailhead*
+
+A note for hiking this - several parts of the trail are relatively flooded, so water shoes are recommended. You can rent some at the parking lot if needed. Once you get dropped off, you start the hike. The trail is easy to follow, and since you're going up a canyon, its hard to get lost. There are quite a few ankle deep river crossings along the way (hence the water shoes).![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6439.jpg?w=1024)
+The entire way up, you'll get great views of the canyon and lush vegetation.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6448.jpg?w=683)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6453.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6466.jpg?w=1024)
+It takes about 30 or 45 minutes to get to the first set of pools, where people usually swim and relax. It is possible to continue on, and I wish I could have, but I was running out of time, and had to turn back. My next stop was Qalhat and the Bibi Maryam Mausoleum. Qalhat has a set of ruins that are quite old, so I was hoping to visit. However, it seemed like it was closed for restoration, so the best I could do was pull over on the road in a pull out, and admire it from afar![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6496.jpg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6500.jpg?w=1024)
+After that, I was on my way to Sur as the sun started to set, where I checked into my hotel and fell asleep.
+
+## Day 3 - Sur to Nizwa
+
+This was one of the more driving heavy days, so I got an early start. First on the list was to have a look around Sur. It's a little off the tourist track, so the roads here weren't quite as nice as everywhere else. Despite this, it's a very nice town on the waterfront. I stopped at the lighthouse, drove by the Dhow Factory, and drove along the corniche.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6505.jpg?w=683)
+After that, I got going towards Nizwa. On the way, I had a few stops, first was Wadi Bani Khalid. Although not as scenic as Wadi Shab, I enjoyed a nice hike in and a swim in the pools here.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-18_01-13-16_194.jpeg?w=768)
+If you continue up the canyon, the trail will eventually go up the right side of a cliff - this leads to a cave, which was cool to check out as well. The path is easy to follow all the way up.
+
+After filling up the car in the town of Wadi Bani Khalid, I headed off to my next stop - Al Minzafah. This is a set of ruins in the town of Ibra, which makes a nice stopping point between Wadi Bani Khalid and Nizwa. Just like Sur, there isn't much to Ibra![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-18_03-25-51_652.jpeg?w=1024)
+You can drive under the arch to a tiny parking lot (which wasn't a problem, as I was the only visitor).![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-18_03-28-57_315.jpeg?w=1024)
+Wandering around the ruins was fun, and I spent maybe 15 or 30 minutes here, and made for some interesting photos. There was also a public restroom which was a nice.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6538.jpg?w=1024)
+Although I had one more stop planned on the way to Nizwa, I was running out of daylight, and since I had an entire day planned to see Nizwa and the surrounding area, I knew I could delay it. I got to Nizwa as the sun was setting, and after some detours down pedestrian only streets, I found the parking lot for my hotel and checked in.
+
+## Day 4 - Nizwa
+
+To make up for yesterday, I was up early to make sure I had time for everything. Nizwa is one of the more touristy spots, and I found that the hotel here offered breakfast even during daylight hours. After some enjoying the buffet, I headed out to Birkat al Mouz. This is a set of two separate ruins, and is not far from Nizwa. To get there, Google Maps has a pin "[Birkat Al Mouz Ruin](https://maps.app.goo.gl/MCaqmCSdTPPHWMfPA)", but you will actually need to street park on the main street and walk in. Once parked, head towards the Heritage Inn, take a left, and right after doing so, there should be a path to the right. You can walk around the ruins freely, but many of them are falling apart and so I saw fit to stay on the ground, or when walking in them, never standing in the middle of a floor or roof. There is also a falaj (irrigation system) running through the town.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6567.jpg?w=683)
+The path is weirdly easy to follow, and I never got lost in the ruins - make sure to head all the way up to the top, where you can get a view across the valley, and also over to the other set of ruins![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6619.jpg?w=1024)
+I was curious to see if I could get to other set of ruins, so I took the car a few hundred meters down the road and parked again. There's a path through the plantation, which led me to the base of the second village. After having a look around there, I made one last stop at the scenic outlook, which is at[this pin](https://maps.app.goo.gl/9a9kAP9P9V7bVhp48). You have to park in the gravel lot, and walk up the path towards the tower, to get a really nice view across at both villages![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6708.jpg?w=1024)
+After this, I went to the next stop - Manah Harat Al Bilad. This is another set of ruins of mud huts, but having come from Birkat al Mouz, I didn't spend too long here. However, some of them are renovated, which is interesting. Next stop was the Jabrin Castle - a fully renovated castle close by Nizwa. On the way there, Google Maps routed me under a bridge, through a flowing river. I was a little skeptical at first, but after watching a local come the other way, I went for it. Worth noting is that I believe rules of the road apply here - the left most tunnels are one way "lanes"![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/13a58cef-6448-4d70-90d9-3bf73d0b0997.png?w=1024)
+After that detour, I got to the castle, paid my roughly 8 USD entrance fee, and wandered around the castle. It's fully renovated, and a great way to learn more about the culture.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6783.jpg?w=683)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6784.jpg?w=1024)
+Next stop of the day was the Bahla Gate (which you get to drive under) and the Bahla Fort, which costs about 10 USD to enter. Although it is larger than the Jabreen Castle, the Bahla Fort has only been restored structurally, and does not have any of the decorations or cultural elements that the castle does, which made it a little less interesting. If I were to have to decide between the two, Jabreen Castle would be my choice. Nonetheless, it was interesting to walk around and see.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6807.jpg?w=1024)
+After having seen the fort, I headed up the hill to the lookout to get a good view of the fort. To get there, head to the "[Bahla - Top View](https://maps.app.goo.gl/5cApTaiwjDT2FmwTA)" pin.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6838.jpg?w=1024)
+The last stop outside of Nizwa for the day were the Tanuf Ruins, which are yet another set of ruins. Similarly to Manah Harat, I found them to be a little underwhelming, and was on my way after a short walk![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6849.jpg?w=1024)
+After getting back to Nizwa, I went to the souq and fort. Both I found to be pretty geared towards tourists, but still interesting![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6852.jpg?w=1024)
+The fort also has a museum inside, which detailed the past and put the age of some of the archeological sites into perspective. I watched the sunset from the castle, the headed back to my hotel and went to sleep![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6889.jpg?w=1024)
+
+## Day 5 - Nizwa to Jebel Shams
+
+After navigating my way out of Nizwa (there is a one way, reasonably well marked exit route, which is still pretty narrow), I got on the way to the first stop of the day - Misfat Al Abriyeen.![Driving out of Nizwa](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-18_05-17-43_922.jpeg?w=1024)
+*Driving out of Nizwa*
+
+Misfat Al Abriyeen is a traditional village, which is still inhabited, in the Hajar mountains. It also has a few hikes around it - I did hike W9c, and W9e (I think). W9c is an easy hike, and takes you down through the terrace farms, mostly in the shade.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a7040.jpg?w=1024)
+W9e, or the hike that I did, is takes a left on W9 (a longer hike I didn't have time for) and follows the falaj to its source.![W9e?](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6937.jpg?w=1024)
+*W9e?*
+
+Once you reach the source, you can continue up the canyon on the W9 for as longer.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a6948.jpg?w=1024)
+After that, it was time to head for Jebel Shams, but first with a stop in Al Hamra to fill up on gas. I had read incredibly conflicting information about whether it would be possible to take my 2WD Dzire up to Jebel Shams. I think there's a decent business in giving 4WD tours up the mountain, which is likely why so many sources say it's not possible. The hotel I had booked at the top of the mountain told me it was not possible to access with 2WD (but kindly offered to drive me up, at a price of 50 OMR per person). However, despite what people say, it is entirely possible to get to Jebel Shams with 2WD, and not even difficult. Out of an abundance of caution, I went slowly, and the 7km that was unpaved took me about 45 minutes. At no point did I feel unsafe whatsoever. The drive up is beautiful - it take you up past what looks to be a plateau that was forced up. Make sure to pull over at the "[Valley necrosis](https://maps.app.goo.gl/1GgQAqXmoj1HYmpX8)" pin for a view of more ruins![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a7080.jpg?w=1024)
+Once you get to the top, the road becomes paved again for a short while, interestingly. I was running out of time, so I headed right for the W6 hike - the famous "balcony walk hike".**Note for 2WD:**the road at the top of the mountain is paved almost all the way, but has a short unpaved section at the end. Right around[this point](https://maps.app.goo.gl/tVsJgnYz2HACih878), it gets relatively steep, with lose dirt, and bumpy. Not wanting to try my luck, I didn't go down it, and instead parked at a pull out right before it got steep, and walked the rest of the way. This seemed to be a good choice, and I watched a sedan and an SUV struggle to get up it.
+
+The balcony walk is beautiful, but drops right off. Heights don't bother me, but I can definitely see how the hike is not for everyone. At the end of the hike (roughly an hour) there is an abandoned village by the waterfall, in the shade. The hike was one of my favorite stops on the trip, and lived up to the hype![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-20_05-28-10_155.jpeg?w=1024)
+After that, the sun was setting, and it was time for me to check into my hotel, and head to sleep.
+
+## Day 6 - Jebel Shams to Muscat
+
+I had read that I shouldn't miss sunrise over the canyon, so I was up pretty early to see it. I might have chosen the wrong spot to watch (I was[here](https://maps.app.goo.gl/mZPhahoqvG8CenVJ8)) but it was a total non-event, the canyon walls are high enough that, by the time the sun is visible, its fully day. But since I was up so early, I had breakfast (another place where breakfast was available during daylight hours) and got going, as I had another driving heavy day.
+
+The first stop of the day was completely out of my way, but totally worth it - the Beehive Tombs in Al Ayn. Getting there was a little interesting. There are two different pins on Google Maps - I only visited[this one](https://maps.app.goo.gl/AnoTzSaPGeqsGjpi6), which I preferred to (judging from the picture) the other one, as it had the mountains behind it. However, getting there was quite authentic - the road turned into a river crossing with about 3-4 inches of water, then went to a short gravel road (or someone's driveway, I'm still not sure). I parked the car before the second river bed, right[here](https://maps.app.goo.gl/AvT2hHmBmZvyqgMw7), as I didn't think the Dzire would have control on the larger rocks, and walked the rest of the way. Go along the river bed until you're right under the tombs, the take a left up the hill.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a7145.jpg?w=1024)
+The last stop before heading out to Muscat was Wadi Damm, which I had basically to myself. Given I had a 2WD car, I parked right as the road reached the river, right under the big tree. Unlike the other two, I found the trail was a little harder to follow (especially past the first pool), and was a little more of an adventure, which I enjoyed. It did have something the other two didn't - petroglyphs, which are on the right side as you head up, halfway between the parking and the first pool![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a7159.jpg?w=1024)
+Once you get to the first pool, stay on the left side. You will eventually get to some big rocks, which have a rope to pull yourself through. It's pretty obvious where to go, as the rocks are smooth. Once you're through, continue up the canyon and eventually cross over the right side. You'll need to overshoot the upper pools to get down into the canyon, but once I got there, it was quite relaxing, and looked like an oasis![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a7197.jpg?w=1024)
+Getting back down is easier, as you know the way, and didn't take me very long. Water shoes are also helpful for this one, as you do cross the river a few times. Once I got back to my car, the sun was almost starting to set, and I drove on the empty roads all the way back to Muscat.
+
+## Bonus Day 7/8 - Resort in Muscat
+
+Given that most of the itinerary was quite busy, I allocated some time at the end to relax, which I did at the Ritz Carlton Al Bustan Palace. I have absolutely no complaints about, except the fact that I didn't stay for long enough.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-22_02-07-40_978.jpeg?w=1024)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/2024-03-22_22-27-47_249.jpeg?w=1024)
+I had a little time after checkout before my flight out on my last day, so I checked out a few sights in Mutrah, such as the Muscat Gate, Al Mirani Fort, Al Alam Palace, Al Jalali Fort, Mutrah Cornich and Souq, Yiti Round Point of View, and Qurum Nature Park. All made for a good, quick, stop, but didn't compare to the other sights further out in the country.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/03/8t4a7212.jpg?w=1024)
+
+## Impressions
+
+- **People:**Everywhere I read said that Omanis were some of the nicest people, and this held true for me. I didn't meet too many locals, as everyone was usually indoors during the day staying out of the heat, but the few I did meet were incredibly nice and hospitable.
+- **Weather:**The weather in March was quite warm - it was usually between 30 and 34 degree Celsius. Not unbearable, but warm. I didn't have an issue with it, but for those not used to the heat, it could have been a bit much.
+- **Safety:**At no point did I feel unsafe in Oman. I get the sense that there is little, if any crime - I accidentally left my camera on the passenger seat of my car for about 3 hours and came back to it still there.
+- **Driving:**For the most part, driving was easy. The only slightly nerve wracking time was in Muscat, at sundown, when everyone was rushing to get home and the roads were packed. Provided you drive defensively and keep up, it's not an issue
+- **4WD:**There are plenty of attractions that require a 4WD car in Oman, and so it might be worth renting one if those are of interest. However, I found it to not be worth it given the price difference
+
+**[Full photo album here](https://www.flickr.com/photos/199425760@N03/albums/72177720315603526)**

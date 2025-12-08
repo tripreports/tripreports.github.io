@@ -8,8 +8,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: #1F2937;
+    background-color: #F9FAFB;
 }
 
 .container {
@@ -18,65 +18,82 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 3rem 0 2rem;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+/* Tail slider section */
+.tail-slider-section {
+    width: 100%;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 2rem 0;
+    margin-top: 3rem;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.tail-slider-track {
+    display: flex;
+    gap: 0.2rem;
+    will-change: transform;
 }
 
-.tagline {
-    font-size: 1.1rem;
-    opacity: 0.95;
+.tail-slider-track img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* Navigation */
 .filter-nav {
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background: linear-gradient(135deg, #2C5F8D 0%, #1a3a52 100%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
 }
 
 .filter-nav .container {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    justify-content: center;
+    align-items: center;
+}
+
+.site-title {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .filter-btn {
-    background: #f1f3f5;
-    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 0.6rem 1.5rem;
     border-radius: 25px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #495057;
+    color: white;
 }
 
 .filter-btn:hover {
-    background: #e9ecef;
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-1px);
 }
 
 .filter-btn.active {
     background: white;
-    border-color: #667eea;
-    color: #667eea;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+    border-color: white;
+    color: #2C5F8D;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Main content */
@@ -117,11 +134,18 @@ main {
 .post-thumbnail {
     width: 100%;
     height: 200px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2C5F8D 0%, #1a3a52 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
+    overflow: hidden;
+}
+
+.post-thumbnail .cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post-card-body {
@@ -144,13 +168,13 @@ main {
 }
 
 .post-category.flight {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: #DBEAFE;
+    color: #1E40AF;
 }
 
 .post-category.trip {
-    background: #f3e5f5;
-    color: #7b1fa2;
+    background: #FEE2E2;
+    color: #DC2626;
 }
 
 .post-card h2 {
@@ -173,8 +197,56 @@ main {
     flex-grow: 1;
 }
 
+.flight-details {
+    background: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.flight-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.flight-details .detail-item {
+    margin-bottom: 0.3rem;
+    color: #495057;
+}
+
+.flight-details .detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.flight-details strong {
+    color: #2C5F8D;
+    font-weight: 600;
+}
+
+.flight-tail {
+    flex-shrink: 0;
+    width: 100px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tail-thumbnail {
+    max-width: 100px;
+    max-height: 75px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .read-more {
-    color: #667eea;
+    color: #2C5F8D;
     font-weight: 600;
     margin-top: 1rem;
     display: inline-block;
@@ -254,7 +326,7 @@ main {
 }
 
 #post-content blockquote {
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #2C5F8D;
     padding-left: 1.5rem;
     margin: 1.5rem 0;
     color: #6c757d;
@@ -305,12 +377,12 @@ footer p {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+    .site-title {
+        font-size: 1.5rem;
     }
 
-    .tagline {
-        font-size: 1rem;
+    .tail-slider-track img {
+        height: 60px;
     }
 
     .posts-grid {

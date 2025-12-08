@@ -1,34 +1,130 @@
 [
     {
-        "id": "ana-first-class-tokyo-nyc",
-        "title": "ANA First Class: Tokyo to New York",
-        "date": "2025-12-01",
+        "id": "qr739-qsuites-review",
+        "title": "QR739 QSuites Review",
+        "date": "2025-03-25",
         "category": "flight",
-        "file": "posts/flights/ana-first-class-tokyo-nyc.md",
-        "excerpt": "An exceptional journey in ANA's legendary First Class on the 777-300ER, featuring exquisite Japanese hospitality and one of the best onboard dining experiences in the sky."
+        "file": "posts/flights/qr739-qsuites-review.md",
+        "excerpt": "**Date:**03/25**/**2025\n**Airline:**Qatar Airways\n**Flight Number:**QR739\n**Aircraft:**A350-1000\n**From/To:**DOH to LAX\n**Distance Flown:**8249 mi\n\nAfter a pretty disappointing trip over the Atlantic for my trip around the Gulf in Virgin Atlantic, I was pretty excited when I was able to find myself a QSuite home - something I've flown before and know will do the trick."
     },
     {
-        "id": "singapore-airlines-suites-frankfurt",
-        "title": "Singapore Airlines Suites: A380 to Frankfurt",
-        "date": "2025-11-15",
+        "id": "vs106-upper-class-review",
+        "title": "VS106 Upper Class Review",
+        "date": "2025-02-25",
         "category": "flight",
-        "file": "posts/flights/singapore-airlines-suites-frankfurt.md",
-        "excerpt": "Experience the ultimate in luxury air travel aboard Singapore Airlines' iconic A380 Suites, complete with a full flat bed, personal suite, and world-class service."
+        "file": "posts/flights/vs106-upper-class-review.md",
+        "excerpt": "**Date:**02/25**/**2025\n**Airline:**Virgin Atlantic\n**Flight Number:**VS106\n**Aircraft:**B787-9\n**From/To:**SEA to LHR\n**Distance Flown:**4786 mi\n\nVirgin Atlantic, especially when it comes to hard product, has a big gap. It's flagship product on the A350 is competitive in the TATL market. The product on the 787 - not so much."
     },
     {
-        "id": "japan-winter-adventure",
-        "title": "Winter in Japan: From Tokyo to Hokkaido",
-        "date": "2025-11-28",
-        "category": "trip",
-        "file": "posts/trips/japan-winter-adventure.md",
-        "excerpt": "A two-week journey through Japan's winter wonderland, exploring Tokyo's vibrant neighborhoods, Kyoto's ancient temples, and Hokkaido's incredible ski resorts and hot springs."
+        "id": "br721-business-class-review",
+        "title": "BR721 Business Class Review",
+        "date": "2024-08-23",
+        "category": "flight",
+        "file": "posts/flights/br721-business-class-review.md",
+        "excerpt": "**Date:**08/11**/**2024\n**Airline:**Eva Air\n**Flight Number:**BR721\n**Aircraft:**A330-300\n**From/To:**PVG-TPE\n**Distance Flown:**419 mi\n\nNormally, I find that economy is just fine for short flights."
     },
     {
-        "id": "iceland-northern-lights",
-        "title": "Chasing Northern Lights in Iceland",
-        "date": "2025-10-20",
+        "id": "br315-business-class-review",
+        "title": "BR315 Business Class Review",
+        "date": "2024-08-23",
+        "category": "flight",
+        "file": "posts/flights/br315-business-class-review.md",
+        "excerpt": "**Date:**08/12**/**2024\n**Airline:**Eva Air\n**Flight Number:**BR315\n**Aircraft:**787-10\n**From/To:**TPE-BNE\n**Distance Flown:**4,187 mi\n\nEva Air Royal Laurel class has been on my list of products I..."
+    },
+    {
+        "id": "gf124-business-class-review",
+        "title": "GF124 Business Class Review",
+        "date": "2024-08-22",
+        "category": "flight",
+        "file": "posts/flights/gf124-business-class-review.md",
+        "excerpt": "**Date:**08/10**/**2024\n**Airline:**Gulf Air\n**Flight Number:**GF124\n**Aircraft:**787-9\n**From/To:**BAH-PVG\n**Distance Flown:**4,259 mi\n\nGulf Air is the lesser known airline that operates out of the..."
+    },
+    {
+        "id": "ua97-polaris-review",
+        "title": "UA97 Polaris Review",
+        "date": "2024-08-13",
+        "category": "flight",
+        "file": "posts/flights/ua97-polaris-review.md",
+        "excerpt": "**Date:**08/13**/**2024\n**Airline:**United Airlines\n**Flight Number:**UA97\n**Aircraft:**B787-9\n**From/To:**BNE to SFO\n**Distance Flown:**7070 mi\n\nHaving previously flown Polaris from SFO-AKL on a 777-200ER I had a good sense of what the product would be, and I was excited to try it on a newer plane."
+    },
+    {
+        "id": "lx38-business-class-review",
+        "title": "LX38 Business Class Review",
+        "date": "2024-05-03",
+        "category": "flight",
+        "file": "posts/flights/lx38-business-class-review.md",
+        "excerpt": "**Date:**05/03**/**2024\n**Airline:**Swiss\n**Flight Number:**LX038\n**Aircraft:**777-300ER\n**From/To:**ZRH-SFO\n**Distance Flown:**5,840 mi\n\nWhen I was looking for a product to fly back to the US from..."
+    },
+    {
+        "id": "3-days-in-baku-itinerary",
+        "title": "3 Days in Baku Itinerary",
+        "date": "2024-04-29",
         "category": "trip",
-        "file": "posts/trips/iceland-northern-lights.md",
-        "excerpt": "A magical week in Iceland hunting for the aurora borealis, exploring ice caves, relaxing in geothermal pools, and discovering the country's dramatic landscapes."
+        "file": "posts/trips/3-days-in-baku-itinerary.md",
+        "excerpt": "## Visa\n\nThe process to get a visa was easy for me - I used the online portal to apply for an eVisa. The application was easy, and even had to an option to expedite it, which I greatly appreciated..."
+    },
+    {
+        "id": "qr782-qsuites-review",
+        "title": "QR782 Qsuites Review",
+        "date": "2024-04-27",
+        "category": "flight",
+        "file": "posts/flights/qr782-qsuites-review.md",
+        "excerpt": "**Date:**04/27**/**2024\n**Airline:**Qatar Airways\n**Flight Number:**QR782\n**Aircraft:**777-200LR\n**From/To:**MIA-DOH\n**Distance Flown:**7,679 mi\n\nHaving previously flown this route on an A350, I was..."
+    },
+    {
+        "id": "at217-at218-business-class-review",
+        "title": "AT217-AT218 Business Class Review",
+        "date": "2024-03-24",
+        "category": "flight",
+        "file": "posts/flights/at217-at218-business-class-review.md",
+        "excerpt": "**Date:**03/24**/**2024\n**Airline:**Royal Air Maroc\n**Flight Number:**AT217/218\n**Aircraft:**787-9/787-8\n**From/To:**DOH-CMN-IAD\n**Distance Flown:**7,399 mi\n\nOn my way back from a wonderful trip in..."
+    },
+    {
+        "id": "oman-6-day-2wd-self-drive-trip-report",
+        "title": "Oman 6 Day 2WD Self-Drive Trip Report",
+        "date": "2024-03-23",
+        "category": "trip",
+        "file": "posts/trips/oman-6-day-2wd-self-drive-trip-report.md",
+        "excerpt": "**Itinerary:**\n\n**Day 1:**Explore Muscat\n**Day 2:**Muscat to Sur\n**Day 3:**Sur to Nizwa\n**Day 4:**Explore Nizwa\n**Day 5:**Nizwa to Jebel Shams\n**Day 6:**Jebel Shams to Muscat\n**Bonus****Day..."
+    },
+    {
+        "id": "lh456-first-class-and-fct-review",
+        "title": "LH456 First Class (and FCT) Review",
+        "date": "2024-01-30",
+        "category": "flight",
+        "file": "posts/flights/lh456-first-class-and-fct-review.md",
+        "excerpt": "**Date:**01/30**/**2024\n**Airline:**Lufthansa\n**Flight Number:**LH456\n**Aircraft:**747-800\n**From/To:**FRA-LAX\n**Distance Flown:**5806 mi\n\nI had heard a lot about Lufthansa's First class, as well as..."
+    },
+    {
+        "id": "qr67-qsuites-review",
+        "title": "QR67 Qsuites Review",
+        "date": "2024-01-29",
+        "category": "flight",
+        "file": "posts/flights/qr67-qsuites-review.md",
+        "excerpt": "**Date:**01/29**/**2024\n**Airline:**Qatar Airways\n**Flight Number:**QR067\n**Aircraft:**777-300ER\n**From/To:**DOH-FRA\n**Distance Flown:**2853 mi\n\nBeing my first ex-Doha Qatar business class flight, I..."
+    },
+    {
+        "id": "qr845-business-class-review",
+        "title": "QR845 Business Class Review",
+        "date": "2024-01-28",
+        "category": "flight",
+        "file": "posts/flights/qr845-business-class-review.md",
+        "excerpt": "**Date:**01/28**/**2024\n**Airline:**Qatar Airways\n**Flight Number:**QR845\n**Aircraft:**777-300ER\n**From/To:**KUL-DOH\n**Distance Flown:**3673 mi\n\nAfter a good visit to the expansive Malaysian..."
+    },
+    {
+        "id": "ci7-business-class-review",
+        "title": "CI7 Business Class Review",
+        "date": "2024-01-24",
+        "category": "flight",
+        "file": "posts/flights/ci7-business-class-review.md",
+        "excerpt": "**Date:**01/24**/**2024\n**Airline:**China Airlines\n**Flight Number:**CI007\n**Aircraft:**777-300ER\n**From/To:**LAX to TPE\n**Distance Flown:**6799 mi\n\nGiven China Airlines is a part of SkyTeam, I..."
+    },
+    {
+        "id": "qr742-qsuites-review",
+        "title": "QR742 Qsuites Review",
+        "date": "2023-02-23",
+        "category": "flight",
+        "file": "posts/flights/qr742-qsuites-review.md",
+        "excerpt": "**Date:**03/23**/**2023\n**Airline:**Qatar Airways\n**Flight Number:**QR742\n**Aircraft:**A350-1000\n**From/To:**LAX to DOH\n**Distance Flown:**8306 mi![Qatar's A350-1000 waiting at LAX's International..."
     }
 ]

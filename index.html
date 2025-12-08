@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Reports</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" id="favicon">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Trip Reports</h1>
-            <p class="tagline">Adventures in premium travel</p>
-        </div>
-    </header>
-
     <nav class="filter-nav">
         <div class="container">
-            <button class="filter-btn active" data-filter="all">All Posts</button>
-            <button class="filter-btn" data-filter="flight">Flight Reports</button>
-            <button class="filter-btn" data-filter="trip">Trip Reports</button>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Posts</button>
+                <button class="filter-btn" data-filter="flight">Flight Reports</button>
+                <button class="filter-btn" data-filter="trip">Trip Reports</button>
+                <a href="planespotting.html" class="filter-btn" style="text-decoration: none;">Go Planespotting</a>
+            </div>
         </div>
     </nav>
 
@@ -35,9 +32,15 @@
         </div>
     </main>
 
+    <div class="tail-slider-section">
+        <div class="tail-slider-track" id="tail-slider">
+            <!-- Airline tails will be loaded here by JavaScript -->
+        </div>
+    </div>
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 Trip Reports. All rights reserved.</p>
+            <p>&copy; 2025. All rights reserved.</p>
         </div>
     </footer>
 
