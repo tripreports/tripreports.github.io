@@ -18,7 +18,9 @@
             position: absolute;
             width: 150px;
             height: 150px;
-            pointer-events: none;
+            pointer-events: auto;
+            z-index: 10;
+            cursor: pointer;
         }
 
         .plane {
@@ -34,18 +36,39 @@
         }
 
         .plane-tail.right {
-            top: 18px;
-            left: 6px;
-            width: 42px;
-            height: 33px;
+            top: -6px;
+            left: -6.5px;
+            width: 47.2px;
+            height: 36.8px;
         }
 
         .plane-tail.left {
-            top: 18px;
-            right: 6px;
-            width: 42px;
-            height: 33px;
+            top: -6px;
+            right: -6.5px;
+            width: 47.2px;
+            height: 36.8px;
             transform: scaleX(-1);
+        }
+
+        .airline-code {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #555;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            pointer-events: none;
+            font-family: monospace;
+        }
+
+        .airline-code.revealed {
+            opacity: 1;
+        }
+
+        .airline-code.fade-out {
+            opacity: 0;
+            transition: opacity 2s ease-out;
         }
     </style>
 </head>
@@ -110,23 +133,25 @@
                 this.src = `images/tails/${randomTail}.jpg`;
             };
 
-            // 20% chance of being upside down
-            const upsideDown = Math.random() < 0.2;
+            // 10% chance of being upside down
+            const upsideDown = Math.random() < 0.1;
 
             // Random direction: left to right or right to left
             const goingRight = Math.random() < 0.5;
 
             let startX, startY, endX, endY;
 
+            // Always use plane_right.png and flip it for left-going planes
+            plane.src = 'images/icons/plane_right.png';
+
             if (goingRight) {
-                // Left to right - use plane_right.png
-                plane.src = 'images/icons/plane_right.png';
+                // Left to right
                 tail.classList.add('right');
                 startX = -150;
                 endX = window.innerWidth + 150;
             } else {
-                // Right to left - use plane_left.png
-                plane.src = 'images/icons/plane_left.png';
+                // Right to left - flip the plane horizontally
+                plane.style.transform = 'scaleX(-1)';
                 tail.classList.add('left');
                 startX = window.innerWidth + 150;
                 endX = -150;
@@ -134,21 +159,26 @@
 
             // Random Y positions with angle constraint (±30 degrees from horizontal)
             // tan(30°) ≈ 0.577, so vertical change should be <= 0.577 * horizontal change
-            const horizontalDistance = Math.abs(endX - startX);
-            const maxVerticalChange = horizontalDistance * 0.577; // tan(30°)
-
             // Pick a random starting Y
             startY = Math.random() * window.innerHeight;
 
-            // Constrain ending Y to maintain angle within ±30 degrees
-            const minEndY = startY - maxVerticalChange;
-            const maxEndY = startY + maxVerticalChange;
+            if (upsideDown) {
+                // Upside down planes fly horizontally (no angle)
+                endY = startY;
+            } else {
+                const horizontalDistance = Math.abs(endX - startX);
+                const maxVerticalChange = horizontalDistance * 0.577; // tan(30°)
 
-            // Clamp to screen bounds
-            const clampedMinY = Math.max(0, minEndY);
-            const clampedMaxY = Math.min(window.innerHeight, maxEndY);
+                // Constrain ending Y to maintain angle within ±30 degrees
+                const minEndY = startY - maxVerticalChange;
+                const maxEndY = startY + maxVerticalChange;
 
-            endY = clampedMinY + Math.random() * (clampedMaxY - clampedMinY);
+                // Clamp to screen bounds
+                const clampedMinY = Math.max(0, minEndY);
+                const clampedMaxY = Math.min(window.innerHeight, maxEndY);
+
+                endY = clampedMinY + Math.random() * (clampedMaxY - clampedMinY);
+            }
 
             container.style.left = startX + 'px';
             container.style.top = startY + 'px';
@@ -171,6 +201,53 @@
             container.appendChild(tail);
             document.body.appendChild(container);
 
+            // Create code element for hover display
+            let codeElement = null;
+            let currentPlaneX = startX;
+            let currentPlaneY = startY;
+
+            // Hover event handlers
+            container.addEventListener('mouseenter', () => {
+                if (!codeElement) {
+                    codeElement = document.createElement('div');
+                    codeElement.className = 'airline-code revealed';
+                    codeElement.textContent = randomTail;
+
+                    // Scale the pixel coordinates from the original image to the 150px rendered size
+                    // plane_right.png coordinates: (307, 120) scaled to 150px = divide by 4
+                    // For flipped plane (left-going), X coordinate is mirrored
+                    const centerOffsetX = 307 / 4; // Always use plane_right coordinates
+                    const centerOffsetY = (120 / 4) - 15;
+
+                    // Position at current plane location + scaled center of mass offset
+                    const codeX = currentPlaneX + centerOffsetX * scale;
+                    const codeY = currentPlaneY + centerOffsetY * scale;
+
+                    codeElement.style.left = codeX + 'px';
+                    codeElement.style.top = codeY + 'px';
+
+                    document.body.appendChild(codeElement);
+
+                    // Fade out after 2 seconds
+                    setTimeout(() => {
+                        if (codeElement && codeElement.parentNode) {
+                            codeElement.classList.remove('revealed');
+                            codeElement.classList.add('fade-out');
+                            setTimeout(() => {
+                                if (codeElement && codeElement.parentNode) {
+                                    codeElement.remove();
+                                    codeElement = null;
+                                }
+                            }, 2000); // Wait for fade transition
+                        }
+                    }, 2000); // Show for 2 seconds
+                }
+            });
+
+            container.addEventListener('mouseleave', () => {
+                // Don't remove on mouseleave - let it fade naturally
+            });
+
             // Animate plane
             const duration = 5000 + Math.random() * 5000; // 5-10 seconds
             const startTime = Date.now();
@@ -181,14 +258,17 @@
 
                 if (progress >= 1) {
                     container.remove();
+                    if (codeElement) {
+                        codeElement.remove();
+                    }
                     return;
                 }
 
-                const currentX = startX + (endX - startX) * progress;
-                const currentY = startY + (endY - startY) * progress;
+                currentPlaneX = startX + (endX - startX) * progress;
+                currentPlaneY = startY + (endY - startY) * progress;
 
-                container.style.left = currentX + 'px';
-                container.style.top = currentY + 'px';
+                container.style.left = currentPlaneX + 'px';
+                container.style.top = currentPlaneY + 'px';
 
                 requestAnimationFrame(animate);
             }

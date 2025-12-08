@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:yetanothertravelblog8.wordpress.com)",
+      "WebFetch(domain:lottiefiles.com)",
+      "Bash(python split_tails_precise.py:*)",
+      "Bash(pip install:*)",
+      "Bash(python analyze_grid.py:*)",
+      "Bash(python split_tails_exact.py:*)",
+      "Bash(python extract_tails_precise.py:*)",
+      "Bash(python scrape_airline_tails.py:*)",
+      "WebFetch(domain:flight-report.com)",
+      "Bash(ls:*)",
+      "Bash(paste:*)",
+      "Bash(done)",
+      "Bash(for dir in images/flights/*/)",
+      "Bash(cat:*)",
+      "Bash(python:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
