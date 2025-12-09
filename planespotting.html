@@ -52,7 +52,7 @@
 
         .airline-code {
             position: absolute;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #555;
             z-index: 0;
@@ -217,7 +217,8 @@
                     // plane_right.png coordinates: (307, 120) scaled to 150px = divide by 4
                     // For flipped plane (left-going), X coordinate is mirrored
                     const centerOffsetX = 307 / 4; // Always use plane_right coordinates
-                    const centerOffsetY = (120 / 4) - 15;
+                    // For upside down planes, add significant offset to appear below the flipped plane
+                    const centerOffsetY = upsideDown ? (120 / 4) + 60 : (120 / 4) - 15;
 
                     // Position at current plane location + scaled center of mass offset
                     const codeX = currentPlaneX + centerOffsetX * scale;
