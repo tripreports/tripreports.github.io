@@ -1,11 +1,75 @@
 [
     {
+        "id": "jx32-business-class-review",
+        "title": "JX32 Business Class Review",
+        "date": "2025-10-20",
+        "category": "flight",
+        "file": "posts/flights/jx32-business-class-review.md",
+        "excerpt": "**Date:** 10/20/2025\n**Airline:** Starlux\n**Flight Number:** JX32\n**Aircraft:** A350-900\n**From/To:** TPE-SEA\n**Distance Flown:** 6,063 mi\n\nStarlux is a new airline I've been really interested in trying. The last of the 3 large, well known Taiwanese airlines for me to try, but definitely not the least."
+    },
+    {
+        "id": "nz284-business-class-review",
+        "title": "NZ284 Business Class Review",
+        "date": "2025-10-19",
+        "category": "flight",
+        "file": "posts/flights/nz284-busienss-class-review.md",
+        "excerpt": "**Date:** 10/19/2025\n**Airline:** Air New Zealand\n**Flight Number:** NZ284\n**Aircraft:** B777-300ER\n**From/To:** AKL-SIN\n**Distance Flown:** 5,224 mi\n\nAfter United cancelled a flight out of AKL, I managed to get myself rebooked onto a similar flight to SFO with Air New Zealand."
+    },
+    {
+        "id": "ek412-first-class-review",
+        "title": "EK412 First Class Review",
+        "date": "2025-10-17",
+        "category": "flight",
+        "file": "posts/flights/ek412-first-class-review.md",
+        "excerpt": "**Date:** 10/17/2025\n**Airline:** Emirates\n**Flight Number:** EK412\n**Aircraft:** A380-800\n**From/To:** SYD-CHC\n**Distance Flown:** 1,322 mi\n\nTo follow up my Singapore Suites flight, I figured why not try out another First Class on another A380. So I was able to find a seat on EK412 fifth freedom flight between SYD and CHC."
+    },
+    {
+        "id": "sq231-suites-review",
+        "title": "SQ231 Suites Review",
+        "date": "2025-10-16",
+        "category": "flight",
+        "file": "posts/flights/sq231-suites-review.md",
+        "excerpt": "**Date:** 10/16/2025\n**Airline:** Singapore Airlines\n**Flight Number:** SQ231\n**Aircraft:** A380-800\n**From/To:** SIN-SYD\n**Distance Flown:** 3,911 mi\n\nWhat better product to pick for my first flight on an A380 than Singapore Suites. Suites is know as one of, if not the best products in commerical aviation."
+    },
+    {
+        "id": "sq125-business-class-review",
+        "title": "SQ125 Business Class Review",
+        "date": "2025-10-15",
+        "category": "flight",
+        "file": "posts/flights/sq231-business-class-review.md",
+        "excerpt": "**Date:** 10/15/2025\n**Airline:** Singapore Airlines\n**Flight Number:** SQ125\n**Aircraft:** A350-900\n**From/To:** KUL-SIN\n**Distance Flown:** 183 mi\n\nA short review for a short flight. This might be the least amount of time I've spent in a premium cabin."
+    },
+    {
+        "id": "af338-business-class-review",
+        "title": "AF338 Business Class Review",
+        "date": "2025-07-29",
+        "category": "flight",
+        "file": "posts/flights/af338-business-class-review.md",
+        "excerpt": "**Date:** 07/29/2025\n**Airline:** Air France\n**Flight Number:** AF338\n**Aircraft:** A350-900\n**From/To:** CDG-SEA\n**Distance Flown:** 5,003 mi\n\nTransatlantic products are tricky - many of them are outdated or not 1-2-1. I knew Air France was better in this regard, and as I was having trouble finding efficient flights out of ARN back to the west coast, when I was able to find a ARN-CDG-SEA itinerary for a good price, I jumped on it."
+    },
+    {
+        "id": "aa98-flagship-suites-review",
+        "title": "AA98 Flagship Suites Review",
+        "date": "2025-07-15",
+        "category": "flight",
+        "file": "posts/flights/aa98-flagship-suites-review.md",
+        "excerpt": "**Date:** 07/15/2025\n**Airline:** American Airlines\n**Flight Number:** AA98\n**Aircraft:** 787-9\n**From/To:** ORD-LHR\n**Distance Flown:** 3,942 mi\n\nAs I was looking for flights to get myself to Europe, I was super excited to find a flight in AA's brand new flagship suites. And the icing on the cake: I was able to book myself a preferred suite."
+    },
+    {
+        "id": "nh117-nh118-business-class-review",
+        "title": "NH117-NH118 Business Class Review",
+        "date": "2025-06-07",
+        "category": "flight",
+        "file": "posts/flights/nh117-nh118-business-class-review.md",
+        "excerpt": "**Date:** 06/07/2025-06/14/2025\n**Airline:** ANA\n**Flight Number:** NH117/118\n**Aircraft:** 787-9/787-9\n**From/To:** SEA-HND-SEA\n**Distance Flown:** 9,586 mi\n\nThis review will serve as a review for both the out and back service from Seattle to Haneda - both flights were on the same aircraft type, and were similar enough as to not need a review for each."
+    },
+    {
         "id": "qr739-qsuites-review",
         "title": "QR739 QSuites Review",
         "date": "2025-03-25",
         "category": "flight",
         "file": "posts/flights/qr739-qsuites-review.md",
-        "excerpt": "**Date:**03/25**/**2025\n**Airline:**Qatar Airways\n**Flight Number:**QR739\n**Aircraft:**A350-1000\n**From/To:**DOH to LAX\n**Distance Flown:**8249 mi\n\nAfter a pretty disappointing trip over the Atlantic for my trip around the Gulf in Virgin Atlantic, I was pretty excited when I was able to find myself a QSuite home - something I've flown before and know will do the trick."
+        "excerpt": "**Date:** 03/25/2025\n**Airline:** Qatar Airways\n**Flight Number:** QR739\n**Aircraft:** A350-1000\n**From/To:** DOH to LAX\n**Distance Flown:** 8249 mi\n\nAfter a pretty disappointing trip over the Atlantic for my trip around the Gulf in Virgin Atlantic, I was pretty excited when I was able to find myself a QSuite home - something I've flown before and know will do the trick."
     },
     {
         "id": "vs106-upper-class-review",

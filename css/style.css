@@ -40,6 +40,13 @@ body {
     flex-shrink: 0;
 }
 
+.tail-slider-track img.flag-image {
+    height: 56px;
+    padding: 0 0.5rem;
+    align-self: flex-end;
+    margin-bottom: 8px;
+}
+
 /* Navigation */
 .filter-nav {
     background: linear-gradient(135deg, #2C5F8D 0%, #1a3a52 100%);
@@ -94,6 +101,68 @@ body {
     border-color: white;
     color: #2C5F8D;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Airline filter bar */
+.airline-filter-bar {
+    background: #f8f9fa;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+.airline-filter-item {
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background: white;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.airline-filter-item:hover {
+    border-color: #2C5F8D;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.airline-filter-item.active {
+    border-color: #2C5F8D;
+    background: #e7f1f8;
+}
+
+.airline-filter-item img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Scrollbar styling for airline filter bar */
+.airline-filter-bar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.airline-filter-bar::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 3px;
+}
+
+.airline-filter-bar::-webkit-scrollbar-thumb {
+    background: #2C5F8D;
+    border-radius: 3px;
+}
+
+.airline-filter-bar::-webkit-scrollbar-thumb:hover {
+    background: #1a3a52;
 }
 
 /* Main content */
@@ -323,6 +392,43 @@ main {
     height: auto;
     border-radius: 8px;
     margin: 1.5rem 0;
+}
+
+/* Flight details info box */
+#post-content hr + p strong:first-child,
+#post-content hr + p + p strong:first-child,
+#post-content hr + p + p + p strong:first-child,
+#post-content hr + p + p + p + p strong:first-child,
+#post-content hr + p + p + p + p + p strong:first-child,
+#post-content hr + p + p + p + p + p + p strong:first-child {
+    color: #2C5F8D;
+    font-weight: 600;
+    min-width: 140px;
+    display: inline-block;
+}
+
+#post-content hr + p,
+#post-content hr + p + p,
+#post-content hr + p + p + p,
+#post-content hr + p + p + p + p,
+#post-content hr + p + p + p + p + p,
+#post-content hr + p + p + p + p + p + p {
+    background: #f8f9fa;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    border-left: 3px solid #2C5F8D;
+    font-size: 0.95rem;
+}
+
+#post-content hr + p {
+    border-radius: 8px 8px 0 0;
+    padding-top: 0.75rem;
+}
+
+#post-content hr + p + p + p + p + p + p {
+    border-radius: 0 0 8px 8px;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
 #post-content blockquote {

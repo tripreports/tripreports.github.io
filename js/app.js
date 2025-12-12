@@ -1,7 +1,9 @@
 // State management
 let allPosts = [];
 let currentFilter = 'all';
+let currentAirlineFilter = null;
 let currentPost = null;
+let sliderAnimationId = null;
 
 // DOM elements
 const postsGrid = document.getElementById('posts-grid');
@@ -47,13 +49,63 @@ function setRandomFavicon() {
 async function init() {
     setRandomFavicon();
     await loadPosts();
-    loadAirlineTails();
+    loadSliderImages('all');
+    loadAirlineFilterBar();
     setupEventListeners();
     checkURLHash();
 }
 
-// Load and display airline tail images with infinite scroll
-function loadAirlineTails() {
+// Load airline filter bar
+function loadAirlineFilterBar() {
+    const airlineFilterBar = document.getElementById('airline-filter-bar');
+    if (!airlineFilterBar) return;
+
+    // Get all flight reports
+    const flightPosts = allPosts.filter(post => post.category === 'flight');
+
+    // Extract airline codes and count occurrences
+    const airlineCounts = {};
+    flightPosts.forEach(post => {
+        const match = post.excerpt.match(/\*\*Flight Number:\*\*\s*([A-Z0-9]{2})/);
+        if (match) {
+            const airlineCode = match[1];
+            airlineCounts[airlineCode] = (airlineCounts[airlineCode] || 0) + 1;
+        }
+    });
+
+    // Sort airlines by count (descending)
+    const sortedAirlines = Object.entries(airlineCounts).sort((a, b) => b[1] - a[1]);
+
+    // Create airline filter items
+    airlineFilterBar.innerHTML = sortedAirlines.map(([code, count]) => `
+        <div class="airline-filter-item" data-airline="${code}" title="${code}">
+            <img src="images/tails/${code}.png" alt="${code}" onerror="this.src='images/tails/${code}.jpg'">
+        </div>
+    `).join('');
+
+    // Add click handlers
+    document.querySelectorAll('.airline-filter-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const airline = item.dataset.airline;
+
+            // Toggle airline filter
+            if (currentAirlineFilter === airline) {
+                currentAirlineFilter = null;
+                item.classList.remove('active');
+            } else {
+                // Remove active from all items
+                document.querySelectorAll('.airline-filter-item').forEach(i => i.classList.remove('active'));
+                currentAirlineFilter = airline;
+                item.classList.add('active');
+            }
+
+            filterPosts();
+        });
+    });
+}
+
+// Load and display slider images (tails or flags) with infinite scroll
+function loadSliderImages(filterType) {
     // List of all airline tail images we actually have
     const tailImages = [
         '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
@@ -78,28 +130,88 @@ function loadAirlineTails() {
         'YW', 'Z2', 'ZH', 'ZI'
     ].filter(code => code !== 'unknown'); // Exclude unknown.png
 
+    // List of all country flag images
+    const flagImages = [
+        'ad', 'ae', 'af', 'ag', 'ai', 'al', 'am', 'ao', 'aq', 'ar', 'as', 'at',
+        'au', 'aw', 'ax', 'az', 'ba', 'bb', 'bd', 'be', 'bf', 'bg', 'bh', 'bi',
+        'bj', 'bl', 'bm', 'bn', 'bo', 'bq', 'br', 'bs', 'bt', 'bv', 'bw', 'by',
+        'bz', 'ca', 'cc', 'cd', 'cf', 'cg', 'ch', 'ci', 'ck', 'cl', 'cm', 'cn',
+        'co', 'cr', 'cu', 'cv', 'cw', 'cx', 'cy', 'cz', 'de', 'dj', 'dk', 'dm',
+        'do', 'dz', 'ec', 'ee', 'eg', 'eh', 'er', 'es', 'et', 'fi', 'fj', 'fk',
+        'fm', 'fo', 'fr', 'ga', 'gb', 'gd', 'ge', 'gf', 'gg', 'gh', 'gi', 'gl',
+        'gm', 'gn', 'gp', 'gq', 'gr', 'gs', 'gt', 'gu', 'gw', 'gy', 'hk', 'hm',
+        'hn', 'hr', 'ht', 'hu', 'id', 'ie', 'il', 'im', 'in', 'io', 'iq', 'ir',
+        'is', 'it', 'je', 'jm', 'jo', 'jp', 'ke', 'kg', 'kh', 'ki', 'km', 'kn',
+        'kp', 'kr', 'kw', 'ky', 'kz', 'la', 'lb', 'lc', 'li', 'lk', 'lr', 'ls',
+        'lt', 'lu', 'lv', 'ly', 'ma', 'mc', 'md', 'me', 'mf', 'mg', 'mh', 'mk',
+        'ml', 'mm', 'mn', 'mo', 'mp', 'mq', 'mr', 'ms', 'mt', 'mu', 'mv', 'mw',
+        'mx', 'my', 'mz', 'na', 'nc', 'ne', 'nf', 'ng', 'ni', 'nl', 'no', 'np',
+        'nr', 'nu', 'nz', 'om', 'pa', 'pe', 'pf', 'pg', 'ph', 'pk', 'pl', 'pm',
+        'pn', 'pr', 'ps', 'pt', 'pw', 'py', 'qa', 're', 'ro', 'rs', 'ru', 'rw',
+        'sa', 'sb', 'sc', 'sd', 'se', 'sg', 'sh', 'si', 'sj', 'sk', 'sl', 'sm',
+        'sn', 'so', 'sr', 'ss', 'st', 'sv', 'sx', 'sy', 'sz', 'tc', 'td', 'tf',
+        'tg', 'th', 'tj', 'tk', 'tl', 'tm', 'tn', 'to', 'tr', 'tt', 'tv', 'tw',
+        'tz', 'ua', 'ug', 'um', 'us', 'uy', 'uz', 'va', 'vc', 've', 'vg', 'vi',
+        'vn', 'vu', 'wf', 'ws', 'xk', 'ye', 'yt', 'za', 'zm', 'zw'
+    ];
+
+    // Determine which images to use based on filter
+    let imagesToUse, imageFolder;
+    if (filterType === 'flight') {
+        imagesToUse = tailImages;
+        imageFolder = 'tails';
+    } else if (filterType === 'trip') {
+        imagesToUse = flagImages;
+        imageFolder = 'flags';
+    } else { // 'all' - mix both
+        imagesToUse = [...tailImages.map(t => ({code: t, folder: 'tails'})),
+                       ...flagImages.map(f => ({code: f, folder: 'flags'}))];
+        imageFolder = null; // Will use individual folder from object
+    }
+
     // Shuffle array for random order
-    const shuffled = tailImages.sort(() => Math.random() - 0.5);
+    const shuffled = imagesToUse.sort(() => Math.random() - 0.5);
 
     // Create exactly 2 copies for seamless loop
-    const allTails = [...shuffled, ...shuffled];
+    const allImages = [...shuffled, ...shuffled];
 
     // Create image elements
     const slider = document.getElementById('tail-slider');
     if (!slider) return;
 
-    allTails.forEach(code => {
+    // Clear existing images
+    slider.innerHTML = '';
+
+    allImages.forEach(item => {
         const img = document.createElement('img');
-        img.src = `images/tails/${code}.png`;
-        img.alt = `${code} airline tail`;
-        img.title = code; // Show code on hover
-        img.onerror = function() {
-            // If image fails to load, try .jpg
-            this.onerror = null;
-            this.src = `images/tails/${code}.jpg`;
-        };
+
+        // Handle both string format (flight/trip) and object format (all)
+        if (typeof item === 'string') {
+            img.src = `images/${imageFolder}/${item}.png`;
+            img.alt = `${item}`;
+            img.title = item;
+            // Add class for flags
+            if (imageFolder === 'flags') {
+                img.classList.add('flag-image');
+            }
+        } else {
+            img.src = `images/${item.folder}/${item.code}.png`;
+            img.alt = `${item.code}`;
+            img.title = item.code;
+            // Add class for flags
+            if (item.folder === 'flags') {
+                img.classList.add('flag-image');
+            }
+        }
+
         slider.appendChild(img);
     });
+
+    // Cancel any existing animation
+    if (sliderAnimationId) {
+        cancelAnimationFrame(sliderAnimationId);
+        sliderAnimationId = null;
+    }
 
     // Start infinite scroll animation after images load
     const scrollSpeed = 0.5; // pixels per frame
@@ -128,7 +240,7 @@ function loadAirlineTails() {
                 }
 
                 slider.style.transform = `translateX(${scrollPosition}px)`;
-                requestAnimationFrame(animate);
+                sliderAnimationId = requestAnimationFrame(animate);
             }
 
             animate();
@@ -160,6 +272,7 @@ function setupEventListeners() {
             btn.classList.add('active');
             currentFilter = btn.dataset.filter;
             filterPosts();
+            loadSliderImages(currentFilter);
         });
     });
 
@@ -225,6 +338,7 @@ function createPostCard(post) {
 
     // Parse flight details from excerpt if it's a flight report
     let flightDetails = '';
+    let airlineCode = '';
     if (post.category === 'flight' && post.excerpt) {
         const details = {};
         const lines = post.excerpt.split('\n');
@@ -238,7 +352,6 @@ function createPostCard(post) {
 
         if (Object.keys(details).length > 0) {
             // Extract airline code from flight number (first 2 characters)
-            let airlineCode = '';
             let tailImage = '';
             if (details['Flight Number']) {
                 airlineCode = details['Flight Number'].trim().substring(0, 2).toUpperCase();
@@ -261,7 +374,7 @@ function createPostCard(post) {
     }
 
     return `
-        <div class="post-card" data-post-id="${post.id}" data-category="${post.category}">
+        <div class="post-card" data-post-id="${post.id}" data-category="${post.category}" ${airlineCode ? `data-airline="${airlineCode}"` : ''}>
             <div class="post-thumbnail">${thumbnail}</div>
             <div class="post-card-body">
                 <span class="post-category ${post.category}">${post.category} report</span>
@@ -277,10 +390,29 @@ function createPostCard(post) {
 // Filter posts based on current filter
 function filterPosts() {
     const cards = document.querySelectorAll('.post-card');
+    const airlineFilterBar = document.getElementById('airline-filter-bar');
+
+    // Show/hide airline filter bar
+    if (currentFilter === 'flight') {
+        airlineFilterBar.style.display = 'flex';
+    } else {
+        airlineFilterBar.style.display = 'none';
+        currentAirlineFilter = null;
+        document.querySelectorAll('.airline-filter-item').forEach(i => i.classList.remove('active'));
+    }
 
     cards.forEach(card => {
         const category = card.dataset.category;
-        if (currentFilter === 'all' || category === currentFilter) {
+        const airlineCode = card.dataset.airline;
+
+        // Check category filter
+        const categoryMatch = currentFilter === 'all' || category === currentFilter;
+
+        // Check airline filter (only applies to flight reports)
+        const airlineMatch = !currentAirlineFilter ||
+                            (category === 'flight' && airlineCode === currentAirlineFilter);
+
+        if (categoryMatch && airlineMatch) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
