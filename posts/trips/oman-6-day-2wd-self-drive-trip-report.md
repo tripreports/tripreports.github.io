@@ -1,6 +1,7 @@
 # Oman 6 Day 2WD Self-Drive Trip Report
 
-**Date:** 2024-03-23
+**Date:** 2024-03-15-2024-03-23
+**Country:** Oman
 
 ---
 

@@ -40,12 +40,29 @@
         "excerpt": "**Date:** 10/15/2025\n**Airline:** Singapore Airlines\n**Flight Number:** SQ125\n**Aircraft:** A350-900\n**From/To:** KUL-SIN\n**Distance Flown:** 183 mi\n\nA short review for a short flight. This might be the least amount of time I've spent in a premium cabin."
     },
     {
+        "id": "uzbekistan-2025",
+        "title": "Uzbekistan 9 Day Trip Report",
+        "coverImage": "https://live.staticflickr.com/65535/54847094460_f303c1e1da_b.jpg",
+        "date": "2025-10-12",
+        "category": "trip",
+        "file": "posts/trips/uzbekistan-2025.md",
+        "excerpt": "**Date:** 2025-10-03-2025-10-12\n**Country:** Uzbekistan\n\nI flew into Tashkent from Doha, and flew out from Tashkent to Kuala Lumpur. Both flights were late night, with the outbound being a redeye."
+    },
+    {
         "id": "af338-business-class-review",
         "title": "AF338 Business Class Review",
         "date": "2025-07-29",
         "category": "flight",
         "file": "posts/flights/af338-business-class-review.md",
         "excerpt": "**Date:** 07/29/2025\n**Airline:** Air France\n**Flight Number:** AF338\n**Aircraft:** A350-900\n**From/To:** CDG-SEA\n**Distance Flown:** 5,003 mi\n\nTransatlantic products are tricky - many of them are outdated or not 1-2-1. I knew Air France was better in this regard, and as I was having trouble finding efficient flights out of ARN back to the west coast, when I was able to find a ARN-CDG-SEA itinerary for a good price, I jumped on it."
+    },
+    {
+        "id": "aland-2025",
+        "title": "2 Days in the Åland Islands",
+        "date": "2025-07-19",
+        "category": "trip",
+        "file": "posts/trips/aland-2025.md",
+        "excerpt": "**Dates:** 07/17/2025-07/19/2025\n**Country:** Åland Islands\n\nAlthough autonomous, when push comes to shove the Åland Islands are a part of Finland. Thus, they are covered by the Schengen zone. Flying into them is challenging, and it's far more convenient and efficient to take a ferry."
     },
     {
         "id": "aa98-flagship-suites-review",
@@ -72,6 +89,33 @@
         "excerpt": "**Date:** 03/25/2025\n**Airline:** Qatar Airways\n**Flight Number:** QR739\n**Aircraft:** A350-1000\n**From/To:** DOH to LAX\n**Distance Flown:** 8249 mi\n\nAfter a pretty disappointing trip over the Atlantic for my trip around the Gulf in Virgin Atlantic, I was pretty excited when I was able to find myself a QSuite home - something I've flown before and know will do the trick."
     },
     {
+        "id": "saudi-arabia-2025",
+        "title": "Jeddah and Al Ula",
+        "date": "2025-03-23",
+        "coverImage": "https://live.staticflickr.com/65535/54610450679_4867452d3c_b.jpg",
+        "category": "trip",
+        "file": "posts/trips/saudi-arabia-2025.md",
+        "excerpt": "**Dates:** 03/18/2025-03/23/2025\n**Country:** Saudi Arabia\n\nFor Saudi Arabia, I needed to apply for an e-visa. The process was easy, and the visa was granted instantly. It was on the expensive side, especially taking into account the health insurance, costing a little over $100 USD."
+    },
+    {
+        "id": "jordan-2025",
+        "title": "Jordan 5 Day Trip Report",
+        "date": "2025-03-16",
+        "coverImage": "https://live.staticflickr.com/65535/54609374257_084cc0435e_b.jpg",
+        "category": "trip",
+        "file": "posts/trips/jordan-2025.md",
+        "excerpt": "**Date:** 2025-03-09-2025-03-16\n**Country:** Jordan\n\nAmman is a well connected airport and getting there is no challenge. I flew in from Kuwait, but there are so many direct flights - even from North America"
+    },
+    {
+        "id": "kuwait-2025",
+        "title": "One Day in Kuwait",
+        "coverImage": "images/trips/kuwait-2025/towers.jpeg",
+        "date": "2025-03-09",
+        "category": "trip",
+        "file": "posts/trips/kuwait-2025.md",
+        "excerpt": "**Dates:** 03/07/2025-03/09/2025\n**Country:** Kuwait\n\nAs is the case with most things tourism related in Kuwait, it's not well documented. On a US passport, my understanding was that Kuwait would be visa on arrival, which it is."
+    },
+    {
         "id": "vs106-upper-class-review",
         "title": "VS106 Upper Class Review",
         "date": "2025-02-25",
@@ -94,6 +138,42 @@
         "category": "flight",
         "file": "posts/flights/br315-business-class-review.md",
         "excerpt": "**Date:**08/12**/**2024\n**Airline:**Eva Air\n**Flight Number:**BR315\n**Aircraft:**787-10\n**From/To:**TPE-BNE\n**Distance Flown:**4,187 mi\n\nEva Air Royal Laurel class has been on my list of products I..."
+    },
+    {
+        "id": "ukraine-2024",
+        "title": "Ukraine 2 Day Trip Report",
+        "date": "2024-08-09",
+        "coverImage": "https://live.staticflickr.com/65535/54608024174_bd3d5e2af3_b.jpg",
+        "category": "trip",
+        "file": "posts/trips/ukraine-2024.md",
+        "excerpt": "**Date:** 2024-08-07-2024-08-09\n**Country:** Ukraine\n\nGiven the war, getting into Ukraine is somewhat challenging. To get there, I flew into Krakow and took a bus. On the way in, there was a slight hold up at immigration."
+    },
+    {
+        "id": "cyprus-2024",
+        "title": "5 Days in Cyprus",
+        "date": "2024-08-04",
+        "coverImage": "https://live.staticflickr.com/65535/54606985932_8269e4651c_b.jpg",
+        "category": "trip",
+        "file": "posts/trips/cyprus-2024.md",
+        "excerpt": "**Dates:** 07/31/2024-08/04/2025\n**Country:** Cyprus\n\nCyrpus is Visa Free for US Passports"
+    },
+    {
+        "id": "kosovo-2024",
+        "title": "An Afternoon in Pristina",
+        "date": "2024-07-29",
+        "coverImage": "images/trips/kosovo-2024/clinton.jpeg",
+        "category": "trip",
+        "file": "posts/trips/kosovo-2024.md",
+        "excerpt": "**Dates:** 07/29/2024\n**Country:** Kosovo\n\nKosovo is Visa Free for US Citizens"
+    },
+    {
+        "id": "albania-2024",
+        "title": "3 Days in Albania",
+        "date": "2024-07-29",
+        "coverImage": "https://live.staticflickr.com/65535/54606958277_3cc0159887_b.jpg",
+        "category": "trip",
+        "file": "posts/trips/albania-2024.md",
+        "excerpt": "**Dates:** 07/25/2024-07/29/2024\n**Country:** Albania\n\nAlbania is Visa Free for US Citizens"
     },
     {
         "id": "gf124-business-class-review",
@@ -123,9 +203,10 @@
         "id": "3-days-in-baku-itinerary",
         "title": "3 Days in Baku Itinerary",
         "date": "2024-04-29",
+        "coverImage": "https://live.staticflickr.com/65535/54607804641_70a0d50e16_b.jpg",
         "category": "trip",
         "file": "posts/trips/3-days-in-baku-itinerary.md",
-        "excerpt": "## Visa\n\nThe process to get a visa was easy for me - I used the online portal to apply for an eVisa. The application was easy, and even had to an option to expedite it, which I greatly appreciated..."
+        "excerpt": "**Date:** 2024-04-29\n**Country:** Azerbaijan\n\nThe process to get a visa was easy for me - I used the online portal to apply for an eVisa. The application was easy, and even had to an option to expedite it, which I greatly appreciated..."
     },
     {
         "id": "qr782-qsuites-review",
@@ -147,9 +228,10 @@
         "id": "oman-6-day-2wd-self-drive-trip-report",
         "title": "Oman 6 Day 2WD Self-Drive Trip Report",
         "date": "2024-03-23",
+        "coverImage": "https://live.staticflickr.com/65535/54610287136_9355e58f39_b.jpg",
         "category": "trip",
         "file": "posts/trips/oman-6-day-2wd-self-drive-trip-report.md",
-        "excerpt": "**Itinerary:**\n\n**Day 1:**Explore Muscat\n**Day 2:**Muscat to Sur\n**Day 3:**Sur to Nizwa\n**Day 4:**Explore Nizwa\n**Day 5:**Nizwa to Jebel Shams\n**Day 6:**Jebel Shams to Muscat\n**Bonus****Day..."
+        "excerpt": "**Date:** 2024-03-23\n**Country:** Oman\n\n**Itinerary:**\n\n**Day 1:** Explore Muscat\n**Day 2:** Muscat to Sur\n**Day 3:** Sur to Nizwa\n**Day 4:** Explore Nizwa\n**Day 5:** Nizwa to Jebel Shams\n**Day 6:** Jebel Shams to Muscat"
     },
     {
         "id": "lh456-first-class-and-fct-review",

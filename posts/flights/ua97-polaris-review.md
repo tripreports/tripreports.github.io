@@ -1,9 +1,5 @@
 # UA97 Polaris Review
 
-**Date:** 2024-08-13
-
----
-
 **Date:** 08/13/2024
 **Airline:** United Airlines
 **Flight Number:** UA97

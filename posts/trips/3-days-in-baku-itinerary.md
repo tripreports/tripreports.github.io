@@ -1,6 +1,7 @@
 # 3 Days in Baku Itinerary
 
-**Date:** 2024-04-29
+**Dates:** 2024-04-29-2024-05-02
+**Country:** Azerbaijan
 
 ---
 

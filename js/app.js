@@ -320,6 +320,21 @@ function renderPosts() {
     });
 }
 
+// Country name to ISO code mapping
+const countryToCode = {
+    'Åland Islands': 'ax',
+    'Albania': 'al',
+    'Azerbaijan': 'az',
+    'Cyprus': 'cy',
+    'Jordan': 'jo',
+    'Kosovo': 'xk',
+    'Kuwait': 'kw',
+    'Oman': 'om',
+    'Saudi Arabia': 'sa',
+    'Ukraine': 'ua',
+    'Uzbekistan': 'uz'
+};
+
 // Create post card HTML
 function createPostCard(post) {
     const date = new Date(post.date).toLocaleDateString('en-US', {
@@ -328,18 +343,26 @@ function createPostCard(post) {
         day: 'numeric'
     });
 
-    // For flight reports, use cover image; for trip reports, use emoji
+    // Use cover image for both flight and trip reports
     let thumbnail;
-    if (post.category === 'flight') {
-        thumbnail = `<img src="images/flights/${post.id}/cover.jpg" alt="${post.title}" class="cover-image">`;
+    let coverImageSrc;
+
+    // Check if post has custom coverImage, otherwise use default path
+    if (post.coverImage) {
+        coverImageSrc = post.coverImage;
+    } else if (post.category === 'flight') {
+        coverImageSrc = `images/flights/${post.id}/cover.jpg`;
     } else {
-        thumbnail = '🌍';
+        coverImageSrc = `images/trips/${post.id}/cover.jpg`;
     }
 
-    // Parse flight details from excerpt if it's a flight report
-    let flightDetails = '';
+    thumbnail = `<img src="${coverImageSrc}" alt="${post.title}" class="cover-image">`;
+
+    // Parse details from excerpt
+    let detailsHTML = '';
     let airlineCode = '';
-    if (post.category === 'flight' && post.excerpt) {
+
+    if (post.excerpt) {
         const details = {};
         const lines = post.excerpt.split('\n');
 
@@ -350,7 +373,7 @@ function createPostCard(post) {
             }
         });
 
-        if (Object.keys(details).length > 0) {
+        if (post.category === 'flight' && Object.keys(details).length > 0) {
             // Extract airline code from flight number (first 2 characters)
             let tailImage = '';
             if (details['Flight Number']) {
@@ -358,7 +381,7 @@ function createPostCard(post) {
                 tailImage = `<img src="images/tails/${airlineCode}.png" alt="${airlineCode}" class="tail-thumbnail" onerror="this.src='images/tails/${airlineCode}.jpg'; this.onerror=null;">`;
             }
 
-            flightDetails = `
+            detailsHTML = `
                 <div class="flight-details">
                     <div class="flight-info">
                         ${details.Airline ? `<div class="detail-item"><strong>Airline:</strong> ${details.Airline}</div>` : ''}
@@ -368,6 +391,25 @@ function createPostCard(post) {
                         ${details['Distance Flown'] ? `<div class="detail-item"><strong>Distance:</strong> ${details['Distance Flown']}</div>` : ''}
                     </div>
                     ${tailImage ? `<div class="flight-tail">${tailImage}</div>` : ''}
+                </div>
+            `;
+        } else if (post.category === 'trip' && details.Country) {
+            // Extract country code and display flag
+            const countryName = details.Country.trim();
+            const countryCode = countryToCode[countryName];
+            let flagImage = '';
+
+            if (countryCode) {
+                flagImage = `<img src="images/flags/${countryCode}.png" alt="${countryName}" class="tail-thumbnail">`;
+            }
+
+            detailsHTML = `
+                <div class="flight-details">
+                    <div class="flight-info">
+                        ${details.Date || details.Dates ? `<div class="detail-item"><strong>Date:</strong> ${details.Date || details.Dates}</div>` : ''}
+                        ${details.Country ? `<div class="detail-item"><strong>Country:</strong> ${details.Country}</div>` : ''}
+                    </div>
+                    ${flagImage ? `<div class="flight-tail">${flagImage}</div>` : ''}
                 </div>
             `;
         }
@@ -380,7 +422,7 @@ function createPostCard(post) {
                 <span class="post-category ${post.category}">${post.category} report</span>
                 <h2>${post.title}</h2>
                 <div class="post-date">${date}</div>
-                ${flightDetails}
+                ${detailsHTML}
                 <span class="read-more">Read more →</span>
             </div>
         </div>
@@ -391,12 +433,20 @@ function createPostCard(post) {
 function filterPosts() {
     const cards = document.querySelectorAll('.post-card');
     const airlineFilterBar = document.getElementById('airline-filter-bar');
+    const tripBanner = document.getElementById('trip-banner');
 
-    // Show/hide airline filter bar
+    // Show/hide airline filter bar and trip banner
     if (currentFilter === 'flight') {
         airlineFilterBar.style.display = 'flex';
+        tripBanner.style.display = 'none';
+    } else if (currentFilter === 'trip') {
+        airlineFilterBar.style.display = 'none';
+        tripBanner.style.display = 'block';
+        currentAirlineFilter = null;
+        document.querySelectorAll('.airline-filter-item').forEach(i => i.classList.remove('active'));
     } else {
         airlineFilterBar.style.display = 'none';
+        tripBanner.style.display = 'none';
         currentAirlineFilter = null;
         document.querySelectorAll('.airline-filter-item').forEach(i => i.classList.remove('active'));
     }

@@ -1,9 +1,5 @@
 # VS106 Upper Class Review
 
-**Date:** 2025-02-25
-
----
-
 **Date:** 02/25/2025
 **Airline:** Virgin Atlantic
 **Flight Number:** VS106
