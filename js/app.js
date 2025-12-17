@@ -49,7 +49,25 @@ function setRandomFavicon() {
 async function init() {
     setRandomFavicon();
     await loadPosts();
-    loadSliderImages('all');
+
+    // Check for URL parameters (e.g., ?filter=flight)
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterParam = urlParams.get('filter');
+    if (filterParam && ['all', 'flight', 'trip'].includes(filterParam)) {
+        currentFilter = filterParam;
+        // Update active button
+        filterBtns.forEach(btn => {
+            if (btn.dataset.filter === filterParam) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        // Apply the filter
+        filterPosts();
+    }
+
+    loadSliderImages(currentFilter);
     loadAirlineFilterBar();
     setupEventListeners();
     checkURLHash();
@@ -400,7 +418,7 @@ function createPostCard(post) {
             let flagImage = '';
 
             if (countryCode) {
-                flagImage = `<img src="images/flags/${countryCode}.png" alt="${countryName}" class="tail-thumbnail">`;
+                flagImage = `<img src="images/flags/${countryCode}.png" alt="${countryName}" class="tail-thumbnail flag-thumbnail">`;
             }
 
             detailsHTML = `
@@ -479,12 +497,93 @@ async function loadPost(post) {
         }
         const markdown = await response.text();
 
-        // Parse markdown to HTML using marked.js
-        const html = marked.parse(markdown);
+        // Extract metadata section and rest of content
+        const lines = markdown.split('\n');
+        let metadataEndIndex = -1;
+        let titleLine = '';
 
-        // Display post
+        // Find title (first h1)
+        for (let i = 0; i < lines.length; i++) {
+            if (lines[i].startsWith('# ')) {
+                titleLine = lines[i];
+                // Look for metadata after title
+                for (let j = i + 1; j < lines.length; j++) {
+                    // Metadata ends at --- or when we hit content (## or paragraph)
+                    if (lines[j].trim() === '---' ||
+                        (lines[j].trim() && !lines[j].startsWith('**') && lines[j-1].trim() === '')) {
+                        metadataEndIndex = j;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+
+        let metadataHTML = '';
+        let contentMarkdown = markdown;
+
+        if (metadataEndIndex > 0) {
+            // Extract metadata lines
+            const metadataLines = [];
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].startsWith('# ')) continue;
+                if (i >= metadataEndIndex) break;
+                if (lines[i].startsWith('**')) {
+                    metadataLines.push(lines[i]);
+                }
+            }
+
+            // Parse metadata
+            const metadata = {};
+            metadataLines.forEach(line => {
+                const match = line.match(/\*\*([^:]+):\*\*(.+)/);
+                if (match) {
+                    metadata[match[1]] = match[2].trim();
+                }
+            });
+
+            // Create styled metadata section
+            if (Object.keys(metadata).length > 0) {
+                let iconHTML = '';
+
+                if (post.category === 'flight' && metadata['Flight Number']) {
+                    const airlineCode = metadata['Flight Number'].substring(0, 2).toUpperCase();
+                    iconHTML = `<div class="post-metadata-icon">
+                        <img src="images/tails/${airlineCode}.png" alt="${airlineCode}" onerror="this.src='images/tails/${airlineCode}.jpg'; this.onerror=null;">
+                    </div>`;
+                } else if (post.category === 'trip' && metadata['Country']) {
+                    const countryCode = countryToCode[metadata['Country'].trim()];
+                    if (countryCode) {
+                        iconHTML = `<div class="post-metadata-icon">
+                            <img src="images/flags/${countryCode}.png" alt="${metadata['Country']}">
+                        </div>`;
+                    }
+                }
+
+                const metadataItems = Object.entries(metadata).map(([key, value]) =>
+                    `<div class="post-metadata-item"><strong>${key}:</strong> ${value}</div>`
+                ).join('');
+
+                metadataHTML = `
+                    <div class="post-metadata">
+                        <div class="post-metadata-content">
+                            ${metadataItems}
+                        </div>
+                        ${iconHTML}
+                    </div>
+                `;
+
+                // Remove metadata from content
+                contentMarkdown = titleLine + '\n\n' + lines.slice(metadataEndIndex + 1).join('\n');
+            }
+        }
+
+        // Parse markdown to HTML using marked.js
+        const html = marked.parse(contentMarkdown);
+
+        // Display post with metadata
         currentPost = post;
-        postContent.innerHTML = html;
+        postContent.innerHTML = metadataHTML + html;
         showPost();
 
         // Scroll to top

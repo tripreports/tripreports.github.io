@@ -9,7 +9,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: #1F2937;
-    background-color: #F9FAFB;
+    background-color: #E5E7EB;
 }
 
 .container {
@@ -321,11 +321,16 @@ main {
 }
 
 .tail-thumbnail {
-    max-width: 70px;
-    max-height: 52.5px;
+    max-width: 85px;
+    max-height: 63.75px;
     width: auto;
     height: auto;
     object-fit: contain;
+    margin-top: -12px;
+}
+
+.tail-thumbnail.flag-thumbnail {
+    margin-top: 16px;
 }
 
 .read-more {
@@ -474,6 +479,52 @@ main {
     padding: 0;
 }
 
+/* Post metadata section */
+.post-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #2C5F8D;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.post-metadata-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.post-metadata-item {
+    font-size: 0.95rem;
+    color: #495057;
+}
+
+.post-metadata-item strong {
+    color: #1F2937;
+    font-weight: 600;
+}
+
+.post-metadata-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-metadata-icon img {
+    max-width: 120px;
+    max-height: 90px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 /* Loading state */
 .loading {
     text-align: center;
@@ -516,5 +567,19 @@ footer p {
 
     #post-content h1 {
         font-size: 2rem;
+    }
+
+    .post-metadata {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .post-metadata-content {
+        grid-template-columns: 1fr;
+    }
+
+    .post-metadata-icon img {
+        max-width: 100px;
+        max-height: 75px;
     }
 }

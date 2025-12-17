@@ -200,12 +200,12 @@
         "excerpt": "**Date:**05/03**/**2024\n**Airline:**Swiss\n**Flight Number:**LX038\n**Aircraft:**777-300ER\n**From/To:**ZRH-SFO\n**Distance Flown:**5,840 mi\n\nWhen I was looking for a product to fly back to the US from..."
     },
     {
-        "id": "3-days-in-baku-itinerary",
+        "id": "azerbaijan-2024",
         "title": "3 Days in Baku Itinerary",
         "date": "2024-04-29",
         "coverImage": "https://live.staticflickr.com/65535/54607804641_70a0d50e16_b.jpg",
         "category": "trip",
-        "file": "posts/trips/3-days-in-baku-itinerary.md",
+        "file": "posts/trips/azerbaijan-2024.md",
         "excerpt": "**Date:** 2024-04-29\n**Country:** Azerbaijan\n\nThe process to get a visa was easy for me - I used the online portal to apply for an eVisa. The application was easy, and even had to an option to expedite it, which I greatly appreciated..."
     },
     {
@@ -225,12 +225,12 @@
         "excerpt": "**Date:**03/24**/**2024\n**Airline:**Royal Air Maroc\n**Flight Number:**AT217/218\n**Aircraft:**787-9/787-8\n**From/To:**DOH-CMN-IAD\n**Distance Flown:**7,399 mi\n\nOn my way back from a wonderful trip in..."
     },
     {
-        "id": "oman-6-day-2wd-self-drive-trip-report",
+        "id": "oman-2024",
         "title": "Oman 6 Day 2WD Self-Drive Trip Report",
         "date": "2024-03-23",
         "coverImage": "https://live.staticflickr.com/65535/54610287136_9355e58f39_b.jpg",
         "category": "trip",
-        "file": "posts/trips/oman-6-day-2wd-self-drive-trip-report.md",
+        "file": "posts/trips/oman-2024.md",
         "excerpt": "**Date:** 2024-03-23\n**Country:** Oman\n\n**Itinerary:**\n\n**Day 1:** Explore Muscat\n**Day 2:** Muscat to Sur\n**Day 3:** Sur to Nizwa\n**Day 4:** Explore Nizwa\n**Day 5:** Nizwa to Jebel Shams\n**Day 6:** Jebel Shams to Muscat"
     },
     {
@@ -271,6 +271,6 @@
         "date": "2023-02-23",
         "category": "flight",
         "file": "posts/flights/qr742-qsuites-review.md",
-        "excerpt": "**Date:**03/23**/**2023\n**Airline:**Qatar Airways\n**Flight Number:**QR742\n**Aircraft:**A350-1000\n**From/To:**LAX to DOH\n**Distance Flown:**8306 mi![Qatar's A350-1000 waiting at LAX's International..."
+        "excerpt": "**Date:**03/23**/**2023\n**Airline:**Qatar Airways\n**Flight Number:**QR742\n**Aircraft:**A350-1000\n**From/To:**LAX to DOH\n**Distance Flown:**8306 mi"
     }
 ]
