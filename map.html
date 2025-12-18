@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Map - Trip Reports</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" id="favicon">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        #map {
+            flex: 1;
+            width: 100%;
+            min-height: 500px;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .legend-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 20px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .map-stats {
+            background: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .map-stats h2 {
+            margin: 0;
+            color: #2C5F8D;
+            font-size: 1.5rem;
+        }
+
+        .map-stats p {
+            margin: 5px 0 0 0;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <nav class="filter-nav">
+        <div class="container">
+            <h1 class="site-title"><a href="index.html" style="color: white; text-decoration: none;">Trip Reports</a></h1>
+            <div class="filter-buttons">
+                <a href="index.html" class="filter-btn">All Posts</a>
+                <a href="index.html?filter=flight" class="filter-btn">Flight Reports</a>
+                <a href="index.html?filter=trip" class="filter-btn">Trip Reports</a>
+                <a href="map.html" class="filter-btn active">Travel Map</a>
+                <a href="planespotting.html" class="filter-btn">Go Planespotting</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="map-stats">
+            <h2>Countries Visited</h2>
+            <p id="country-count">Loading...</p>
+        </div>
+        <div id="map"></div>
+        <div class="map-legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #2C5F8D;"></div>
+                <span>Visited</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #e0e0e0;"></div>
+                <span>Not Visited</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Set random tail as favicon
+        const tailImages = [
+            '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
+            'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
+            'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
+            'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
+            'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
+            'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
+            'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
+            'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
+            'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
+            'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
+            'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
+            'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
+            'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
+            'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
+            'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
+            'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
+            'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
+            'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
+            'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
+            'YW', 'Z2', 'ZH', 'ZI'
+        ];
+        const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+        document.getElementById('favicon').href = `images/tails/${randomTail}.png`;
+
+        // Country name to ISO3 code mapping (for GeoJSON matching)
+        // Add more countries here as needed: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+        const countryNameToISO3 = {
+            'Åland Islands': 'ALA',
+            'Albania': 'ALB',
+            'Andorra': 'AND',
+            'Antigua and Barbuda': 'ATG',
+            'Australia': 'AUS',
+            'Austria': 'AUT',
+            'Azerbaijan': 'AZE',
+            'Bahamas': 'BHS',
+            'Bahrain': 'BHR',
+            'Barbados': 'BRB',
+            'Belgium': 'BEL',
+            'Bosnia and Herzegovina': 'BIH',
+            'Bulgaria': 'BGR',
+            'Cape Verde': 'CPV',
+            'Costa Rica': 'CRI',
+            'Cyprus': 'CYP',
+            'Czech Republic': 'CZE',
+            'Dominica': 'DMA',
+            'Estonia': 'EST',
+            'Grenada': 'GRD',
+            'Hungary': 'HUN',
+            'Iceland': 'ISL',
+            'Jordan': 'JOR',
+            'Kosovo': 'KOS',
+            'Kuwait': 'KWT',
+            'Latvia': 'LVA',
+            'Liechtenstein': 'LIE',
+            'Lithuania': 'LTU',
+            'Luxembourg': 'LUX',
+            'Malta': 'MLT',
+            'Moldova': 'MDA',
+            'Monaco': 'MCO',
+            'Montenegro': 'MNE',
+            'North Macedonia': 'MKD',
+            'Oman': 'OMN',
+            'Saint Kitts and Nevis': 'KNA',
+            'Saint Lucia': 'LCA',
+            'Saint Vincent and the Grenadines': 'VCT',
+            'San Marino': 'SMR',
+            'Saudi Arabia': 'SAU',
+            'Serbia': 'SRB',
+            'Slovakia': 'SVK',
+            'Slovenia': 'SVN',
+            'Ukraine': 'UKR',
+            'Uzbekistan': 'UZB',
+            'Vatican City': 'VAT',
+            'Yemen': 'YEM',
+            // Additional countries (these are already in visited list above, keeping for reference)
+            'United States': 'USA',
+            'United Kingdom': 'GBR',
+            'Canada': 'CAN',
+            'Mexico': 'MEX',
+            'France': 'FRA',
+            'Germany': 'DEU',
+            'Italy': 'ITA',
+            'Spain': 'ESP',
+            'Portugal': 'PRT',
+            'Greece': 'GRC',
+            'Turkey': 'TUR',
+            'Egypt': 'EGY',
+            'Morocco': 'MAR',
+            'South Africa': 'ZAF',
+            'Kenya': 'KEN',
+            'Tanzania': 'TZA',
+            'United Arab Emirates': 'ARE',
+            'Qatar': 'QAT',
+            'India': 'IND',
+            'Thailand': 'THA',
+            'Vietnam': 'VNM',
+            'China': 'CHN',
+            'Japan': 'JPN',
+            'South Korea': 'KOR',
+            'Singapore': 'SGP',
+            'Malaysia': 'MYS',
+            'Indonesia': 'IDN',
+            'Philippines': 'PHL',
+            'New Zealand': 'NZL',
+            'Brazil': 'BRA',
+            'Argentina': 'ARG',
+            'Chile': 'CHL',
+            'Peru': 'PER',
+            'Colombia': 'COL',
+            'Iceland': 'ISL',
+            'Norway': 'NOR',
+            'Sweden': 'SWE',
+            'Finland': 'FIN',
+            'Denmark': 'DNK',
+            'Netherlands': 'NLD',
+            'Switzerland': 'CHE',
+            'Poland': 'POL',
+            'Croatia': 'HRV',
+            'Romania': 'ROU',
+            'Ireland': 'IRL',
+            'Russia': 'RUS',
+            'Israel': 'ISR',
+            'Taiwan': 'TWN'
+        };
+
+        // Initialize map
+        const map = L.map('map').setView([20, 0], 2);
+
+        // Add tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Load countries from visited-countries.json
+        async function loadVisitedCountries() {
+            try {
+                const response = await fetch('data/visited-countries.json');
+                const data = await response.json();
+
+                // Convert country names to ISO3 codes
+                const visitedCountries = new Set();
+                data.countries.forEach(country => {
+                    if (countryNameToISO3[country]) {
+                        visitedCountries.add(countryNameToISO3[country]);
+                    }
+                });
+
+                // Update country count
+                document.getElementById('country-count').textContent =
+                    `${visitedCountries.size} countries visited`;
+
+                // Load GeoJSON and color countries
+                loadGeoJSON(visitedCountries);
+            } catch (error) {
+                console.error('Error loading countries:', error);
+                document.getElementById('country-count').textContent = 'Error loading data';
+            }
+        }
+
+        // Load and style GeoJSON
+        async function loadGeoJSON(visitedCountries) {
+            try {
+                // Use Natural Earth 10m data which includes small countries
+                const response = await fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson');
+                const geojson = await response.json();
+
+                L.geoJSON(geojson, {
+                    style: function(feature) {
+                        // Natural Earth uses ISO_A3 but "-99" means use ADM0_A3 instead
+                        let iso3 = feature.properties.ISO_A3;
+                        if (!iso3 || iso3 === '-99') {
+                            iso3 = feature.properties.ADM0_A3;
+                        }
+
+                        const isVisited = iso3 && visitedCountries.has(iso3);
+
+                        return {
+                            fillColor: isVisited ? '#2C5F8D' : '#e0e0e0',
+                            weight: 1,
+                            opacity: 1,
+                            color: '#999',
+                            fillOpacity: isVisited ? 0.7 : 0.3
+                        };
+                    },
+                    onEachFeature: function(feature, layer) {
+                        let iso3 = feature.properties.ISO_A3;
+                        if (!iso3 || iso3 === '-99') {
+                            iso3 = feature.properties.ADM0_A3;
+                        }
+                        const isVisited = iso3 && visitedCountries.has(iso3);
+                        const countryName = feature.properties.NAME || feature.properties.ADMIN;
+
+                        layer.bindTooltip(countryName, {
+                            permanent: false,
+                            direction: 'top'
+                        });
+
+                        // Highlight on hover
+                        layer.on('mouseover', function() {
+                            if (isVisited) {
+                                layer.setStyle({
+                                    fillOpacity: 0.9
+                                });
+                            }
+                        });
+                        layer.on('mouseout', function() {
+                            if (isVisited) {
+                                layer.setStyle({
+                                    fillOpacity: 0.7
+                                });
+                            }
+                        });
+                    }
+                }).addTo(map);
+            } catch (error) {
+                console.error('Error loading GeoJSON:', error);
+            }
+        }
+
+        // Initialize
+        loadVisitedCountries();
+    </script>
+</body>
+</html>
