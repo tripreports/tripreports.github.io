@@ -34,7 +34,7 @@ From there, just across the street is [Said's Ceramics](https://maps.app.goo.gl/
 We walked from there to the Hazrati Imam Complex, which was still under construction at the time. It was possible to enter for free - I'm not sure if it's a paid attraction or not. A guard mentioned we needed to pay 60k to go into a building, but we opted out. The complex itself is pretty expansive, with a mosque in the upper courtyard, as well as a large registan in the lower one
 ![](https://live.staticflickr.com/65535/54846774751_da2382838a_b.jpg)
 
-From there, we used Yandex to get to Tashkent Tower. This is an old soviet TV tower. Walking around it was interesting, but I can't recommend making a detour for this - it's out of the way, and not particularly interesting
+From there, we used Yandex to get to the Tashkent Tower. This is an old soviet TV tower. Walking around it was interesting, but I can't recommend making a detour for this - it's out of the way, and not particularly interesting
 
 Next stop was the Chor Minor Mosque, another attraction that didn't really impress. It's also an active mosque, which feels a little weird to visit
 
@@ -43,7 +43,7 @@ For dinner, we went to Besh Qozon, which is right by the Tashkent Tower. My firs
 
 ## Day 2
 
-Coming directly from Qatar sets an extremely high bar for museums. There was some spare time before our train to Samarkand today, so we visited the State Museum of the Temurids. As we found to be the case with many of the museums in Uzbekistan, many of the pieces appear to be replicas - otherwise the date them from when they were discovered. There's interesting history, and it was a good visit, but didn't feel very well planned
+Coming directly from Qatar sets an extremely high bar for museums. There was some spare time before our train to Samarkand today, so we visited the State Museum of the Temurids. As we found to be the case with many of the museums in Uzbekistan, many of the pieces appear to be replicas - otherwise the date them from when they were discovered. There's interesting history, and it was a good visit, but it didn't feel very well planned
 
 The train to Samarkand left from Tashkent South station, which is an important distinction as there are multiple stations in Tashkent. Our ever helpful host helped to confirm this. Upon boarding the train, we were showed to a first class cabin by the conductor, who spoke no english, and immediately demanded money. It became clear that he wanted a bribe to go to a better seat, which we turned down, and went to our seats we booked. The train was about an hour late. Upon exiting the station at Samarkand, there was the usual group of taxi drivers asking where they could take you, but less aggresive and dense than in Tashkent. We walked a short way out, called a yandex for under 30k, and got checked in to the hotel. It was almost sunset, so we headed over the Registan Square
 ![](https://live.staticflickr.com/65535/54847092770_daf3104de9_b.jpg)
@@ -72,7 +72,7 @@ And you can also get to the hill there to get a good glimpse of the path so far 
 
 On the map through the graveyard, where the arrow is at the end, indicates a rooftop with a small dropoff. It's possible to enter the compound for free there - whether you do or don't is up to you. It's pretty out of the way and one could tag onto a passing tour group. But in no way indicating that's what we did...
 
-The complex itself is beatiful, very colorful with arches very densly packed. People very densly packed as well
+The complex itself is beautiful, very colorful with arches that are densely packed together. People are very densely packed as well
 ![](https://live.staticflickr.com/65535/54846774081_075cb60611_b.jpg)
 
 But it may have been my favorite stop in Samarkand
@@ -102,7 +102,7 @@ Having seen just about everything in Samarkand, and having another full day, we 
 
 It's hard to get lost in Shahrisabz - from the palace just continue down the center line. You'll see the statue of Amir Temur. Along the way, there is a center for arts and crafts. It was pretty shut down, but there was a place where several women were making carpets, who were on their lunch break. We gestured if it would be okay to have a look at their workshop, and they said yes. On the way out, they invited us for tea and snacks. They didn't speak any English, but we enjoyed some tea and bread, then continued on our way. There are a few museums along the center line, but being pretty unimpressed with the museums so far, we passed and continued on towards the end. 
 
-Kok Gumbaz Mosque might be my favorite in Shahrisabz. It has a few cool Mausoluems with nice paintings on the roof
+Kok Gumbaz Mosque might be my favorite in Shahrisabz. It has a few cool Mausoleums with nice paintings on the roof
 ![](https://live.staticflickr.com/65535/54847021964_2c0139dd5d_b.jpg)
 
 And a nice courtyard
@@ -123,13 +123,13 @@ This was mostly a transit day. Our train was in the morning, which took a few ho
 
 ## Day 6 - Bukhara
 
-Our goal of the day was to arrive at the Bukhara Ark, the first stop for the day, early enough that the crowds wouldn't be there yet. Turns out, others had that idea too. The ark is an old walled, elevated city. Half is restored in a pretty unimpressive manner, and the other half are ruins which you can walk around. Some are actually pretty prominent, which was more interesting. In the shady, restored section, there are plenty of museums, which were some of the better quality ones. And there are a bunch of friendly cats.
+Our goal for the day was to arrive at the Bukhara Ark, the first stop for the day, early enough that the crowds wouldn't be there yet. Turns out, others had that idea too. The ark is an old walled, elevated city. Half is restored in a pretty unimpressive manner, and the other half are ruins which you can walk around. Some are actually pretty prominent, which was more interesting. In the shady, restored section, there are plenty of museums, which were some of the better quality ones. And there are a bunch of friendly cats.
 ![](https://live.staticflickr.com/65535/54847021699_cbcc8ca01f_b.jpg)
 
 Next stop was the Bolo Hauz Mosque, which is right across the way. And after, the Chashmai Ayub Mausoleum. Both were pretty unimpressive stops. Things started to turn around as we hopped across the steet from the Mausoleum to the central bazaar. It was authentic like the Chorsu Bazaar in Tashkent, and pretty expansive. Plenty of stuff for sale
 ![](https://live.staticflickr.com/65535/54847021779_375924f8d9_b.jpg)
 
-From there, we headed over to walk the wall of Bukhara. It's similar contruction to the Ark, but with no tourists in site. We wrapped around from there to an [old soviet amusement park](https://www.google.com/maps/place/Park+Attraktsionov/@39.776331,64.3992391,151m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3f50089bf502ddc7:0xc038ea38fa92e2ee!2sCentral+Bazaar!8m2!3d39.779488!4d64.4009516!16s%2Fg%2F11g6xw8lw8!3m5!1s0x3f5009000a3848c7:0xf06c8dedd88e0827!8m2!3d39.7760581!4d64.3985574!16s%2Fg%2F11vsp5y7pb?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D) which was, for the most part, not operational.
+From there, we headed over to walk the wall of Bukhara. It's a similar construction to the Ark, but with no tourists in site. We wrapped around from there to an [old soviet amusement park](https://www.google.com/maps/place/Park+Attraktsionov/@39.776331,64.3992391,151m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3f50089bf502ddc7:0xc038ea38fa92e2ee!2sCentral+Bazaar!8m2!3d39.779488!4d64.4009516!16s%2Fg%2F11g6xw8lw8!3m5!1s0x3f5009000a3848c7:0xf06c8dedd88e0827!8m2!3d39.7760581!4d64.3985574!16s%2Fg%2F11vsp5y7pb?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D) which was, for the most part, not operational.
 
 The Ismail Samani Mausoleum was next - just like in Samarkand, there was an attendant who said entrance was 15k. We glance inside, and there was nothing, and the attendant didn't look official at all, so it seemed like it might have been someone who had just installed themselves there trying to collect a little money. The construction is interesting, but it's far better from the outside anyway
 ![](https://live.staticflickr.com/65535/54847031368_16104dbdf3_b.jpg)
@@ -157,7 +157,7 @@ Itchan Kala is the name for the walled city in Khiva.
 It is not large by any means, and takes about 15 minutes to walk from one end to the other, on the long side. It is packed with monuments, but given how densly everything is packed together, a full day is plenty here at a pretty leisurly pace. You can enter the walled city for free through [this gate](https://www.google.com/maps/place/Itchan+Kala+East+Gate/@41.3768253,60.3618462,343m/data=!3m1!1e3!4m14!1m7!3m6!1s0x41dfa411a8e50c73:0x3920d4663f44b9c6!2sItchan+Kala!8m2!3d41.3780695!4d60.35933!16s%2Fg%2F1tgnvscw!3m5!1s0x41dfa411e8cfe11d:0xe49fb21dc2943f02!8m2!3d41.3770928!4d60.3624008!16s%2Fg%2F122vrf41?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D), or you can supposedly get in for free if you're staying at a guesthouse in the city, which we were. However, to get into the museums/attractions, you need a museum pass which is 200k for 2 days and includes entrance to the city. There is a hidden option for 100k for a entrance ticket to the city which doesn't include entrance to the attractions, which is essentially useless since you can get in for free. Don't get that one. When you buy a ticket, you'll get a map with all the ~20 stops. They're all worthwhile and doable in a day, and I won't go through each. 
 ![](https://live.staticflickr.com/65535/54847094460_f303c1e1da_b.jpg)
 
-It's possible to climb the Islam Khoja Minaret, and this is worth it also. On the way up, you get good views out into the city
+It's possible to climb the Islam Khoja Minaret, and this is also worth it. On the way up, you get good views out into the city
 ![](https://live.staticflickr.com/65535/54847023184_bb440c69dc_b.jpg)
 
 You get an official ticket for this one, unlike in Samarkand. When we bought ours in the morning, we asked if we could go up then, and then also at night. The woman didn't speak much english, but waved us on, so under a liberal interpretation, we returned with our ticket at night and were allowed through.
@@ -166,12 +166,12 @@ There are also two walls that you can pay to go up on, at the gates. However, if
 
 ## Day 9 - Fortresses, Nukus, Tashkent
 
-Our last day started early in Khiva. There is a really convenient flight that worked well for this itinerary from Nukus, one of the furthest cities from Tashkent, to Tashkent in the afternoon, allowing us to have a leisurly connection to our flight to Malaysia. To get there, we hired a driver to take us to Nukus, by way of the 4 fortresses. These are some of the older artifacts in Uzbekistan, and was something I was really looking forward to. We elected to start at 5:30am in Khiva, having overestimated the time we would take, and found that we had extra time. We easily could have started at 7 or 8am and been fine, but this did mean we were first to Ayaz Kala, and had it to ourselves for sunrise. By far, this was the most impressive one. The driver dropped us off [here](https://maps.app.goo.gl/irksoSExLQtHgFz69) which allowed us to walk up to "Ayaz Kala 1" which is a bigger fortress, in worse shape than the real Ayaz Kala. Still, it provides a great view over Ayaz Kala
+Our last day started early in Khiva. There is a really convenient flight that worked well for this itinerary from Nukus, one of the furthest cities from Tashkent, to Tashkent in the afternoon, allowing us to have a leisurly connection to our flight to Malaysia. To get there, we hired a driver to take us to Nukus, by way of the 4 fortresses. These are some of the older artifacts in Uzbekistan, and were something I was really looking forward to. We elected to start at 5:30am in Khiva, having overestimated the time we would take, and found that we had extra time. We easily could have started at 7 or 8am and been fine, but this did mean we were first to Ayaz Kala, and had it to ourselves for sunrise. By far, this was the most impressive one. The driver dropped us off [here](https://maps.app.goo.gl/irksoSExLQtHgFz69) which allowed us to walk up to "Ayaz Kala 1" which is a bigger fortress, in worse shape than the real Ayaz Kala. Still, it provides a great view over Ayaz Kala
 ![](https://live.staticflickr.com/65535/54848598207_69f3584382_b.jpg)
 
 On the way back after visiting Ayaz Kala 1, we asked if we could make a detour to the smaller fortress we were overlooking, which was totally worth it. 
 
-Between fortress 1 and 2, we stopped at a lake - which was suprising at how unimpressive it was. Perhaps a bigger deal in a landlocked country, I didn't find much of interest here. The remaining fortresses weren't as interesting, with the exception of the last one, which served as a sky burial site. On the highway between the last fortress and Nukus, there's an old airport and plane. I was too slow to ask him to pull off there, but it would have made for a nice stop. It's [here](https://www.google.com/maps/place/Old+Plane+Nukus/@42.3828946,59.9470865,4149m/data=!3m1!1e3!4m9!1m2!2m1!1sayaz+kala!3m5!1s0x41dd8b00561e0cb3:0xd25eba42c223d281!8m2!3d42.3888055!4d59.9543033!16s%2Fg%2F11x7dp0zzw?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D). We got dropped off at the airport in Nukus directly, and boarded our flight to get back to Tashkent
+Between fortress 1 and 2, we stopped at a lake - which was suprising how unimpressive it was. Perhaps a bigger deal in a landlocked country, I didn't find much of interest here. The remaining fortresses weren't as interesting, with the exception of the last one, which served as a sky burial site. On the highway between the last fortress and Nukus, there's an old airport and plane. I was too slow to ask him to pull off there, but it would have made for a nice stop. It's [here](https://www.google.com/maps/place/Old+Plane+Nukus/@42.3828946,59.9470865,4149m/data=!3m1!1e3!4m9!1m2!2m1!1sayaz+kala!3m5!1s0x41dd8b00561e0cb3:0xd25eba42c223d281!8m2!3d42.3888055!4d59.9543033!16s%2Fg%2F11x7dp0zzw?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D). We got dropped off at the airport in Nukus directly, and boarded our flight to get back to Tashkent
 ![](images/trips/uzbekistan-2025/plane.jpeg)
 
 Arriving in Tashkent we flew into the domestic terminal, which was hilariously disconnected from the international terminal. The only way to get between them is walk (about an hour) or take a taxi (10 minutes). Of course, many taxi drivers offered outrageous prices, the worst being $20 USD. We laughed, booked a Yandex, and told him we had a private helicopter coming to get. The Yandex cost less than a dollar
@@ -188,6 +188,6 @@ The food in Uzbekistan is abysmal. No flavor and extremely fatty. Food poisoning
 
 People were generally friendly - anyone close to the tourist industry knows they can usually squeeze money out of people so taxi drivers, shop owners, etc will all try to highball you. This is why Yandex is so helpful. Otherwise, people are generally nice
 
-Uzbekistan is somewhere I'm happy to have gone, I enjoyed the trip, and I have now no interest in going back. There's no real nature - it's mostly a desert, and so having seen the sights, I feel like I'm happy with that. I'll definitely return to central asia, but not Uzbekistan necesarily. But that's not to say the country isn't worth visiting - just that it's likely only worth visiting once.
+Uzbekistan is somewhere I'm happy to have gone, I enjoyed the trip, and I now have no interest in going back. There's no real nature - it's mostly a desert, and so having seen the sights, I feel like I'm happy with that. I'll definitely return to central Asia, but not Uzbekistan necesarily. But that's not to say the country isn't worth visiting - just that it's likely only worth visiting once.
 
 Full photo album [here](https://www.flickr.com/photos/199425760@N03/albums/72177720329598542/with/54846773521)
