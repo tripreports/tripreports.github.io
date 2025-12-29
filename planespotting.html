@@ -130,6 +130,7 @@
                 <a href="index.html" class="filter-btn">Go Home</a>
                 <a href="planespotting.html" class="filter-btn active">Go Planespotting</a>
                 <a href="airline-info.html" class="filter-btn">Airline Info</a>
+                <a href="aircraft-info.html" class="filter-btn">Aircraft Info</a>
             </div>
         </div>
     </nav>
@@ -140,28 +141,31 @@
     </div>
 
     <script>
-        // Set random tail as favicon
+        // All tail images (ICAO codes + remaining IATA codes without ICAO equivalents)
         const tailImages = [
-            '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
-            'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
-            'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
-            'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
-            'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
-            'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
-            'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
-            'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
-            'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
-            'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
-            'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
-            'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
-            'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
-            'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
-            'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
-            'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
-            'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
-            'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
-            'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
-            'YW', 'Z2', 'ZH', 'ZI'
+            '4Y', '8R', 'AAF', 'AAL', 'AAR', 'AAT', 'AB', 'ABJ', 'ABL', 'ABY', 'ACA', 'ACI',
+            'ADM', 'ADR', 'AEA', 'AEE', 'AES', 'AFB', 'AFF', 'AFL', 'AFR', 'AGX', 'AIB', 'AIC',
+            'AIQ', 'AIZ', 'AJX', 'AL', 'ALK', 'AMC', 'AMX', 'ANA', 'ANE', 'ANZ', 'APW', 'ARG',
+            'ASA', 'ASL', 'AU', 'AUA', 'AUI', 'AUT', 'AVA', 'AVN', 'AWE', 'AWQ', 'AXM', 'AZA',
+            'AZU', 'B0', 'BAV', 'BAW', 'BCY', 'BEE', 'BER', 'BF', 'BKP', 'BLF', 'BMI', 'BOI',
+            'BON', 'BOV', 'BRU', 'BTI', 'BTK', 'BXI', 'BZH', 'CAL', 'CAW', 'CCA', 'CCM', 'CEB',
+            'CES', 'CFE', 'CFG', 'CHH', 'CIX', 'CLH', 'CMP', 'CPA', 'CRK', 'CRL', 'CSA', 'CSC',
+            'CSH', 'CSN', 'CSZ', 'CTN', 'CWC', 'CXA', 'DAH', 'DAL', 'DDL', 'DJ', 'DLA', 'DLH',
+            'E9', 'EAQ', 'EDW', 'EGF', 'EIA', 'EIN', 'EJU', 'ELY', 'ENY', 'ETD', 'ETH', 'EVA',
+            'EWG', 'EXS', 'EZD', 'EZE', 'FAJ', 'FDB', 'FFM', 'FFT', 'FIF', 'FIN', 'FLA', 'FLE',
+            'FLI', 'FOS', 'FWI', 'GFA', 'GIA', 'GLO', 'GUY', 'HAL', 'HDA', 'HRH', 'HVN', 'IAD',
+            'IBB', 'IBE', 'IBS', 'ICE', 'IGO', 'IRA', 'IRC', 'IRM', 'ITY', 'JAF', 'JAI', 'JAL',
+            'JAT', 'JBU', 'JEC', 'JGO', 'JJP', 'JSA', 'JST', 'JW', 'KAC', 'KAL', 'KFR', 'KLA',
+            'KLC', 'KLM', 'KQA', 'LAN', 'LAO', 'LBC', 'LBT', 'LGL', 'LH', 'LNI', 'LNK', 'LOG',
+            'LOT', 'LPE', 'LPV', 'LVG', 'LZB', 'MAC', 'MAS', 'MAU', 'MDA', 'MDG', 'MEA', 'MHS',
+            'MLT', 'MSR', 'MXD', 'NBT', 'NOK', 'NOZ', 'NTW', 'OAL', 'OAW', 'OF', 'OMA', 'ONE',
+            'PAL', 'PD', 'PGA', 'PGT', 'PIC', 'PRZ', 'PSD', 'QFA', 'QG', 'QSC', 'QTR', 'RAM',
+            'RCK', 'REU', 'RJA', 'ROT', 'ROU', 'RSL', 'RSR', 'RWD', 'RYR', 'RZO', 'S5', 'SAA',
+            'SAS', 'SCW', 'SDG', 'SEJ', 'SEY', 'SFJ', 'SFR', 'SIA', 'SJX', 'SKU', 'SLK', 'SNG',
+            'SUS', 'SVA', 'SWA', 'SWR', 'SYX', 'TAM', 'TAP', 'TAR', 'TGW', 'THA', 'THT', 'THY',
+            'TJT', 'TLM', 'TNA', 'TOM', 'TSC', 'TT', 'TTW', 'TUA', 'TUX', 'TVF', 'TVS', 'TWN',
+            'UAE', 'UAL', 'UIA', 'US', 'UZB', 'VAW', 'VIR', 'VJC', 'VLG', 'VOE', 'VOZ', 'VTA',
+            'VTI', 'WAJ', 'WEN', 'WIF', 'WJA', 'WOW', 'WW', 'WZZ', 'XAX', 'XLA', 'XZ'
         ];
 
         const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
@@ -195,10 +199,13 @@
 
             // Random tail selection
             const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+
+            // Since randomTail is selected from tailImages array, we know it exists
             tail.src = `images/tails/${randomTail}.png`;
             tail.onerror = function() {
+                // Fallback to unknown if the selected tail doesn't load
                 this.onerror = null;
-                this.src = `images/tails/${randomTail}.jpg`;
+                this.src = 'images/tails/unknown.png';
             };
 
             // 10% chance of being upside down
@@ -319,7 +326,7 @@
 
             // Click to view airline info
             container.addEventListener('click', () => {
-                window.location.href = `airline-info.html?code=${encodeURIComponent(randomTail)}`;
+                window.location.href = `airline-info.html?code=${encodeURIComponent(randomTail)}&ref=planespotting`;
             });
 
             // Animate plane

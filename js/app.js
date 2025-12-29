@@ -66,13 +66,25 @@ function getIcaoCode(iataCode) {
     return iataCode;
 }
 
-// Get tail image path for a given airline code
+// Get tail image path for a given airline code - checks if we have the image first
 function getTailImagePath(airlineCode) {
     if (!airlineCode) return 'images/tails/unknown.png';
 
     // Convert to ICAO if possible
     const icaoCode = getIcaoCode(airlineCode);
-    return `images/tails/${icaoCode}.png`;
+
+    // Check if we have this tail image
+    if (tailImages.includes(icaoCode)) {
+        return `images/tails/${icaoCode}.png`;
+    }
+
+    // If we don't have the ICAO version, check if we have the original IATA code
+    if (airlineCode !== icaoCode && tailImages.includes(airlineCode)) {
+        return `images/tails/${airlineCode}.png`;
+    }
+
+    // We don't have this tail image, use unknown
+    return 'images/tails/unknown.png';
 }
 
 // Set random tail as favicon

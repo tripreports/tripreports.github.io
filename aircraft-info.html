@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aircraft Info - Planespotting</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" id="favicon">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #2C5F8D;
+        }
+
+        .random-btn {
+            padding: 0.75rem 1.5rem;
+            background: #2C5F8D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .random-btn:hover {
+            background: #1e4666;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-size: 0.95rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .filter-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filter-group select {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.95rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            background: white;
+        }
+
+        .results-count {
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .aircraft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .aircraft-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .aircraft-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .aircraft-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .aircraft-template {
+            width: 80px;
+            height: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .aircraft-card h3 {
+            color: #2C5F8D;
+            margin: 0;
+            font-size: 1.25rem;
+            flex: 1;
+        }
+
+        .aircraft-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .aircraft-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .aircraft-detail .label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .aircraft-detail .value {
+            color: #6c757d;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+        }
+
+        /* Detail view styles */
+        .detail-view {
+            display: none;
+        }
+
+        .detail-view.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #2C5F8D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: background 0.2s;
+        }
+
+        .back-button:hover {
+            background: #1e4666;
+        }
+
+        .aircraft-detail-header {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .aircraft-detail-header h1 {
+            color: #2C5F8D;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .aircraft-header-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .aircraft-info-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .aircraft-info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .aircraft-info-table td {
+            padding: 0.5rem 0;
+            vertical-align: top;
+        }
+
+        .aircraft-info-table .label {
+            font-weight: 600;
+            color: #495057;
+            white-space: nowrap;
+        }
+
+        .aircraft-info-table .value {
+            color: #6c757d;
+        }
+
+        .detail-template-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+            height: 200px;
+        }
+
+        .detail-template-display img {
+            max-width: 400px;
+            max-height: 200px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .aircraft-header-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .detail-template-display {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="filter-nav">
+        <div class="container">
+            <h1 class="site-title"><a href="index.html" style="color: white; text-decoration: none;">Planespotting</a></h1>
+            <div class="filter-buttons">
+                <a href="index.html" class="filter-btn">Go Home</a>
+                <a href="planespotting.html" class="filter-btn">Go Planespotting</a>
+                <a href="airline-info.html" class="filter-btn">Airline Info</a>
+                <a href="aircraft-info.html" class="filter-btn active">Aircraft Info</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="info-container">
+            <!-- List View -->
+            <div id="list-view">
+                <div class="search-controls">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search by aircraft name, IATA code, or ICAO code...">
+                    </div>
+                    <button class="random-btn" id="random-btn">Random Aircraft</button>
+                </div>
+
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <input type="checkbox" id="filter-has-template" checked>
+                        <label for="filter-has-template">Only aircraft with templates</label>
+                    </div>
+                    <div class="filter-group">
+                        <label for="results-limit">Show:</label>
+                        <select id="results-limit">
+                            <option value="20">20 results</option>
+                            <option value="50">50 results</option>
+                            <option value="100">100 results</option>
+                            <option value="9999">All results</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="results-count" id="results-count"></div>
+
+                <div class="aircraft-grid" id="aircraft-grid">
+                    <div class="no-results">Loading aircraft...</div>
+                </div>
+            </div>
+
+            <!-- Detail View -->
+            <div id="detail-view" class="detail-view">
+                <button class="back-button" id="back-btn">← Back to Search</button>
+
+                <div class="aircraft-detail-header">
+                    <h1 id="detail-aircraft-name"></h1>
+                    <div class="aircraft-header-content">
+                        <div class="aircraft-info-section">
+                            <table class="aircraft-info-table">
+                                <tr>
+                                    <td class="label">IATA Code:</td>
+                                    <td class="value" id="detail-iata"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">ICAO Code:</td>
+                                    <td class="value" id="detail-icao"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="detail-template-display">
+                            <img id="detail-template-image" alt="Aircraft template">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f8f9fa; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid #dee2e6;">
+        <div class="info-container">
+            <p style="text-align: center; color: #6c757d; font-size: 0.9rem; margin: 0;">
+                Aircraft templates displayed on this page are sourced from <a href="https://www.airline-empires.com/" target="_blank" rel="noopener noreferrer" style="color: #2C5F8D; text-decoration: none;">Airline Empires</a> and belong to their respective creators. I do not own or claim ownership of any of these templates.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set random aircraft template as favicon
+        const aircraftTemplates = [
+            '100', '141', '142', '143', '221', '223', '290', '295', '312', '313', '318', '319', '31N', '320',
+            '321', '32A', '32B', '32C', '32D', '32N', '32Q', '32S', '330', '332', '333', '338', '339', '33X',
+            '342', '343', '345', '346', '351', '359', '35K', '380', '388', '703', '717', '721', '722', '731',
+            '732', '733', '734', '735', '736', '737', '738', '739', '73A', '73B', '73C', '73D', '73E', '73F',
+            '73G', '73H', '73J', '73K', '73M', '73W', '73X', '741', '742', '743', '744', '747', '74E', '74H',
+            '74R', '74S', '74V', '752', '753', '757', '762', '763', '764', '767', '772', '773', '77L', '77W',
+            '781', '787', '788', '789', '78J', '7M7', '7M8', '7M9', '7S8', '919', 'AB3', 'AB4', 'AB6', 'ABB',
+            'ABY', 'ACT', 'APD', 'AR1', 'AR7', 'AR8', 'ARJ', 'AT4', 'AT5', 'AT7', 'ATR', 'BCS', 'BNI', 'BNT',
+            'CCJ', 'CCX', 'CN1', 'CNA', 'CNC', 'CNJ', 'CR1', 'CR2', 'CR7', 'CR9', 'CRJ', 'CRK', 'CS1', 'CS3',
+            'CVF', 'D10', 'D11', 'D28', 'D38', 'DC3', 'DC6', 'DC8', 'DC9', 'DH1', 'DH2', 'DH3', 'DH4', 'DH7',
+            'DH8', 'DHC', 'E35', 'E45', 'E50', 'E55', 'E70', 'E75', 'E90', 'E95', 'ER3', 'ER4', 'F50', 'F70',
+            'F90', 'IL6', 'IL9', 'J31', 'L10', 'LOH', 'LRJ', 'M11', 'M1F', 'M80', 'M81', 'M82', 'M83', 'M87',
+            'M88', 'M90', 'MU2', 'ND2', 'NDC', 'P18', 'PL2', 'PL4', 'S20', 'SF3', 'SH3', 'SH6', 'SHB', 'SHS',
+            'SU9', 'SW4', 'T20', 'TU3', 'TU5', 'WWP', 'YK2', 'YK4', 'YN2', 'YS1'
+        ];
+        const randomTemplate = aircraftTemplates[Math.floor(Math.random() * aircraftTemplates.length)];
+        document.getElementById('favicon').href = `images/aircraft_templates/${randomTemplate}.png`;
+
+        // Aircraft data and functionality
+        let allAircraft = [];
+        let filteredAircraft = [];
+        let resultsLimit = 20;
+        let filterHasTemplate = true;
+
+        // Load aircraft types data
+        async function loadAircraft() {
+            try {
+                const response = await fetch('data/aircraft_types.json');
+                const data = await response.json();
+
+                // Convert object to array
+                allAircraft = Object.entries(data).map(([iataCode, aircraftData]) => ({
+                    IATA: iataCode,
+                    ICAO: aircraftData.ICAO,
+                    Aircraft: aircraftData.Aircraft
+                }));
+
+                // Apply initial filter
+                if (filterHasTemplate) {
+                    filteredAircraft = allAircraft.filter(aircraft => hasTemplate(aircraft));
+                } else {
+                    filteredAircraft = allAircraft;
+                }
+
+                // Only render if we're showing list view (not detail view)
+                const urlParams = new URLSearchParams(window.location.search);
+                if (!urlParams.get('code')) {
+                    renderAircraft(filteredAircraft);
+                }
+            } catch (error) {
+                console.error('Error loading aircraft:', error);
+                document.getElementById('aircraft-grid').innerHTML = '<div class="no-results">Error loading aircraft data</div>';
+            }
+        }
+
+        // Check if aircraft has a template available
+        function hasTemplate(aircraft) {
+            const iataCode = aircraft.IATA;
+            return aircraftTemplates.includes(iataCode);
+        }
+
+        // Get template image path
+        function getTemplatePath(iataCode) {
+            if (!iataCode) return 'images/aircraft_templates/unknown.png';
+
+            if (aircraftTemplates.includes(iataCode)) {
+                return `images/aircraft_templates/${iataCode}.png`;
+            }
+
+            return 'images/aircraft_templates/unknown.png';
+        }
+
+        // Create aircraft card HTML
+        function createAircraftCard(aircraft) {
+            const iataCode = aircraft.IATA;
+            const templatePath = getTemplatePath(iataCode);
+            const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
+
+            return `
+                <a href="?code=${encodeURIComponent(iataCode || aircraft.ICAO || '')}" class="aircraft-card">
+                    <div class="aircraft-header">
+                        <img src="${templatePath}" alt="${aircraft.Aircraft}" class="aircraft-template" data-iata="${iataCode || ''}" data-card-id="${cardId}">
+                        <h3>${aircraft.Aircraft || 'Unknown'}</h3>
+                    </div>
+                    <div class="aircraft-detail">
+                        <span class="label">IATA Code:</span>
+                        <span class="value">${aircraft.IATA || 'N/A'}</span>
+                    </div>
+                    <div class="aircraft-detail">
+                        <span class="label">ICAO Code:</span>
+                        <span class="value">${aircraft.ICAO || 'N/A'}</span>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Render aircraft
+        function renderAircraft(aircraft) {
+            const grid = document.getElementById('aircraft-grid');
+            const resultsCount = document.getElementById('results-count');
+
+            if (aircraft.length === 0) {
+                grid.innerHTML = '<div class="no-results">No aircraft found</div>';
+                resultsCount.textContent = '';
+                return;
+            }
+
+            // Apply limit
+            const totalResults = aircraft.length;
+            const displayedAircraft = aircraft.slice(0, resultsLimit);
+
+            // Update count message
+            if (totalResults > resultsLimit) {
+                resultsCount.textContent = `Showing ${displayedAircraft.length} of ${totalResults} aircraft`;
+            } else {
+                resultsCount.textContent = `Showing ${totalResults} aircraft`;
+            }
+
+            grid.innerHTML = displayedAircraft.map(createAircraftCard).join('');
+
+            // Add error handlers to template images
+            grid.querySelectorAll('.aircraft-template').forEach(img => {
+                img.onerror = function() {
+                    this.onerror = null;
+                    this.src = 'images/aircraft_templates/unknown.png';
+                };
+            });
+        }
+
+        // Search functionality with prioritization
+        function searchAircraft(query) {
+            let results = [];
+
+            if (!query.trim()) {
+                results = allAircraft;
+            } else {
+                const searchTerm = query.toLowerCase();
+
+                // Separate exact code matches from partial matches
+                const exactMatches = allAircraft.filter(aircraft =>
+                    aircraft.IATA?.toLowerCase() === searchTerm ||
+                    aircraft.ICAO?.toLowerCase() === searchTerm
+                );
+
+                const partialMatches = allAircraft.filter(aircraft => {
+                    // Skip if already in exact matches
+                    if (aircraft.IATA?.toLowerCase() === searchTerm ||
+                        aircraft.ICAO?.toLowerCase() === searchTerm) {
+                        return false;
+                    }
+                    return (
+                        (aircraft.Aircraft && aircraft.Aircraft.toLowerCase().includes(searchTerm)) ||
+                        (aircraft.IATA && aircraft.IATA.toLowerCase().includes(searchTerm)) ||
+                        (aircraft.ICAO && aircraft.ICAO.toLowerCase().includes(searchTerm))
+                    );
+                });
+
+                // Prioritize exact matches first
+                results = [...exactMatches, ...partialMatches];
+            }
+
+            // Apply template filter if enabled
+            if (filterHasTemplate) {
+                results = results.filter(aircraft => hasTemplate(aircraft));
+            }
+
+            filteredAircraft = results;
+            renderAircraft(filteredAircraft);
+        }
+
+        // Random aircraft
+        function showRandomAircraft() {
+            if (allAircraft.length === 0) return;
+
+            // Filter aircraft based on current filter settings
+            let availableAircraft = allAircraft;
+            if (filterHasTemplate) {
+                availableAircraft = allAircraft.filter(aircraft => hasTemplate(aircraft));
+            }
+
+            if (availableAircraft.length === 0) return;
+
+            const randomAircraft = availableAircraft[Math.floor(Math.random() * availableAircraft.length)];
+            const code = randomAircraft.IATA || randomAircraft.ICAO || '';
+            if (code) {
+                window.location.href = `?code=${encodeURIComponent(code)}`;
+            }
+        }
+
+        // Show detail view for an aircraft
+        function showDetailView(code) {
+            const aircraft = allAircraft.find(a =>
+                a.IATA === code || a.ICAO === code
+            );
+
+            if (!aircraft) {
+                window.location.href = 'aircraft-info.html';
+                return;
+            }
+
+            // Populate detail view
+            document.getElementById('detail-aircraft-name').textContent = aircraft.Aircraft || 'Unknown';
+            document.getElementById('detail-iata').textContent = aircraft.IATA || 'N/A';
+            document.getElementById('detail-icao').textContent = aircraft.ICAO || 'N/A';
+
+            // Handle template image
+            const iataCode = aircraft.IATA;
+            const templatePath = getTemplatePath(iataCode);
+            const detailTemplateImage = document.getElementById('detail-template-image');
+
+            detailTemplateImage.src = templatePath;
+            detailTemplateImage.onerror = function() {
+                this.src = 'images/aircraft_templates/unknown.png';
+                this.onerror = null;
+            };
+
+            // Toggle views
+            document.getElementById('list-view').style.display = 'none';
+            document.getElementById('detail-view').classList.add('active');
+        }
+
+        // Show list view
+        function showListView() {
+            document.getElementById('list-view').style.display = 'block';
+            document.getElementById('detail-view').classList.remove('active');
+        }
+
+        // Check URL parameters on load
+        function checkURLParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const aircraftCode = urlParams.get('code');
+
+            if (aircraftCode && allAircraft.length > 0) {
+                showDetailView(aircraftCode);
+            } else {
+                showListView();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchAircraft(e.target.value);
+        });
+
+        document.getElementById('random-btn').addEventListener('click', showRandomAircraft);
+
+        // Filter controls
+        document.getElementById('filter-has-template').addEventListener('change', (e) => {
+            filterHasTemplate = e.target.checked;
+            // Re-apply current search
+            searchAircraft(document.getElementById('search-input').value);
+        });
+
+        document.getElementById('results-limit').addEventListener('change', (e) => {
+            resultsLimit = parseInt(e.target.value);
+            // Re-render with new limit
+            renderAircraft(filteredAircraft);
+        });
+
+        // Back button
+        document.getElementById('back-btn').addEventListener('click', () => {
+            window.location.href = 'aircraft-info.html';
+        });
+
+        // Initialize
+        loadAircraft().then(() => {
+            checkURLParams();
+        });
+    </script>
+</body>
+</html>
