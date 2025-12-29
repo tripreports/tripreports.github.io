@@ -208,45 +208,67 @@
         }
 
         .airline-header-content {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
             gap: 2rem;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .airline-info-section {
-            flex: 1;
-        }
-
-        .airline-info-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 0.75rem;
+            flex-direction: column;
         }
 
-        .airline-info-row .airline-detail {
-            display: flex;
-            gap: 0.5rem;
-            align-items: baseline;
+        .airline-info-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .airline-detail .label {
+        .airline-info-table td {
+            padding: 0.5rem 0;
+            vertical-align: top;
+        }
+
+        .airline-info-table .label {
             font-weight: 600;
             color: #495057;
             white-space: nowrap;
         }
 
-        .airline-detail .value {
+        .airline-info-table .value {
             color: #6c757d;
         }
 
         .detail-tail-display {
-            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            margin-right: 10rem;
         }
 
         .detail-tail-display img {
+            max-width: 150px;
+            max-height: 150px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .detail-logo-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 200px;
             height: 150px;
+        }
+
+        .detail-logo-display img {
+            max-width: 190px;
+            max-height: 140px;
+            width: auto;
+            height: auto;
             object-fit: contain;
         }
 
@@ -266,13 +288,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem 0;
+            padding: 0;
         }
 
         .plane-preview {
             position: relative;
             width: 600px;
-            height: 600px;
+            height: auto;
             max-width: 100%;
         }
 
@@ -295,7 +317,7 @@
         @media (max-width: 768px) {
             .plane-preview {
                 width: 400px;
-                height: 400px;
+                height: auto;
             }
 
             .plane-preview img.plane-base {
@@ -307,6 +329,16 @@
                 left: -17.33px;
                 width: 100px;
                 transform: rotate(-2deg);
+            }
+
+            .airline-header-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .detail-tail-display,
+            .detail-logo-display {
+                margin: 0 auto;
             }
         }
     </style>
@@ -349,27 +381,30 @@
                     <h1 id="detail-airline-name"></h1>
                     <div class="airline-header-content">
                         <div class="airline-info-section">
-                            <div class="airline-info-row">
-                                <div class="airline-detail">
-                                    <span class="label">IATA Code:</span>
-                                    <span class="value" id="detail-iata"></span>
-                                </div>
-                                <div class="airline-detail">
-                                    <span class="label">ICAO Code:</span>
-                                    <span class="value" id="detail-icao"></span>
-                                </div>
-                                <div class="airline-detail">
-                                    <span class="label">Call Sign:</span>
-                                    <span class="value" id="detail-callsign"></span>
-                                </div>
-                                <div class="airline-detail">
-                                    <span class="label">Country:</span>
-                                    <span class="value" id="detail-country"></span>
-                                </div>
-                            </div>
+                            <table class="airline-info-table">
+                                <tr>
+                                    <td class="label">IATA Code:</td>
+                                    <td class="value" id="detail-iata"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">ICAO Code:</td>
+                                    <td class="value" id="detail-icao"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Call Sign:</td>
+                                    <td class="value" id="detail-callsign"></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Country:</td>
+                                    <td class="value" id="detail-country"></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="detail-tail-display">
-                            <img id="detail-tail" alt="Airline tail">
+                            <img id="detail-tail-image" alt="Airline tail">
+                        </div>
+                        <div class="detail-logo-display">
+                            <img id="detail-logo" alt="Airline logo">
                         </div>
                     </div>
                 </div>
@@ -666,49 +701,41 @@
             const countryFlags = createFlagsHtml(airline['Country/Region'], 'detail-country-flag');
             document.getElementById('detail-country').innerHTML = countryFlags + (airline['Country/Region'] || 'N/A');
 
-            // Handle tail images
+            // Handle images
             const iataCode = airline.IATA;
+            const icaoCode = airline.ICAO;
             const tailPath = getTailImagePath(iataCode);
-            const detailTail = document.getElementById('detail-tail');
+            const detailTailImage = document.getElementById('detail-tail-image');
+            const detailLogo = document.getElementById('detail-logo');
             const detailTailOverlay = document.getElementById('detail-tail-overlay');
 
-            detailTail.src = tailPath;
-            if (iataCode) {
-                detailTail.onerror = function() {
-                    this.src = `images/tails/${iataCode}.jpg`;
-                    this.onerror = function() {
-                        this.src = 'images/tails/unknown.png';
-                        this.onerror = function() {
-                            this.src = 'images/tails/unknown.jpg';
-                            this.onerror = null;
-                        };
-                    };
+            // Middle: Show tail image or unknown.png
+            detailTailImage.src = tailPath;
+            detailTailImage.onerror = function() {
+                this.src = 'images/tails/unknown.png';
+                this.onerror = null;
+            };
+
+            // Right: Show logo from avcodes.co.uk
+            if (icaoCode) {
+                detailLogo.style.display = 'block';
+                detailLogo.src = `https://www.avcodes.co.uk/images/logos/${icaoCode}.png`;
+                detailLogo.onerror = function() {
+                    // Hide if logo not found
+                    this.style.display = 'none';
                 };
             } else {
-                detailTail.onerror = function() {
-                    this.src = 'images/tails/unknown.jpg';
-                    this.onerror = null;
-                };
+                // No ICAO code, hide logo
+                detailLogo.style.display = 'none';
             }
 
+            // Show overlay tail only if image exists
+            detailTailOverlay.style.display = 'block';
             detailTailOverlay.src = tailPath;
-            if (iataCode) {
-                detailTailOverlay.onerror = function() {
-                    this.src = `images/tails/${iataCode}.jpg`;
-                    this.onerror = function() {
-                        this.src = 'images/tails/unknown.png';
-                        this.onerror = function() {
-                            this.src = 'images/tails/unknown.jpg';
-                            this.onerror = null;
-                        };
-                    };
-                };
-            } else {
-                detailTailOverlay.onerror = function() {
-                    this.src = 'images/tails/unknown.jpg';
-                    this.onerror = null;
-                };
-            }
+            detailTailOverlay.onerror = function() {
+                // Hide the overlay if tail image doesn't exist
+                this.style.display = 'none';
+            };
 
             // Toggle views
             document.getElementById('list-view').style.display = 'none';
