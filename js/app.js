@@ -4,6 +4,7 @@ let currentFilter = 'all';
 let currentAirlineFilter = null;
 let currentPost = null;
 let sliderAnimationId = null;
+let iataToIcaoMapping = null;
 
 // DOM elements
 const postsGrid = document.getElementById('posts-grid');
@@ -13,31 +14,69 @@ const postView = document.getElementById('post-view');
 const postContent = document.getElementById('post-content');
 const backBtn = document.getElementById('back-btn');
 
+// All tail images (ICAO codes + remaining IATA codes without ICAO equivalents)
+const tailImages = [
+    '4Y', '8R', 'AAF', 'AAL', 'AAR', 'AAT', 'AB', 'ABJ', 'ABL', 'ABY', 'ACA', 'ACI',
+    'ADM', 'ADR', 'AEA', 'AEE', 'AES', 'AFB', 'AFF', 'AFL', 'AFR', 'AGX', 'AIB', 'AIC',
+    'AIQ', 'AIZ', 'AJX', 'AL', 'ALK', 'AMC', 'AMX', 'ANA', 'ANE', 'ANZ', 'APW', 'ARG',
+    'ASA', 'ASL', 'AU', 'AUA', 'AUI', 'AUT', 'AVA', 'AVN', 'AWE', 'AWQ', 'AXM', 'AZA',
+    'AZU', 'B0', 'BAV', 'BAW', 'BCY', 'BEE', 'BER', 'BF', 'BKP', 'BLF', 'BMI', 'BOI',
+    'BON', 'BOV', 'BRU', 'BTI', 'BTK', 'BXI', 'BZH', 'CAL', 'CAW', 'CCA', 'CCM', 'CEB',
+    'CES', 'CFE', 'CFG', 'CHH', 'CIX', 'CLH', 'CMP', 'CPA', 'CRK', 'CRL', 'CSA', 'CSC',
+    'CSH', 'CSN', 'CSZ', 'CTN', 'CWC', 'CXA', 'DAH', 'DAL', 'DDL', 'DJ', 'DLA', 'DLH',
+    'E9', 'EAQ', 'EDW', 'EGF', 'EIA', 'EIN', 'EJU', 'ELY', 'ENY', 'ETD', 'ETH', 'EVA',
+    'EWG', 'EXS', 'EZD', 'EZE', 'FAJ', 'FDB', 'FFM', 'FFT', 'FIF', 'FIN', 'FLA', 'FLE',
+    'FLI', 'FOS', 'FWI', 'GFA', 'GIA', 'GLO', 'GUY', 'HAL', 'HDA', 'HRH', 'HVN', 'IAD',
+    'IBB', 'IBE', 'IBS', 'ICE', 'IGO', 'IRA', 'IRC', 'IRM', 'ITY', 'JAF', 'JAI', 'JAL',
+    'JAT', 'JBU', 'JEC', 'JGO', 'JJP', 'JSA', 'JST', 'JW', 'KAC', 'KAL', 'KFR', 'KLA',
+    'KLC', 'KLM', 'KQA', 'LAN', 'LAO', 'LBC', 'LBT', 'LGL', 'LH', 'LNI', 'LNK', 'LOG',
+    'LOT', 'LPE', 'LPV', 'LVG', 'LZB', 'MAC', 'MAS', 'MAU', 'MDA', 'MDG', 'MEA', 'MHS',
+    'MLT', 'MSR', 'MXD', 'NBT', 'NOK', 'NOZ', 'NTW', 'OAL', 'OAW', 'OF', 'OMA', 'ONE',
+    'PAL', 'PD', 'PGA', 'PGT', 'PIC', 'PRZ', 'PSD', 'QFA', 'QG', 'QSC', 'QTR', 'RAM',
+    'RCK', 'REU', 'RJA', 'ROT', 'ROU', 'RSL', 'RSR', 'RWD', 'RYR', 'RZO', 'S5', 'SAA',
+    'SAS', 'SCW', 'SDG', 'SEJ', 'SEY', 'SFJ', 'SFR', 'SIA', 'SJX', 'SKU', 'SLK', 'SNG',
+    'SUS', 'SVA', 'SWA', 'SWR', 'SYX', 'TAM', 'TAP', 'TAR', 'TGW', 'THA', 'THT', 'THY',
+    'TJT', 'TLM', 'TNA', 'TOM', 'TSC', 'TT', 'TTW', 'TUA', 'TUX', 'TVF', 'TVS', 'TWN',
+    'UAE', 'UAL', 'UIA', 'US', 'UZB', 'VAW', 'VIR', 'VJC', 'VLG', 'VOE', 'VOZ', 'VTA',
+    'VTI', 'WAJ', 'WEN', 'WIF', 'WJA', 'WOW', 'WW', 'WZZ', 'XAX', 'XLA', 'XZ'
+];
+
+// Load IATA to ICAO mapping
+async function loadIataToIcaoMapping() {
+    try {
+        const response = await fetch('data/iata_to_icao_mapping.json');
+        if (response.ok) {
+            iataToIcaoMapping = await response.json();
+        }
+    } catch (error) {
+        console.error('Error loading IATA to ICAO mapping:', error);
+    }
+}
+
+// Convert IATA code to ICAO code (or return as-is if no mapping exists)
+function getIcaoCode(iataCode) {
+    if (!iataCode) return null;
+
+    // If mapping is loaded and code exists in mapping, use ICAO
+    if (iataToIcaoMapping && iataToIcaoMapping[iataCode]) {
+        return iataToIcaoMapping[iataCode];
+    }
+
+    // Otherwise, return the code as-is (might already be ICAO or an IATA without ICAO equivalent)
+    return iataCode;
+}
+
+// Get tail image path for a given airline code
+function getTailImagePath(airlineCode) {
+    if (!airlineCode) return 'images/tails/unknown.png';
+
+    // Convert to ICAO if possible
+    const icaoCode = getIcaoCode(airlineCode);
+    return `images/tails/${icaoCode}.png`;
+}
+
 // Set random tail as favicon
 function setRandomFavicon() {
-    const tailImages = [
-        '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
-        'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
-        'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
-        'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
-        'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
-        'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
-        'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
-        'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
-        'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
-        'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
-        'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
-        'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
-        'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
-        'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
-        'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
-        'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
-        'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
-        'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
-        'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
-        'YW', 'Z2', 'ZH', 'ZI'
-    ];
-
     const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
     const favicon = document.getElementById('favicon');
     if (favicon) {
@@ -48,6 +87,7 @@ function setRandomFavicon() {
 // Initialize app
 async function init() {
     setRandomFavicon();
+    await loadIataToIcaoMapping();
     await loadPosts();
 
     // Check for URL parameters (e.g., ?filter=flight)
@@ -97,7 +137,7 @@ function loadAirlineFilterBar() {
     // Create airline filter items
     airlineFilterBar.innerHTML = sortedAirlines.map(([code, count]) => `
         <div class="airline-filter-item" data-airline="${code}" title="${code}">
-            <img src="images/tails/${code}.png" alt="${code}" onerror="this.src='images/tails/${code}.jpg'">
+            <img src="${getTailImagePath(code)}" alt="${code}" onerror="this.src='images/tails/unknown.png'">
         </div>
     `).join('');
 
@@ -124,30 +164,6 @@ function loadAirlineFilterBar() {
 
 // Load and display slider images (tails or flags) with infinite scroll
 function loadSliderImages(filterType) {
-    // List of all airline tail images we actually have
-    const tailImages = [
-        '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
-        'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
-        'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
-        'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
-        'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
-        'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
-        'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
-        'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
-        'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
-        'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
-        'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
-        'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
-        'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
-        'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
-        'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
-        'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
-        'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
-        'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
-        'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
-        'YW', 'Z2', 'ZH', 'ZI'
-    ].filter(code => code !== 'unknown'); // Exclude unknown.png
-
     // List of all country flag images
     const flagImages = [
         'ad', 'ae', 'af', 'ag', 'ai', 'al', 'am', 'ao', 'aq', 'ar', 'as', 'at',
@@ -176,13 +192,13 @@ function loadSliderImages(filterType) {
     // Determine which images to use based on filter
     let imagesToUse, imageFolder;
     if (filterType === 'flight') {
-        imagesToUse = tailImages;
+        imagesToUse = tailImages.filter(code => code !== 'unknown'); // Exclude unknown.png
         imageFolder = 'tails';
     } else if (filterType === 'trip') {
         imagesToUse = flagImages;
         imageFolder = 'flags';
     } else { // 'all' - mix both
-        imagesToUse = [...tailImages.map(t => ({code: t, folder: 'tails'})),
+        imagesToUse = [...tailImages.filter(code => code !== 'unknown').map(t => ({code: t, folder: 'tails'})),
                        ...flagImages.map(f => ({code: f, folder: 'flags'}))];
         imageFolder = null; // Will use individual folder from object
     }
@@ -396,7 +412,7 @@ function createPostCard(post) {
             let tailImage = '';
             if (details['Flight Number']) {
                 airlineCode = details['Flight Number'].trim().substring(0, 2).toUpperCase();
-                tailImage = `<img src="images/tails/${airlineCode}.png" alt="${airlineCode}" class="tail-thumbnail" onerror="this.src='images/tails/${airlineCode}.jpg'; this.onerror=null;">`;
+                tailImage = `<img src="${getTailImagePath(airlineCode)}" alt="${airlineCode}" class="tail-thumbnail" onerror="this.src='images/tails/unknown.png'">`;
             }
 
             detailsHTML = `
@@ -549,7 +565,7 @@ async function loadPost(post) {
                 if (post.category === 'flight' && metadata['Flight Number']) {
                     const airlineCode = metadata['Flight Number'].substring(0, 2).toUpperCase();
                     iconHTML = `<div class="post-metadata-icon">
-                        <img src="images/tails/${airlineCode}.png" alt="${airlineCode}" onerror="this.src='images/tails/${airlineCode}.jpg'; this.onerror=null;">
+                        <img src="${getTailImagePath(airlineCode)}" alt="${airlineCode}" onerror="this.src='images/tails/unknown.png'">
                     </div>`;
                 } else if (post.category === 'trip' && metadata['Country']) {
                     const countryCode = countryToCode[metadata['Country'].trim()];
