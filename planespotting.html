@@ -70,21 +70,74 @@
             opacity: 0;
             transition: opacity 2s ease-out;
         }
+
+        .help-icon {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(44, 95, 141, 0.9);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: help;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+        }
+
+        .help-icon:hover {
+            background: rgba(30, 70, 102, 0.95);
+        }
+
+        .help-tooltip {
+            position: fixed;
+            bottom: 90px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 300px;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .help-tooltip.visible {
+            opacity: 1;
+        }
+
+        .help-tooltip p {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
     <nav class="filter-nav">
         <div class="container">
-            <h1 class="site-title"><a href="index.html" style="color: white; text-decoration: none;">Trip Reports</a></h1>
+            <h1 class="site-title"><a href="index.html" style="color: white; text-decoration: none;">Planespotting</a></h1>
             <div class="filter-buttons">
-                <a href="index.html" class="filter-btn">All Posts</a>
-                <a href="index.html?filter=flight" class="filter-btn">Flight Reports</a>
-                <a href="index.html?filter=trip" class="filter-btn">Trip Reports</a>
-                <a href="map.html" class="filter-btn">Travel Map</a>
+                <a href="index.html" class="filter-btn">Go Home</a>
                 <a href="planespotting.html" class="filter-btn active">Go Planespotting</a>
+                <a href="airline-info.html" class="filter-btn">Airline Info</a>
             </div>
         </div>
     </nav>
+
+    <div class="help-icon" id="help-icon">?</div>
+    <div class="help-tooltip" id="help-tooltip">
+        <p><strong>How to use:</strong><br>Hover over a plane to reveal its airline code.<br>Click on a plane to see more information.</p>
+    </div>
 
     <script>
         // Set random tail as favicon
@@ -113,6 +166,18 @@
 
         const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
         document.getElementById('favicon').href = `images/tails/${randomTail}.png`;
+
+        // Help tooltip
+        const helpIcon = document.getElementById('help-icon');
+        const helpTooltip = document.getElementById('help-tooltip');
+
+        helpIcon.addEventListener('mouseenter', () => {
+            helpTooltip.classList.add('visible');
+        });
+
+        helpIcon.addEventListener('mouseleave', () => {
+            helpTooltip.classList.remove('visible');
+        });
 
         // Plane animation
         function createPlane() {
@@ -250,6 +315,11 @@
 
             container.addEventListener('mouseleave', () => {
                 // Don't remove on mouseleave - let it fade naturally
+            });
+
+            // Click to view airline info
+            container.addEventListener('click', () => {
+                window.location.href = `airline-info.html?code=${encodeURIComponent(randomTail)}`;
             });
 
             // Animate plane

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Info - Planespotting</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" id="favicon">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #2C5F8D;
+        }
+
+        .random-btn {
+            padding: 0.75rem 1.5rem;
+            background: #2C5F8D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .random-btn:hover {
+            background: #1e4666;
+        }
+
+        .results-count {
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .airline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .airline-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .airline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .airline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .airline-tail {
+            width: 60px;
+            height: 45px;
+            object-fit: contain;
+            flex-shrink: 0;
+            transform: rotate(-2deg);
+        }
+
+        .country-flag {
+            width: 24px;
+            height: 18px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .detail-country-flag {
+            width: 32px;
+            height: 24px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .airline-card h3 {
+            color: #2C5F8D;
+            margin: 0;
+            font-size: 1.25rem;
+            flex: 1;
+        }
+
+        .airline-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .airline-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .airline-detail .label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .airline-detail .value {
+            color: #6c757d;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+        }
+
+        /* Detail view styles */
+        .detail-view {
+            display: none;
+        }
+
+        .detail-view.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #2C5F8D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: background 0.2s;
+        }
+
+        .back-button:hover {
+            background: #1e4666;
+        }
+
+        .airline-detail-header {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .airline-detail-header h1 {
+            color: #2C5F8D;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .airline-header-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .airline-info-section {
+            flex: 1;
+        }
+
+        .airline-info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .airline-info-row .airline-detail {
+            display: flex;
+            gap: 0.5rem;
+            align-items: baseline;
+        }
+
+        .airline-detail .label {
+            font-weight: 600;
+            color: #495057;
+            white-space: nowrap;
+        }
+
+        .airline-detail .value {
+            color: #6c757d;
+        }
+
+        .detail-tail-display {
+            flex-shrink: 0;
+        }
+
+        .detail-tail-display img {
+            width: 200px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .airline-preview {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .airline-preview h2 {
+            color: #2C5F8D;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .plane-preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .plane-preview {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+        }
+
+        .plane-preview img.plane-base {
+            width: 600px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .plane-preview .overlay-tail {
+            position: absolute;
+            top: -20px;
+            left: 1px;
+            width: 145px;
+            height: auto;
+            transform: rotate(-1deg);
+        }
+
+        @media (max-width: 768px) {
+            .plane-preview {
+                width: 400px;
+                height: 400px;
+            }
+
+            .plane-preview img.plane-base {
+                width: 400px;
+            }
+
+            .plane-preview .overlay-tail {
+                top: -21.33px;
+                left: -17.33px;
+                width: 100px;
+                transform: rotate(-2deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="filter-nav">
+        <div class="container">
+            <h1 class="site-title"><a href="index.html" style="color: white; text-decoration: none;">Planespotting</a></h1>
+            <div class="filter-buttons">
+                <a href="index.html" class="filter-btn">Go Home</a>
+                <a href="planespotting.html" class="filter-btn">Go Planespotting</a>
+                <a href="airline-info.html" class="filter-btn active">Airline Info</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="info-container">
+            <!-- List View -->
+            <div id="list-view">
+                <div class="search-controls">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search by airline name, IATA code, or country...">
+                    </div>
+                    <button class="random-btn" id="random-btn">Random Airline</button>
+                </div>
+
+                <div class="results-count" id="results-count"></div>
+
+                <div class="airline-grid" id="airline-grid">
+                    <div class="no-results">Loading airlines...</div>
+                </div>
+            </div>
+
+            <!-- Detail View -->
+            <div id="detail-view" class="detail-view">
+                <button class="back-button" id="back-btn">← Back to Search</button>
+
+                <div class="airline-detail-header">
+                    <h1 id="detail-airline-name"></h1>
+                    <div class="airline-header-content">
+                        <div class="airline-info-section">
+                            <div class="airline-info-row">
+                                <div class="airline-detail">
+                                    <span class="label">IATA Code:</span>
+                                    <span class="value" id="detail-iata"></span>
+                                </div>
+                                <div class="airline-detail">
+                                    <span class="label">ICAO Code:</span>
+                                    <span class="value" id="detail-icao"></span>
+                                </div>
+                                <div class="airline-detail">
+                                    <span class="label">Call Sign:</span>
+                                    <span class="value" id="detail-callsign"></span>
+                                </div>
+                                <div class="airline-detail">
+                                    <span class="label">Country:</span>
+                                    <span class="value" id="detail-country"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-tail-display">
+                            <img id="detail-tail" alt="Airline tail">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="airline-preview">
+                    <h2>Aircraft Preview</h2>
+                    <div class="plane-preview-container">
+                        <div class="plane-preview">
+                            <img src="images/icons/plane_right.png" alt="Aircraft" class="plane-base">
+                            <img id="detail-tail-overlay" class="overlay-tail" alt="Airline tail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Set random tail as favicon
+        const tailImages = [
+            '2L', '3K', '3O', '3S', '3U', '4Y', '4Z', '5J', '6E', '7G', '8R', '9W',
+            'A3', 'A6', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AH', 'AI', 'AK', 'AL',
+            'AM', 'AR', 'AS', 'AT', 'AU', 'AV', 'AY', 'AZ', 'B0', 'B2', 'B6', 'B7',
+            'BA', 'BE', 'BF', 'BJ', 'BL', 'BR', 'BT', 'BX', 'BY', 'CA', 'CE', 'CI',
+            'CJ', 'CL', 'CM', 'CX', 'CZ', 'D7', 'DB', 'DD', 'DE', 'DJ', 'DL', 'DY',
+            'E9', 'EC', 'EI', 'EK', 'EN', 'EP', 'ET', 'EW', 'EY', 'EZ', 'F6', 'F8',
+            'F9', 'FA', 'FB', 'FD', 'FI', 'FM', 'FR', 'FY', 'FZ', 'G3', 'G9', 'GA',
+            'GE', 'GF', 'GK', 'H2', 'HA', 'HM', 'HU', 'HX', 'HY', 'I2', 'I5', 'IB',
+            'ID', 'IR', 'IT', 'IZ', 'JA', 'JJ', 'JL', 'JN', 'JP', 'JQ', 'JT', 'JU',
+            'JW', 'JX', 'KA', 'KE', 'KF', 'KL', 'KM', 'KQ', 'KU', 'LA', 'LG', 'LH',
+            'LM', 'LO', 'LP', 'LS', 'LV', 'LX', 'LY', 'MD', 'ME', 'MF', 'MH', 'MI',
+            'MK', 'MN', 'MQ', 'MS', 'MU', 'N0', 'NF', 'NH', 'NI', 'NQ', 'NT', 'NZ',
+            'O6', 'OA', 'OB', 'OD', 'OF', 'OK', 'OS', 'OU', 'OZ', 'PC', 'PD', 'PG',
+            'PR', 'PS', 'QF', 'QG', 'QH', 'QR', 'QS', 'QV', 'QZ', 'RC', 'RJ', 'RO',
+            'RV', 'S4', 'S5', 'SA', 'SB', 'SG', 'SK', 'SL', 'SN', 'SQ', 'SS', 'SU',
+            'SV', 'SZ', 'T3', 'T5', 'T7', 'TB', 'TF', 'TG', 'TK', 'TN', 'TO', 'TP',
+            'TR', 'TS', 'TT', 'TU', 'TX', 'UA', 'UG', 'UK', 'UL', 'US', 'UU', 'UX',
+            'V7', 'VA', 'VJ', 'VN', 'VS', 'VT', 'VX', 'VY', 'W5', 'W6', 'WA', 'WB',
+            'WE', 'WF', 'WK', 'WN', 'WR', 'WS', 'WW', 'WX', 'WY', 'XK', 'XZ', 'YU',
+            'YW', 'Z2', 'ZH', 'ZI'
+        ];
+        const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+        document.getElementById('favicon').href = `images/tails/${randomTail}.png`;
+
+        // Airline data and functionality
+        let allAirlines = [];
+        let filteredAirlines = [];
+
+        // Load airline data
+        async function loadAirlines() {
+            try {
+                const response = await fetch('data/airlines.json');
+                allAirlines = await response.json();
+                filteredAirlines = allAirlines;
+
+                // Only render if we're showing list view (not detail view)
+                const urlParams = new URLSearchParams(window.location.search);
+                if (!urlParams.get('code')) {
+                    renderAirlines(filteredAirlines);
+                }
+            } catch (error) {
+                console.error('Error loading airlines:', error);
+                document.getElementById('airline-grid').innerHTML = '<div class="no-results">Error loading airline data</div>';
+            }
+        }
+
+        // Get tail image path
+        function getTailImagePath(iataCode) {
+            if (!iataCode) return 'images/tails/unknown.png';
+            return `images/tails/${iataCode}.png`;
+        }
+
+        // Country name to ISO2 code mapping for flags
+        const countryToISO2 = {
+            'United States': 'us', 'United Kingdom': 'gb', 'Canada': 'ca', 'Australia': 'au',
+            'Germany': 'de', 'France': 'fr', 'Italy': 'it', 'Spain': 'es', 'Netherlands': 'nl',
+            'Belgium': 'be', 'Switzerland': 'ch', 'Austria': 'at', 'Sweden': 'se', 'Norway': 'no',
+            'Denmark': 'dk', 'Finland': 'fi', 'Ireland': 'ie', 'Portugal': 'pt', 'Greece': 'gr',
+            'Poland': 'pl', 'Czech Republic': 'cz', 'Hungary': 'hu', 'Romania': 'ro', 'Bulgaria': 'bg',
+            'Croatia': 'hr', 'Serbia': 'rs', 'Slovenia': 'si', 'Slovakia': 'sk', 'Lithuania': 'lt',
+            'Latvia': 'lv', 'Estonia': 'ee', 'Iceland': 'is', 'Luxembourg': 'lu', 'Malta': 'mt',
+            'Cyprus': 'cy', 'Turkey': 'tr', 'Russia': 'ru', 'Ukraine': 'ua', 'Belarus': 'by',
+            'China': 'cn', 'Japan': 'jp', 'South Korea': 'kr', 'India': 'in', 'Thailand': 'th',
+            'Vietnam': 'vn', 'Singapore': 'sg', 'Malaysia': 'my', 'Indonesia': 'id', 'Philippines': 'ph',
+            'Taiwan': 'tw', 'Hong Kong': 'hk', 'New Zealand': 'nz', 'South Africa': 'za',
+            'Egypt': 'eg', 'Morocco': 'ma', 'Kenya': 'ke', 'Nigeria': 'ng', 'Ethiopia': 'et',
+            'Brazil': 'br', 'Argentina': 'ar', 'Chile': 'cl', 'Colombia': 'co', 'Peru': 'pe',
+            'Mexico': 'mx', 'Venezuela': 've', 'Ecuador': 'ec', 'Uruguay': 'uy', 'Paraguay': 'py',
+            'Saudi Arabia': 'sa', 'United Arab Emirates': 'ae', 'Qatar': 'qa', 'Kuwait': 'kw',
+            'Oman': 'om', 'Bahrain': 'bh', 'Jordan': 'jo', 'Lebanon': 'lb', 'Israel': 'il',
+            'Iran': 'ir', 'Iraq': 'iq', 'Pakistan': 'pk', 'Bangladesh': 'bd', 'Sri Lanka': 'lk',
+            'Nepal': 'np', 'Afghanistan': 'af', 'Kazakhstan': 'kz', 'Uzbekistan': 'uz',
+            'Azerbaijan': 'az', 'Georgia': 'ge', 'Armenia': 'am', 'Albania': 'al', 'Bosnia and Herzegovina': 'ba',
+            'North Macedonia': 'mk', 'Montenegro': 'me', 'Kosovo': 'xk', 'Moldova': 'md',
+            'Yemen': 'ye', 'Syria': 'sy', 'Tunisia': 'tn', 'Algeria': 'dz', 'Libya': 'ly',
+            'Sudan': 'sd', 'Ghana': 'gh', 'Tanzania': 'tz', 'Uganda': 'ug', 'Angola': 'ao',
+            'Mozambique': 'mz', 'Zimbabwe': 'zw', 'Zambia': 'zm', 'Botswana': 'bw', 'Namibia': 'na',
+            'Mauritius': 'mu', 'Seychelles': 'sc', 'Madagascar': 'mg', 'Reunion': 're',
+            'Bahamas': 'bs', 'Jamaica': 'jm', 'Trinidad and Tobago': 'tt', 'Barbados': 'bb',
+            'Aruba': 'aw', 'Curacao': 'cw', 'Dominican Republic': 'do', 'Puerto Rico': 'pr',
+            'Cuba': 'cu', 'Haiti': 'ht', 'Panama': 'pa', 'Costa Rica': 'cr', 'Nicaragua': 'ni',
+            'Honduras': 'hn', 'El Salvador': 'sv', 'Guatemala': 'gt', 'Belize': 'bz',
+            'Greenland': 'gl', 'Faroe Islands': 'fo', 'Liechtenstein': 'li', 'Monaco': 'mc',
+            'Andorra': 'ad', 'San Marino': 'sm', 'Vatican City': 'va',
+            'Maldives': 'mv', 'Cambodia': 'kh', 'Myanmar': 'mm', 'Laos': 'la', 'Mongolia': 'mn',
+            'Brunei': 'bn', 'Fiji': 'fj', 'Papua New Guinea': 'pg', 'New Caledonia': 'nc',
+            'French Polynesia': 'pf', 'Cook Islands': 'ck', 'Samoa': 'ws', 'Tonga': 'to',
+            'Vanuatu': 'vu', 'Solomon Islands': 'sb', 'Palau': 'pw', 'Micronesia': 'fm',
+            'Marshall Islands': 'mh', 'Kiribati': 'ki', 'Nauru': 'nr', 'Tuvalu': 'tv',
+            'Antigua and Barbuda': 'ag', 'Saint Lucia': 'lc', 'Grenada': 'gd', 'Saint Vincent and the Grenadines': 'vc',
+            'Saint Kitts and Nevis': 'kn', 'Dominica': 'dm', 'Cape Verde': 'cv',
+            'Sao Tome and Principe': 'st', 'Comoros': 'km', 'Equatorial Guinea': 'gq',
+            'Gabon': 'ga', 'Republic of the Congo': 'cg', 'Democratic Republic of the Congo': 'cd',
+            'Rwanda': 'rw', 'Burundi': 'bi', 'Djibouti': 'dj', 'Eritrea': 'er', 'Somalia': 'so',
+            'South Sudan': 'ss', 'Chad': 'td', 'Central African Republic': 'cf', 'Cameroon': 'cm',
+            'Niger': 'ne', 'Mali': 'ml', 'Burkina Faso': 'bf', 'Senegal': 'sn', 'Guinea': 'gn',
+            'Sierra Leone': 'sl', 'Liberia': 'lr', 'Ivory Coast': 'ci', 'Benin': 'bj', 'Togo': 'tg',
+            'Gambia': 'gm', 'Guinea-Bissau': 'gw', 'Mauritania': 'mr', 'Western Sahara': 'eh',
+            'Turkmenistan': 'tm', 'Tajikistan': 'tj', 'Kyrgyzstan': 'kg', 'Bhutan': 'bt',
+            'Timor-Leste': 'tl', 'East Timor': 'tl'
+        };
+
+        // Get country flag URL
+        function getFlagUrl(countryName) {
+            if (!countryName) return null;
+            const iso2 = countryToISO2[countryName];
+            if (!iso2) return null;
+            return `https://flagcdn.com/w40/${iso2}.png`;
+        }
+
+        // Parse multiple countries from a string
+        function parseCountries(countryString) {
+            if (!countryString) return [];
+            // Split by common separators: /, comma, and, &
+            const countries = countryString.split(/[\/,&]|\sand\s/i)
+                .map(c => c.trim())
+                .filter(c => c.length > 0);
+            return countries;
+        }
+
+        // Get all flag URLs for a country string
+        function getFlagUrls(countryString) {
+            const countries = parseCountries(countryString);
+            return countries.map(country => ({
+                country: country,
+                url: getFlagUrl(country)
+            })).filter(f => f.url !== null);
+        }
+
+        // Create flags HTML
+        function createFlagsHtml(countryString, className = 'country-flag') {
+            const flags = getFlagUrls(countryString);
+            if (flags.length === 0) return '';
+            return flags.map(flag =>
+                `<img src="${flag.url}" alt="${flag.country}" title="${flag.country}" class="${className}">`
+            ).join('');
+        }
+
+        // Handle tail image error
+        function handleTailError(img, iataCode) {
+            if (!img.dataset.fallbackAttempt) {
+                img.dataset.fallbackAttempt = '1';
+                if (iataCode) {
+                    img.src = `images/tails/${iataCode}.jpg`;
+                } else {
+                    img.src = 'images/tails/unknown.png';
+                }
+            } else if (img.dataset.fallbackAttempt === '1') {
+                img.dataset.fallbackAttempt = '2';
+                img.src = 'images/tails/unknown.png';
+            } else if (img.dataset.fallbackAttempt === '2') {
+                img.dataset.fallbackAttempt = '3';
+                img.src = 'images/tails/unknown.jpg';
+            }
+        }
+
+        // Create airline card HTML
+        function createAirlineCard(airline) {
+            const iataCode = airline.IATA;
+            const tailPath = getTailImagePath(iataCode);
+            const tailAlt = iataCode || 'Unknown';
+            const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
+            const countryFlags = createFlagsHtml(airline['Country/Region']);
+
+            return `
+                <a href="?code=${encodeURIComponent(iataCode || airline.ICAO || '')}" class="airline-card">
+                    <div class="airline-header">
+                        <img src="${tailPath}" alt="${tailAlt}" class="airline-tail" data-iata="${iataCode || ''}" data-card-id="${cardId}">
+                        <h3>${airline.Airline || 'Unknown'}</h3>
+                    </div>
+                    <div class="airline-detail">
+                        <span class="label">IATA Code:</span>
+                        <span class="value">${airline.IATA || 'N/A'}</span>
+                    </div>
+                    <div class="airline-detail">
+                        <span class="label">ICAO Code:</span>
+                        <span class="value">${airline.ICAO || 'N/A'}</span>
+                    </div>
+                    <div class="airline-detail">
+                        <span class="label">Call Sign:</span>
+                        <span class="value">${airline['Call sign'] || 'N/A'}</span>
+                    </div>
+                    <div class="airline-detail">
+                        <span class="label">Country:</span>
+                        <span class="value">${countryFlags}${airline['Country/Region'] || 'N/A'}</span>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Render airlines
+        function renderAirlines(airlines) {
+            const grid = document.getElementById('airline-grid');
+            const resultsCount = document.getElementById('results-count');
+
+            if (airlines.length === 0) {
+                grid.innerHTML = '<div class="no-results">No airlines found</div>';
+                resultsCount.textContent = '';
+                return;
+            }
+
+            resultsCount.textContent = `Showing ${airlines.length} airline${airlines.length === 1 ? '' : 's'}`;
+            grid.innerHTML = airlines.map(createAirlineCard).join('');
+
+            // Add error handlers to tail images
+            grid.querySelectorAll('.airline-tail').forEach(img => {
+                img.onerror = function() {
+                    handleTailError(this, this.dataset.iata);
+                };
+            });
+        }
+
+        // Search functionality with prioritization
+        function searchAirlines(query) {
+            if (!query.trim()) {
+                filteredAirlines = allAirlines;
+            } else {
+                const searchTerm = query.toLowerCase();
+
+                // Separate exact code matches from partial matches
+                const exactMatches = allAirlines.filter(airline =>
+                    airline.IATA?.toLowerCase() === searchTerm ||
+                    airline.ICAO?.toLowerCase() === searchTerm
+                );
+
+                const partialMatches = allAirlines.filter(airline => {
+                    // Skip if already in exact matches
+                    if (airline.IATA?.toLowerCase() === searchTerm ||
+                        airline.ICAO?.toLowerCase() === searchTerm) {
+                        return false;
+                    }
+                    return (
+                        (airline.Airline && airline.Airline.toLowerCase().includes(searchTerm)) ||
+                        (airline.IATA && airline.IATA.toLowerCase().includes(searchTerm)) ||
+                        (airline.ICAO && airline.ICAO.toLowerCase().includes(searchTerm)) ||
+                        (airline['Country/Region'] && airline['Country/Region'].toLowerCase().includes(searchTerm)) ||
+                        (airline['Call sign'] && airline['Call sign'].toLowerCase().includes(searchTerm))
+                    );
+                });
+
+                // Prioritize exact matches first
+                filteredAirlines = [...exactMatches, ...partialMatches];
+            }
+            renderAirlines(filteredAirlines);
+        }
+
+        // Random airline
+        function showRandomAirline() {
+            if (allAirlines.length === 0) return;
+            const randomAirline = allAirlines[Math.floor(Math.random() * allAirlines.length)];
+            filteredAirlines = [randomAirline];
+            renderAirlines(filteredAirlines);
+            document.getElementById('search-input').value = '';
+        }
+
+        // Show detail view for an airline
+        function showDetailView(code) {
+            const airline = allAirlines.find(a =>
+                a.IATA === code || a.ICAO === code
+            );
+
+            if (!airline) {
+                window.location.href = 'airline-info.html';
+                return;
+            }
+
+            // Populate detail view
+            document.getElementById('detail-airline-name').textContent = airline.Airline || 'Unknown';
+            document.getElementById('detail-iata').textContent = airline.IATA || 'N/A';
+            document.getElementById('detail-icao').textContent = airline.ICAO || 'N/A';
+            document.getElementById('detail-callsign').textContent = airline['Call sign'] || 'N/A';
+
+            // Add flags to country field
+            const countryFlags = createFlagsHtml(airline['Country/Region'], 'detail-country-flag');
+            document.getElementById('detail-country').innerHTML = countryFlags + (airline['Country/Region'] || 'N/A');
+
+            // Handle tail images
+            const iataCode = airline.IATA;
+            const tailPath = getTailImagePath(iataCode);
+            const detailTail = document.getElementById('detail-tail');
+            const detailTailOverlay = document.getElementById('detail-tail-overlay');
+
+            detailTail.src = tailPath;
+            if (iataCode) {
+                detailTail.onerror = function() {
+                    this.src = `images/tails/${iataCode}.jpg`;
+                    this.onerror = function() {
+                        this.src = 'images/tails/unknown.png';
+                        this.onerror = function() {
+                            this.src = 'images/tails/unknown.jpg';
+                            this.onerror = null;
+                        };
+                    };
+                };
+            } else {
+                detailTail.onerror = function() {
+                    this.src = 'images/tails/unknown.jpg';
+                    this.onerror = null;
+                };
+            }
+
+            detailTailOverlay.src = tailPath;
+            if (iataCode) {
+                detailTailOverlay.onerror = function() {
+                    this.src = `images/tails/${iataCode}.jpg`;
+                    this.onerror = function() {
+                        this.src = 'images/tails/unknown.png';
+                        this.onerror = function() {
+                            this.src = 'images/tails/unknown.jpg';
+                            this.onerror = null;
+                        };
+                    };
+                };
+            } else {
+                detailTailOverlay.onerror = function() {
+                    this.src = 'images/tails/unknown.jpg';
+                    this.onerror = null;
+                };
+            }
+
+            // Toggle views
+            document.getElementById('list-view').style.display = 'none';
+            document.getElementById('detail-view').classList.add('active');
+        }
+
+        // Show list view
+        function showListView() {
+            document.getElementById('list-view').style.display = 'block';
+            document.getElementById('detail-view').classList.remove('active');
+        }
+
+        // Check URL parameters on load
+        function checkURLParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const airlineCode = urlParams.get('code');
+
+            if (airlineCode && allAirlines.length > 0) {
+                showDetailView(airlineCode);
+            } else {
+                showListView();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchAirlines(e.target.value);
+        });
+
+        document.getElementById('random-btn').addEventListener('click', showRandomAirline);
+
+        document.getElementById('back-btn').addEventListener('click', () => {
+            window.location.href = 'airline-info.html';
+        });
+
+        // Initialize
+        loadAirlines().then(() => {
+            checkURLParams();
+        });
+    </script>
+</body>
+</html>
