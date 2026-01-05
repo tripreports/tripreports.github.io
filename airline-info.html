@@ -609,7 +609,7 @@
                 return `images/tails/${airlineCode}.png`;
             }
 
-            // We don't have this tail image, use unknown
+            // We don't have this tail image, use unknown.png
             return 'images/tails/unknown.png';
         }
 
@@ -704,7 +704,24 @@
             const iataCode = airline.IATA;
             const icaoCode = airline.ICAO;
             // Use ICAO code first, fall back to IATA - this ensures we use the airline's actual code
-            const tailPath = getTailImagePath(icaoCode || iataCode);
+            const code = icaoCode || iataCode;
+
+            // For cards, check if we have the tail image
+            let cardTailPath;
+            if (code) {
+                const convertedCode = getIcaoCode(code);
+                if (tailImages.includes(convertedCode)) {
+                    cardTailPath = `images/tails/${convertedCode}.png`;
+                } else if (code !== convertedCode && tailImages.includes(code)) {
+                    cardTailPath = `images/tails/${code}.png`;
+                } else {
+                    // No tail available - use unknown.png for cards
+                    cardTailPath = 'images/tails/unknown.png';
+                }
+            } else {
+                cardTailPath = 'images/tails/unknown.png';
+            }
+
             const tailAlt = iataCode || 'Unknown';
             const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
             const countryFlags = createFlagsHtml(airline['Country/Region']);
@@ -712,7 +729,7 @@
             return `
                 <a href="?code=${encodeURIComponent(iataCode || airline.ICAO || '')}" class="airline-card">
                     <div class="airline-header">
-                        <img src="${tailPath}" alt="${tailAlt}" class="airline-tail" data-iata="${iataCode || ''}" data-card-id="${cardId}">
+                        <img src="${cardTailPath}" alt="${tailAlt}" class="airline-tail" data-iata="${iataCode || ''}" data-card-id="${cardId}">
                         <h3>${airline.Airline || 'Unknown'}</h3>
                     </div>
                     <div class="airline-detail">
@@ -763,6 +780,7 @@
             grid.querySelectorAll('.airline-tail').forEach(img => {
                 img.onerror = function() {
                     this.onerror = null;
+                    // Use unknown.png for cards
                     this.src = 'images/tails/unknown.png';
                 };
             });
@@ -880,8 +898,11 @@
                 detailLogo.style.display = 'none';
             }
 
-            // Show overlay tail only if we have a real tail (not unknown.png)
+            // Handle aircraft preview: if we have a tail, use plane_notail.png + overlay; otherwise use plane_tail.png
+            const planeBase = document.querySelector('.plane-preview .plane-base');
             if (tailPath !== 'images/tails/unknown.png') {
+                // We have a specific tail - use plane_notail.png as base and show overlay
+                planeBase.src = 'images/icons/plane_notail.png';
                 detailTailOverlay.style.display = 'block';
                 detailTailOverlay.src = tailPath;
                 detailTailOverlay.onerror = function() {
@@ -889,7 +910,8 @@
                     this.style.display = 'none';
                 };
             } else {
-                // No tail available, hide the overlay completely (show blank plane)
+                // No specific tail available - use plane_tail.png (complete plane with generic tail)
+                planeBase.src = 'images/icons/plane_tail.png';
                 detailTailOverlay.style.display = 'none';
             }
 

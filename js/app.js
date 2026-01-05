@@ -83,7 +83,7 @@ function getTailImagePath(airlineCode) {
         return `images/tails/${airlineCode}.png`;
     }
 
-    // We don't have this tail image, use unknown
+    // We don't have this tail image, use unknown.png
     return 'images/tails/unknown.png';
 }
 
