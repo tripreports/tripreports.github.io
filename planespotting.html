@@ -216,8 +216,8 @@
 
             let startX, startY, endX, endY;
 
-            // Always use plane_right.png and flip it for left-going planes
-            plane.src = 'images/icons/plane_right.png';
+            // Always use plane_notail.png (for tail overlays) and flip it for left-going planes
+            plane.src = 'images/icons/plane_notail.png';
 
             if (goingRight) {
                 // Left to right
@@ -289,9 +289,9 @@
                     codeElement.textContent = randomTail;
 
                     // Scale the pixel coordinates from the original image to the 150px rendered size
-                    // plane_right.png coordinates: (307, 120) scaled to 150px = divide by 4
+                    // plane_notail.png coordinates: (307, 120) scaled to 150px = divide by 4
                     // For flipped plane (left-going), X coordinate is mirrored
-                    const centerOffsetX = 307 / 4; // Always use plane_right coordinates
+                    const centerOffsetX = 307 / 4; // Always use plane_notail coordinates
                     // For upside down planes, add significant offset to appear below the flipped plane
                     const centerOffsetY = upsideDown ? (120 / 4) + 60 : (120 / 4) - 15;
 
