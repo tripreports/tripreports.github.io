@@ -6,6 +6,7 @@
 **Aircraft:** B787-9
 **From/To:** BNE to SFO
 **Distance Flown:** 7070 mi
+**Plane Image:** UAL_789_GE.png
 
 Having previously flown Polaris from SFO-AKL on a 777-200ER I had a good sense of what the product would be, and I was excited to try it on a newer plane. If it wasn't clear already, I'm a big fan of 787s, as their bleedless cabin air intake makes for a very comfortable and humid cabin. Having been flying for multiple days at this point, I was ready for a good rest. Polaris is know as a very comfortable hard product, with somewhat lacking catering options. However, I was interested to see if a flight leaving from an out station would have better catering.
 

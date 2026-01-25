@@ -588,9 +588,15 @@ async function loadPost(post) {
                     }
                 }
 
-                const metadataItems = Object.entries(metadata).map(([key, value]) =>
-                    `<div class="post-metadata-item"><strong>${key}:</strong> ${value}</div>`
-                ).join('');
+                const metadataItems = Object.entries(metadata)
+                    .filter(([key]) => key !== 'Plane Image')
+                    .map(([key, value]) =>
+                        `<div class="post-metadata-item"><strong>${key}:</strong> ${value}</div>`
+                    ).join('');
+
+                const planeImageHTML = metadata['Plane Image']
+                    ? `<div class="post-plane-image"><img src="images/planes/${metadata['Plane Image']}" alt="Aircraft"></div>`
+                    : '';
 
                 metadataHTML = `
                     <div class="post-metadata">
@@ -599,6 +605,7 @@ async function loadPost(post) {
                         </div>
                         ${iconHTML}
                     </div>
+                    ${planeImageHTML}
                 `;
 
                 // Remove metadata from content

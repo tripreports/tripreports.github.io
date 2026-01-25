@@ -365,25 +365,50 @@
     </footer>
 
     <script>
-        // Set random aircraft template as favicon
-        const aircraftTemplates = [
-            '100', '141', '142', '143', '221', '223', '290', '295', '312', '313', '318', '319', '31N', '320',
-            '321', '32A', '32B', '32C', '32D', '32N', '32Q', '32S', '330', '332', '333', '338', '339', '33X',
-            '342', '343', '345', '346', '351', '359', '35K', '380', '388', '703', '717', '721', '722', '731',
-            '732', '733', '734', '735', '736', '737', '738', '739', '73A', '73B', '73C', '73D', '73E', '73F',
-            '73G', '73H', '73J', '73K', '73M', '73W', '73X', '741', '742', '743', '744', '747', '74E', '74H',
-            '74R', '74S', '74V', '752', '753', '757', '762', '763', '764', '767', '772', '773', '77L', '77W',
-            '781', '787', '788', '789', '78J', '7M7', '7M8', '7M9', '7S8', '919', 'AB3', 'AB4', 'AB6', 'ABB',
-            'ABY', 'ACT', 'APD', 'AR1', 'AR7', 'AR8', 'ARJ', 'AT4', 'AT5', 'AT7', 'ATR', 'BCS', 'BNI', 'BNT',
-            'CCJ', 'CCX', 'CN1', 'CNA', 'CNC', 'CNJ', 'CR1', 'CR2', 'CR7', 'CR9', 'CRJ', 'CRK', 'CS1', 'CS3',
-            'CVF', 'D10', 'D11', 'D28', 'D38', 'DC3', 'DC6', 'DC8', 'DC9', 'DH1', 'DH2', 'DH3', 'DH4', 'DH7',
-            'DH8', 'DHC', 'E35', 'E45', 'E50', 'E55', 'E70', 'E75', 'E90', 'E95', 'ER3', 'ER4', 'F50', 'F70',
-            'F90', 'IL6', 'IL9', 'J31', 'L10', 'LOH', 'LRJ', 'M11', 'M1F', 'M80', 'M81', 'M82', 'M83', 'M87',
-            'M88', 'M90', 'MU2', 'ND2', 'NDC', 'P18', 'PL2', 'PL4', 'S20', 'SF3', 'SH3', 'SH6', 'SHB', 'SHS',
-            'SU9', 'SW4', 'T20', 'TU3', 'TU5', 'WWP', 'YK2', 'YK4', 'YN2', 'YS1'
+        // All tail images (ICAO codes + remaining IATA codes without ICAO equivalents)
+        const tailImages = [
+            '4Y', '8R', 'AAF', 'AAL', 'AAR', 'AAT', 'AB', 'ABJ', 'ABL', 'ABY', 'ACA', 'ACI',
+            'ADM', 'ADR', 'AEA', 'AEE', 'AES', 'AFB', 'AFF', 'AFL', 'AFR', 'AGX', 'AIB', 'AIC',
+            'AIQ', 'AIZ', 'AJX', 'AL', 'ALK', 'AMC', 'AMX', 'ANA', 'ANE', 'ANZ', 'APW', 'ARG',
+            'ASA', 'ASL', 'AU', 'AUA', 'AUI', 'AUT', 'AVA', 'AVN', 'AWE', 'AWQ', 'AXM', 'AZA',
+            'AZU', 'B0', 'BAV', 'BAW', 'BCY', 'BEE', 'BER', 'BF', 'BKP', 'BLF', 'BMI', 'BOI',
+            'BON', 'BOV', 'BRU', 'BTI', 'BTK', 'BXI', 'BZH', 'CAL', 'CAW', 'CCA', 'CCM', 'CEB',
+            'CES', 'CFE', 'CFG', 'CHH', 'CIX', 'CLH', 'CMP', 'CPA', 'CRK', 'CRL', 'CSA', 'CSC',
+            'CSH', 'CSN', 'CSZ', 'CTN', 'CWC', 'CXA', 'DAH', 'DAL', 'DDL', 'DJ', 'DLA', 'DLH',
+            'E9', 'EAQ', 'EDW', 'EGF', 'EIA', 'EIN', 'EJU', 'ELY', 'ENY', 'ETD', 'ETH', 'EVA',
+            'EWG', 'EXS', 'EZD', 'EZE', 'FAJ', 'FDB', 'FFM', 'FFT', 'FIF', 'FIN', 'FLA', 'FLE',
+            'FLI', 'FOS', 'FWI', 'GFA', 'GIA', 'GLO', 'GUY', 'HAL', 'HDA', 'HRH', 'HVN', 'IAD',
+            'IBB', 'IBE', 'IBS', 'ICE', 'IGO', 'IRA', 'IRC', 'IRM', 'ITY', 'JAF', 'JAI', 'JAL',
+            'JAT', 'JBU', 'JEC', 'JGO', 'JJP', 'JSA', 'JST', 'JW', 'KAC', 'KAL', 'KFR', 'KLA',
+            'KLC', 'KLM', 'KQA', 'LAN', 'LAO', 'LBC', 'LBT', 'LGL', 'LH', 'LNI', 'LNK', 'LOG',
+            'LOT', 'LPE', 'LPV', 'LVG', 'LZB', 'MAC', 'MAS', 'MAU', 'MDA', 'MDG', 'MEA', 'MHS',
+            'MLT', 'MSR', 'MXD', 'NBT', 'NOK', 'NOZ', 'NTW', 'OAL', 'OAW', 'OF', 'OMA', 'ONE',
+            'PAL', 'PD', 'PGA', 'PGT', 'PIC', 'PRZ', 'PSD', 'QFA', 'QG', 'QSC', 'QTR', 'RAM',
+            'RCK', 'REU', 'RJA', 'ROT', 'ROU', 'RSL', 'RSR', 'RWD', 'RYR', 'RZO', 'S5', 'SAA',
+            'SAS', 'SCW', 'SDG', 'SEJ', 'SEY', 'SFJ', 'SFR', 'SIA', 'SJX', 'SKU', 'SLK', 'SNG',
+            'SUS', 'SVA', 'SWA', 'SWR', 'SYX', 'TAM', 'TAP', 'TAR', 'TGW', 'THA', 'THT', 'THY',
+            'TJT', 'TLM', 'TNA', 'TOM', 'TSC', 'TT', 'TTW', 'TUA', 'TUX', 'TVF', 'TVS', 'TWN',
+            'UAE', 'UAL', 'UIA', 'US', 'UZB', 'VAW', 'VIR', 'VJC', 'VLG', 'VOE', 'VOZ', 'VTA',
+            'VTI', 'WAJ', 'WEN', 'WIF', 'WJA', 'WOW', 'WW', 'WZZ', 'XAX', 'XLA', 'XZ'
         ];
-        const randomTemplate = aircraftTemplates[Math.floor(Math.random() * aircraftTemplates.length)];
-        document.getElementById('favicon').href = `images/aircraft_templates/${randomTemplate}.png`;
+        const randomTail = tailImages[Math.floor(Math.random() * tailImages.length)];
+        document.getElementById('favicon').href = `images/tails/${randomTail}.png`;
+
+        // Aircraft templates array for filtering
+        const aircraftTemplates = [
+            '100', '221', '223', '312', '313', '318', '319', '31N', '320', '321', '32A', '32B', '32C', '32D',
+            '32N', '332', '333', '338', '339', '33X', '33Y', '342', '343', '345', '346', '351', '359', '388',
+            '703', '717', '721', '722', '732', '733', '734', '735', '736', '738', '739', '73C', '73E', '73F',
+            '73G', '73H', '73J', '73P', '73U', '73W', '73Y', '741', '742', '743', '744', '74B', '74C', '74D',
+            '74E', '74H', '74L', '74N', '74R', '74T', '74X', '74Y', '752', '753', '75F', '762', '763', '764',
+            '76W', '76X', '76Y', '772', '773', '77L', '77W', '77X', '781', '788', '789', '7M8', 'A26', 'A28',
+            'A30', 'A32', 'A40', 'A4F', 'A58', 'A5F', 'A81', 'AB4', 'AB6', 'ABY', 'AN4', 'AN7', 'ANF', 'ATP',
+            'B72', 'BEH', 'CCX', 'CS5', 'D1M', 'D1X', 'D1Y', 'D28', 'D38', 'D8T', 'D93', 'D95', 'DH1', 'DH2',
+            'DH3', 'DH4', 'DH7', 'DHC', 'DHT', 'E70', 'E75', 'E7W', 'E90', 'E95', 'EM2', 'EP1', 'ER3', 'ER4',
+            'ERD', 'F21', 'F27', 'F50', 'F70', 'FRJ', 'HS7', 'I14', 'I93', 'IL6', 'IL7', 'IL8', 'ILW', 'J31',
+            'J32', 'J41', 'L10', 'M11', 'M1F', 'M1M', 'M81', 'M82', 'M83', 'M87', 'M88', 'M90', 'PL2', 'PL4',
+            'S20', 'SF3', 'SH6', 'SU9', 'T20', 'TU3', 'TU5', 'YK2', 'YK4'
+        ];
 
         // Aircraft data and functionality
         let allAircraft = [];
