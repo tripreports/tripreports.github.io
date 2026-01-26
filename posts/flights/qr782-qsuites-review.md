@@ -6,6 +6,8 @@
 **Aircraft:**777-200LR
 **From/To:**MIA-DOH
 **Distance Flown:**7,679 mi
+**Plane Image:** QTR_772.png
+
 
 Having previously flown this route on an A350, I was interested to see how different the product was on the 77L. Having got into MIA a few hours earlier, I spent my time at the Flagship First lounge, which I found to have lacking food options (although I did enjoy the self-serve full bar). Just before business class started boarding, I left the lounge and made my way to the gate. Boarding was easy, and I found my way to my seat, 10K.![Seat 10K](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-04-28_05-59-58_825.jpeg?w=1024)
 *Seat 10K*

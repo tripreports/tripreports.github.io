@@ -6,6 +6,8 @@
 **Aircraft:**A350-1000
 **From/To:**LAX to DOH
 **Distance Flown:**8306 mi
+**Plane Image:** QTR_351.png
+
 
 Unfortunately for this trip, I was unable to access the Qantas lounge at LAX, so before the flight I killed some time in the Centurion Lounge. Right around boarding time, I left the lounge and went to the gate. Although there was a long line for economy passengers, the business lane was empty, and I walked right on. I was welcomed by the flight attendants and shown to my seat, 3A.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/img_2686-1.jpg)![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/img_2688.jpg)
 Seat 3A is a rear facing seat window seat with direct aisle access, which gives nice privacy from the aisle and great views from the window of the engine and wing. At the seat was an amenity kit, containing earplugs, an eye mask, socks, as well as some lotions and a sample size of a Diptyque fragrance. Shortly after getting to my seat, I was offered a welcome drink and pajamas. I chose the lemon-mint drink, which was excellent.![The Lemon Mint welcome drink](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/img_2687.jpg?w=1024)

@@ -6,6 +6,8 @@
 **Aircraft:** A350-1000
 **From/To:** DOH to LAX
 **Distance Flown:** 8249 mi
+**Plane Image:** QTR_351.png
+
 
 After a pretty disappointing trip over the Atlantic for my trip around the Gulf in Virgin Atlantic, I was pretty excited when I was able to find myself a QSuite home - something I've flown before and know will do the trick. However, I'm not a huge fan of flying west, as they're typically daytime flights which give me more jetlag, and I'd never done so on Qatar. To combat this, the night before the flight, I slept only for an hour or two very early, to make sure I would be tired on the plane. When I arrived to Hamad, I made my way to the business class check in. Although I was originally booked in an aisle seat, the check in staff were able to release the block that was on 1A and assign it to me, which was a huge win as it's both a window and rear facing, which are way more private in QSuites. After a wonderful (and fatigued) stay in the Al Mourjan Garden lounge, I made my way to my gate. I'm not a huge fan of Doha's additional at gate security, as it always creates a mess, especially for big flights. Regardless, I eventually boarded and made my way to 1A
 ![](images/flights/qr739-qsuites-review/seat.jpeg)

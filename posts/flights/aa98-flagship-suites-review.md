@@ -6,6 +6,8 @@
 **Aircraft:** 787-9
 **From/To:** ORD-LHR
 **Distance Flown:** 3,942 mi
+**Plane Image:** AAL_789_GE.png
+
 
 As I was looking for flights to get myself to Europe, I was super excited to find a flight in AA's brand new flagship suites. And the icing on the cake: I was able to book myself a preferred suite. As this flight was scheduled to leave pretty late (10:30pm), I had a pretty long stay in the Flagship lounge in ORD. As business class lounges go, it wasn't my favorite - food options were limited, and there weren't a ton of amenities. Not bad by any means, just more similar to a clean, less crowded regular lounge. Originally, I had intended to stay there for around 10 hours (my hotel couldn't extend checkout any longer), but it ended up being longer as AA98 kept getting delayed. The plane runs originally from LAX, through ORD, to LHR. A delay in LAX and no buffer time in ORD meant that we ended up with a 2.5hr delay. Still, I was really glad they didn't cancel the flight, as I was really looking forward to trying the new business class configuration and didn't want to have that flight cancelled and rerouted on a route with old business class. Better late than never.
 

@@ -6,6 +6,7 @@
 **Aircraft:**777-300ER
 **From/To:**DOH-FRA
 **Distance Flown:**2853 mi
+**Plane Image:** QTR_773.png
 
 Being my first ex-Doha Qatar business class flight, I was pretty excited to visit the Al Mourjan lounge in Doha. Unfortunately, given how early the flight was, I didn't get as long as I would have liked. Nonetheless, I got the visit the restaurant and experience the lounge a little. The lounge is huge, and has many different areas. Upon first entering, I saw the beautiful water feature, which was right below the restaurant.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-01-28_19-45-42_778.jpeg)
 Heading up the stairs takes you to the dining area, and given it was early, it was time for breakfast. I got a seat at the restaurant, and tried the smoothie and French Toast.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-01-28_20-01-06_008.jpeg)

@@ -6,6 +6,8 @@
 **Aircraft:**777-300ER
 **From/To:**KUL-DOH
 **Distance Flown:**3673 mi
+**Plane Image:** QTR_773.png
+
 
 After a good visit to the expansive Malaysian Airlines business class lounge, I made my way to boarding. Shortly before the flight, it was announced that this flight had been switched to an aircraft using Qatar's old business class configuration (2-2-2) instead of Qsuites. Given it was not a long haul, overnight flight, I wasn't too upset, and was interested to see the other product. I boarded quickly, and made my way to my seat, 5K![Seat 5K](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-01-27_17-25-47_689-1.jpeg?w=834)
 *Seat 5K*
