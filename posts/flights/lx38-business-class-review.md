@@ -6,6 +6,7 @@
 **Aircraft:**777-300ER
 **From/To:**ZRH-SFO
 **Distance Flown:**5,840 mi
+**Plane Image:** SWR_773.png
 
 When I was looking for a product to fly back to the US from Europe, I didn't want to end up in a 2-2-2 configuration. Since Swiss uses a staggered 1-2-2 configuration, I decided to try my luck with getting the so called "throne" seat. Having managed to select seat 16A (a throne seat) I was excited for the flight, but I woke up to a notification from Swiss that the flight had been delayed 5 hours. I later figured out this was due equipment failure on the 777 that was supposed to take us over, so they instead had to wait for a different plane. Luckily, the new plane they found was another 77W, so the equipment change didn't affect my seats. While checking out the different lounges in the Zurich airport, I received another notification that our flight was delayed again, meaning that we would be leaving 6 hours behind schedule. After a full day of lounge hopping at ZRH, we finally started boarding.![Swiss Business Class Cabin](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-05-03_10-04-12_281.jpeg?w=1024)
 *Swiss Business Class Cabin*
