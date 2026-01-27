@@ -6,6 +6,8 @@
 **Aircraft:** A350-900
 **From/To:** CDG-SEA
 **Distance Flown:** 5,003 mi
+**Plane Image:** AFR_359.png
+
 
 Transatlantic products are tricky - many of them are outdated or not 1-2-1. I knew Air France was better in this regard, and as I was having trouble finding efficient flights out of ARN back to the west coast, when I was able to find a ARN-CDG-SEA itinerary for a good price, I jumped on it. The flight from ARN-CDG was standard regional business in Europe - middle seat blocked, and a meal. But no regional business is interesting enough to get its own post, so we're focused on CDG-SEA.
 
