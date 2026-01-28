@@ -6,6 +6,7 @@
 **Aircraft:**747-800
 **From/To:**FRA-LAX
 **Distance Flown:**5806 mi
+**Plane Image:** DLH_74H.png
 
 I had heard a lot about Lufthansa's First class, as well as the first class terminal, so I was very excited to try the product out. Additionally, I was super excited to be on a 747, as I don't think these planes will be around forever. As this flight was scheduled to leave in the morning, I got to the first class terminal bright and early, to make sure I could enjoy it.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-01-29_21-22-01_085.jpeg)
 There are a couple different entries, depending on where you're dropped off, but everything is well marked and easy to navigate. After taking the elevator up, I was met by a staff member, who guided me through the private security channel. After the brief security process, I took a seat, and was offered some fresh pressed orange juice.![](https://yetanothertravelblog8.wordpress.com/wp-content/uploads/2024/05/2024-01-29_21-30-21_731.jpeg)
