@@ -6,6 +6,7 @@
 **Aircraft:** B787-9
 **From/To:** SEA to LHR
 **Distance Flown:** 4786 mi
+**Plane Image:** VIR_789_RR.png
 
 Virgin Atlantic, especially when it comes to hard product, has a big gap. It's flagship product on the A350 is competitive in the TATL market. The product on the 787 - not so much. It's dated and cramped. Nonetheless, I needed to get across the Atlantic from the west coast on pretty short notice, and it was this or economy, and especially with the price, I couldn't pass it up, even it the hard product wasn't the best. Boarding was a little chaotic, as it always is in the satelite terminal in SEA, but I made my way onto my plane and got to seat 10A
 ![](images/flights/vs106-upper-class-review/seat.jpeg)
