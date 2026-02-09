@@ -6,6 +6,7 @@
 **Aircraft:** A350-900
 **From/To:** TPE-SEA
 **Distance Flown:** 6,063 mi
+**Plane Image:** SJX_359.png
 
 Starlux is a new airline I've been really interested in trying. The last of the 3 large, well known Taiwanese airlines for me to try, but definitely not the least. Online checkin wasn't working, and after a delay on my flight from Singapore with a different carrier, I arrived to TPE about 15 minutes before boarding with no boarding pass. I went to the transit center hoping they could check me in there, but there was no Starlux desk. Luckily, one of the agents there was super helpful and managed to call Starlux, confirm I was on the flight, and get me through transit security. I was worried I would have to immigrate, check in, and emmigrate but he luckily saved me from doing so. I got to the gate right as they were starting to board, and got checked in there. Not as much time as I would have liked, but there's nothing like a connection with maximum efficiency.
 
