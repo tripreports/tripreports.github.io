@@ -6,6 +6,7 @@
 **Aircraft:** B777-300ER
 **From/To:** AKL-SIN
 **Distance Flown:** 5,224 mi
+**Plane Image:** ANZ_773.png
 
 After United cancelled a flight out of AKL, I managed to get myself rebooked onto a similar flight to SFO with Air New Zealand. That was my third flight ever in business, so I didn't have much to go off of. It took me a few more flights to realize how outdated the product was. Still, I recall the service being incredibly friendly, so I knew on this flight to Singapore, I would at least be well taken care of. 
 
